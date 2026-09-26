@@ -15,9 +15,7 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
 
         <aside className="glass-panel panel-left">
 
-            <div className="panel-title">
-                Saved Pain Regions
-            </div>
+            <div className="panel-title">Marked areas <span>{numRegions}</span></div>
 
             <div className="panel-summary">
                 <div className="summary-stat">
@@ -31,26 +29,26 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                 </div>
             </div>
 
-            <div className="region-list" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '20px' }}>
+            <div className="region-list">
 
                 {numRegions > 0 ? (
                     savedRegions.map(([spotId, data]) => (
-                        <div key={spotId} style={{ background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '8px', borderLeft: `4px solid ${data.severity <= 3 ? '#4caf50' : data.severity <= 6 ? '#ff9800' : '#f44336'}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div key={spotId} className={`region-item ${selectedRegion === spotId ? "is-selected" : ""}`}>
                             
-                            <div>
-                                <div style={{ fontWeight: 'bold' }}>📍 {data.regionName || "Unknown Region"}</div>
-                                <div style={{ fontSize: '12px', color: '#aaa', marginTop: '4px' }}>
-                                    Severity: {data.severity}/10 • {data.painType || "Unspecified"}
+                            <div className="region-item__text">
+                                <div className="region-item__name">{data.regionName || "Unknown Region"}</div>
+                                <div className="region-item__meta">
+                                    {data.severity}/10 severity · {data.painType || "Pain type not set"}
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', gap: '5px' }}>
+                            <div className="region-item__actions">
                                 <button 
                                     onClick={() => setSelectedRegion(spotId)}
-                                    style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: 'white', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer' }}
-                                    title="Edit"
+                                    className="region-item__edit"
+                                    title={`Edit ${data.regionName}`}
                                 >
-                                    ✏️
+                                    Edit
                                 </button>
                                 <button 
                                     onClick={() => {
@@ -63,10 +61,10 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                                             }
                                         }
                                     }}
-                                    style={{ background: 'rgba(244,67,54,0.2)', border: 'none', color: '#f44336', padding: '4px 8px', borderRadius: '4px', cursor: 'pointer' }}
-                                    title="Delete"
+                                    className="region-item__delete"
+                                    title={`Delete ${data.regionName}`}
                                 >
-                                    🗑️
+                                    Delete
                                 </button>
                             </div>
 
@@ -74,8 +72,7 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                     ))
                 ) : (
                     <div className="empty-state">
-                        <div style={{ fontSize: '30px', marginBottom: '10px' }}>👆</div>
-                        <div style={{ opacity: 0.7 }}>Click on the 3D body model to indicate where you feel pain.</div>
+                        <div>Select a muscle on the model to add a pain location.</div>
                     </div>
                 )}
 

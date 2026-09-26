@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import TopBar from "./components/TopBar";
 import LeftPanel from "./components/LeftPanel";
-import Canvas3D from "./components/Canvas3D";
+import Canvas3D from "./components/BodyPartsCanvas";
 import RightPanel from "./components/RightPanel";
 import ReportModal from "./components/ReportModal";
 import Questionnaire from "./components/Questionnaire";
@@ -47,8 +47,6 @@ export default function App() {
           <div id="app">
             <TopBar
               setShowReport={setShowReport}
-              setPainData={setPainData}
-              setSelectedRegion={setSelectedRegion}
               onClearAll={handleClearAll}
             />
 
@@ -60,6 +58,7 @@ export default function App() {
             />
 
             <Canvas3D
+              selectedRegion={selectedRegion}
               setSelectedRegion={setSelectedRegion}
               setPainData={setPainData}
               painData={painData}

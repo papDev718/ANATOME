@@ -20,6 +20,20 @@ button {
 
 
 #app {
-  height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(330px, 24vw, 420px);
+  grid-template-rows: 72px auto minmax(0, 1fr);
+  height: 100dvh;
+  min-height: 0;
   overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  #app {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
 }

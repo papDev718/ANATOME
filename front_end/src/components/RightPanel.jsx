@@ -109,19 +109,15 @@ export default function RightPanel({
     <aside className="glass-panel panel-right">
       {!selectedRegion ? (
         <div className="no-selection">
-          <div className="no-sel-icon">🫀</div>
-
-          <div className="no-sel-title">No Region Selected</div>
+          <div className="no-sel-title">Describe a pain location</div>
 
           <div className="no-sel-desc">
-            Select a body region on the 3D model to describe your pain.
+            Select a muscle or tendon in the 3D model. Its details and pain fields will appear here.
           </div>
         </div>
       ) : (
         <div className="detail-form">
           <div className="detail-header">
-            <div className="region-icon">📍</div>
-
             <div>
               <div className="region-title">
                 {selectedSpot?.regionName || "Unknown Region"}
@@ -132,26 +128,16 @@ export default function RightPanel({
           </div>
 
           <div className="form-section">
-            <div
-              className="form-label"
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
+            <label className="form-label form-label--row" htmlFor="pain-severity">
               <span>Pain Severity</span>
 
-              <span
-                style={{
-                  color: getSeverityColor(severity),
-                  fontWeight: "bold",
-                }}
-              >
+              <span style={{ color: getSeverityColor(severity) }}>
                 {severity} / 10
               </span>
-            </div>
+            </label>
 
             <input
+              id="pain-severity"
               type="range"
               min="1"
               max="10"
@@ -174,15 +160,7 @@ export default function RightPanel({
                   type="button"
                   className={`option-pill ${painType === type ? "active" : ""}`}
                   onClick={() => setPainType(type)}
-                  style={
-                    painType === type
-                      ? {
-                          background: "#6d5dfc",
-                          color: "white",
-                          borderColor: "#6d5dfc",
-                        }
-                      : {}
-                  }
+                  aria-pressed={painType === type}
                 >
                   {type}
                 </button>
@@ -191,20 +169,12 @@ export default function RightPanel({
           </div>
 
           <div className="form-section">
-            <div className="form-label">Frequency</div>
+            <label className="form-label" htmlFor="pain-frequency">Frequency</label>
 
             <select
+              id="pain-frequency"
               value={frequency}
               onChange={(event) => setFrequency(event.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                background: "#161b2d",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-              }}
             >
               <option value="">Select frequency...</option>
 
@@ -219,28 +189,21 @@ export default function RightPanel({
           </div>
 
           <div className="form-section">
-            <div className="form-label">Onset Date</div>
+            <label className="form-label" htmlFor="pain-onset">Onset Date</label>
 
             <input
+              id="pain-onset"
               type="date"
               value={startDate}
               onChange={(event) => setStartDate(event.target.value)}
-              style={{
-                width: "100%",
-                padding: "10px",
-                borderRadius: "8px",
-                background: "#161b2d",
-                color: "white",
-                border: "none",
-                cursor: "pointer",
-              }}
             />
           </div>
 
           <div className="form-section">
-            <div className="form-label">Additional Notes</div>
+            <label className="form-label" htmlFor="pain-notes">Additional Notes</label>
 
             <textarea
+              id="pain-notes"
               className="notes-textarea"
               placeholder="Describe symptoms, when it started, what makes it worse..."
               value={notes}
@@ -254,7 +217,7 @@ export default function RightPanel({
               className="btn btn-primary"
               onClick={handleSave}
             >
-              ✓ Save
+              Save
             </button>
 
             <button
@@ -263,7 +226,7 @@ export default function RightPanel({
               onClick={handleDelete}
               title="Clear this region"
             >
-              🗑️
+              Delete
             </button>
           </div>
         </div>

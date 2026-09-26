@@ -1,9 +1,9 @@
 import "../css/TopBar.css";
-export default function TopBar({setShowReport, setPainData}) {
+export default function TopBar({setShowReport, onClearAll}) {
 
     const handleClearAll = () => {
         if (window.confirm("Are you sure you want to clear all logged pain data?")) {
-            setPainData({});
+            onClearAll();
         }
     };
 
@@ -13,9 +13,7 @@ export default function TopBar({setShowReport, setPainData}) {
 
             <div className="logo">
 
-                <div className="logo-icon">
-                    🩺
-                </div>
+                <div className="logo-icon" aria-hidden="true" />
 
 
                 <div>
@@ -40,7 +38,7 @@ export default function TopBar({setShowReport, setPainData}) {
                     className="btn btn-secondary btn-sm"
                     onClick={handleClearAll}
                 >
-                    🗑️ Clear All
+                    Clear all
                 </button>
 
 
@@ -48,7 +46,7 @@ export default function TopBar({setShowReport, setPainData}) {
                     className="btn btn-primary btn-sm"
                     onClick={() => setShowReport(true)}
                 >
-                    📋 Generate Report
+                    Generate report
                 </button>
 
 
