@@ -1,5 +1,4 @@
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
 
 export default function ReportButton({
   patientName,
@@ -213,104 +212,30 @@ export default function ReportButton({
       addSectionHeading("2. Pain Assessment");
 
       // ==========================================
-      // Capture the 3D model
+      // Capture the Three.js canvas snapshot
       // ==========================================
 
       try {
-        const container = document.getElementById("model-viewer-container");
-        const viewer = container?.querySelector("model-viewer");
+        // The Three.js renderer draws into a <canvas> inside .anatomy-stage__canvas
+        const stageHost = document.querySelector(".anatomy-stage__canvas");
+        const glCanvas = stageHost?.querySelector("canvas");
 
-        if (viewer && container) {
-          const originalOrbit = viewer.cameraOrbit;
+        if (glCanvas) {
+          // Snapshot the current WebGL frame (preserveDrawingBuffer is not set,
+          // so we read the canvas immediately after a render tick).
+          await new Promise((resolve) => requestAnimationFrame(resolve));
+          const dataUrl = glCanvas.toDataURL("image/png");
 
-          const requiredViews = new Set();
-          if (Array.isArray(regions)) {
-            regions.forEach(([_spotId, data]) => {
-              if (data.clickNormal) {
-                const parts = data.clickNormal.split(" ");
-                if (parts.length >= 3) {
-                  const nx = parseFloat(parts[0]);
-                  const nz = parseFloat(parts[2]);
+          const pdfWidth = 170;
+          const imageProperties = doc.getImageProperties(dataUrl);
+          let pdfHeight = (imageProperties.height * pdfWidth) / imageProperties.width;
+          const maximumImageHeight = 150;
+          if (pdfHeight > maximumImageHeight) pdfHeight = maximumImageHeight;
 
-                  if (nz >= 0.4) requiredViews.add("Front");
-                  if (nz <= -0.4) requiredViews.add("Back");
-                  if (nx >= 0.4) requiredViews.add("Left");
-                  if (nx <= -0.4) requiredViews.add("Right");
-                }
-              }
-            });
-          }
-          if (requiredViews.size === 0) {
-            requiredViews.add("Front");
-          }
-
-          const viewsToTake = Array.from(requiredViews);
-          const viewAngles = {
-            "Front": "0deg 90deg auto",
-            "Back": "180deg 90deg auto",
-            "Left": "90deg 90deg auto",
-            "Right": "-90deg 90deg auto"
-          };
-
-          for (const viewName of viewsToTake) {
-            viewer.cameraOrbit = viewAngles[viewName];
-            if (typeof viewer.jumpCameraToGoal === 'function') {
-              viewer.jumpCameraToGoal();
-            }
-            
-            // Wait for WebGL to render the new angle
-            await new Promise((resolve) => setTimeout(resolve, 150));
-
-            const dataUrl = viewer.toDataURL("image/png", 2.0);
-
-            const originalBackgroundImage = container.style.backgroundImage;
-            const originalBackgroundSize = container.style.backgroundSize;
-            const originalBackgroundPosition = container.style.backgroundPosition;
-            const originalBackgroundRepeat = container.style.backgroundRepeat;
-
-            try {
-              container.style.backgroundImage = `url(${dataUrl})`;
-              container.style.backgroundSize = "contain";
-              container.style.backgroundPosition = "center";
-              container.style.backgroundRepeat = "no-repeat";
-
-              const canvas = await html2canvas(container, {
-                backgroundColor: "#f0f4f8",
-                scale: 2,
-              });
-
-              const finalImage = canvas.toDataURL("image/png");
-
-              const pdfWidth = 170;
-              const imageProperties = doc.getImageProperties(finalImage);
-              let pdfHeight =
-                (imageProperties.height * pdfWidth) / imageProperties.width;
-
-              const maximumImageHeight = 150; // Slightly smaller to fit multiple better
-              if (pdfHeight > maximumImageHeight) {
-                pdfHeight = maximumImageHeight;
-              }
-
-              addSubheading(`${viewName} View`);
-              ensureSpace(pdfHeight + 10);
-
-              doc.addImage(finalImage, "PNG", 20, y, pdfWidth, pdfHeight);
-              y += pdfHeight + 10;
-            } finally {
-              // Restore the original page styling.
-              container.style.backgroundImage = originalBackgroundImage;
-              container.style.backgroundSize = originalBackgroundSize;
-              container.style.backgroundPosition = originalBackgroundPosition;
-              container.style.backgroundRepeat = originalBackgroundRepeat;
-            }
-          }
-
-          // Restore original camera state
-          viewer.cameraOrbit = originalOrbit;
-          if (typeof viewer.jumpCameraToGoal === 'function') {
-            viewer.jumpCameraToGoal();
-          }
-
+          addSubheading("3D Anatomy View");
+          ensureSpace(pdfHeight + 10);
+          doc.addImage(dataUrl, "PNG", 20, y, pdfWidth, pdfHeight);
+          y += pdfHeight + 10;
         } else {
           addWrappedText("A 3D pain-location image was not available.");
         }

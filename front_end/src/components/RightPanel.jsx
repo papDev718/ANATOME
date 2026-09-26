@@ -16,7 +16,14 @@ export default function RightPanel({
   setSelectedRegion,
   painData = {},
   setPainData,
+  onPainSaved,
+  onCancel,
 }) {
+  const handleCancel = () => {
+    if (onCancel) onCancel(selectedRegion);
+    else setSelectedRegion(null);
+  };
+
   const [severity, setSeverity] = useState(5);
   const [painType, setPainType] = useState("");
   const [notes, setNotes] = useState("");
@@ -55,15 +62,11 @@ export default function RightPanel({
   }, [selectedRegion, painData]);
 
   const handleSave = () => {
-    if (!selectedRegion) {
-      return;
-    }
+    if (!selectedRegion) return;
 
     setPainData((previousPainData) => ({
       ...previousPainData,
-
       [selectedRegion]: {
-        // Preserve regionName, clickPosition, and clickNormal
         ...previousPainData[selectedRegion],
         severity,
         painType,
@@ -73,8 +76,9 @@ export default function RightPanel({
       },
     }));
 
-    // Close panel after saving
-    setSelectedRegion(null);
+    // Notify App: clears selectedRegion AND zooms canvas back to full body
+    if (onPainSaved) onPainSaved();
+    else setSelectedRegion(null);
   };
 
   const handleDelete = () => {
@@ -218,6 +222,15 @@ export default function RightPanel({
               onClick={handleSave}
             >
               Save
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleCancel}
+              title="Deselect without saving"
+            >
+              Cancel
             </button>
 
             <button

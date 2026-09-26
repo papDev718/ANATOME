@@ -50,15 +50,13 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                                 >
                                     Edit
                                 </button>
-                                <button 
+                                <button
                                     onClick={() => {
-                                        if (window.confirm(`Delete this pain spot on ${data.regionName}?`)) {
-                                            const newData = { ...painData };
-                                            delete newData[spotId];
-                                            setPainData(newData);
-                                            if (selectedRegion === spotId) {
-                                                setSelectedRegion(null);
-                                            }
+                                        const newData = { ...painData };
+                                        delete newData[spotId];
+                                        setPainData(newData);
+                                        if (selectedRegion === spotId) {
+                                            setSelectedRegion(null);
                                         }
                                     }}
                                     className="region-item__delete"
