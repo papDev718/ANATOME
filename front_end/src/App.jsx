@@ -21,8 +21,6 @@ export default function App() {
   const [appState, setAppState] = useState("landing");
 
   function finishQuestionnaire(answers) {
-    console.log("Saved questionnaire answers:", answers);
-
     setQuestionnaireAnswers(answers);
     setAppState("app");
   }

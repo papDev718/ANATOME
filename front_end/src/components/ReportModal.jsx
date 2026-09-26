@@ -44,21 +44,13 @@ export default function ReportModal({
   }
 
   async function saveReport() {
-    validateReport();
-
-    setIsSaving(true);
     setReportError("");
 
     try {
-      console.log("Sending report data:", {
-        patient_name: patientName.trim(),
-        patient_age: Number(patientAge),
-        report_date: reportDate,
-        questionnaire: questionnaireAnswers,
-        pain_regions: painData,
-      });
+      validateReport();
+      setIsSaving(true);
 
-      const response = await fetch("http://127.0.0.1:8000/reports", {
+      const response = await fetch("/api/reports", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,8 +74,6 @@ export default function ReportModal({
         );
       }
 
-      console.log("Server response:", result);
-
       if (!response.ok) {
         throw new Error(
           typeof result.detail === "string"
@@ -101,8 +91,6 @@ export default function ReportModal({
 
       return result;
     } catch (error) {
-      console.error("Save report failed:", error);
-
       setReportError(error.message || "The report could not be generated.");
 
       throw error;

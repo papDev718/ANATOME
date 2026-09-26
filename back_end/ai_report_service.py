@@ -1,5 +1,6 @@
 import json
 import os
+from pathlib import Path
 from typing import Any
 
 from dotenv import load_dotenv
@@ -7,21 +8,17 @@ from openai import OpenAI
 from pydantic import BaseModel, Field, ValidationError
 
 
-load_dotenv()
+load_dotenv(Path(__file__).with_name(".env"))
 
 
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-
-OPENAI_REPORT_MODEL = os.getenv(
-    "OPENAI_REPORT_MODEL",
-    "openai/gpt-5-mini",
+GROQ_REPORT_MODEL = os.getenv(
+    "GROQ_REPORT_MODEL",
+    "openai/gpt-oss-20b",
 )
 
 
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=OPENROUTER_API_KEY or "dummy_key",
-)
+class MissingReportApiKey(RuntimeError):
+    """Raised when the server has no private Groq API key configured."""
 
 
 class RegionSummary(BaseModel):
@@ -198,10 +195,17 @@ def generate_ai_report(
     The patient's name and database ID are deliberately not sent to the AI.
     """
 
-    if not OPENROUTER_API_KEY:
-        raise RuntimeError(
-            "OPENROUTER_API_KEY is not configured."
-        )
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise MissingReportApiKey("GROQ_API_KEY is not configured on the server.")
+
+    # The key stays on the server. Only patient-reported intake data is sent
+    # to Groq; the patient's name and local database ID are deliberately omitted.
+    client = OpenAI(
+        base_url="https://api.groq.com/openai/v1",
+        api_key=api_key,
+        timeout=30.0,
+    )
 
     source_data = {
         "patient_age": patient_age,
@@ -211,7 +215,7 @@ def generate_ai_report(
     }
 
     completion = client.chat.completions.create(
-        model=OPENAI_REPORT_MODEL,
+        model=GROQ_REPORT_MODEL,
         messages=[
             {
                 "role": "system",
@@ -235,22 +239,11 @@ def generate_ai_report(
             "type": "json_schema",
             "json_schema": {
                 "name": "patient_pain_report",
-                "description": (
-                    "A structured, non-diagnostic summary of "
-                    "patient-reported pain information."
-                ),
                 "strict": True,
                 "schema": REPORT_JSON_SCHEMA,
             },
         },
-        max_tokens = 2500,
-        extra_body={
-            "provider": {
-                "require_parameters": True,
-                "data_collection": "deny",
-                "zdr": False,
-            },
-        },
+        max_completion_tokens=2500,
     )
 
     content = completion.choices[0].message.content

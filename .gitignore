@@ -1,4 +1,10 @@
 .env
+.venv/
+.venv-report-test/
+back_end/.venv/
+*.db
+front_end/dist/
+front_end/node_modules/
 venv/
 back_end/venv/
 __pycache__/

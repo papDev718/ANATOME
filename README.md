@@ -1,4 +1,4 @@
-# InteronIT_HackathonGroup5 Setup Guide
+# ANATOME Setup Guide
 This guide will walk you through setting up and running the project from start to finish.
 
 ---
@@ -33,16 +33,20 @@ cd InteronIT_HackathonGroup5
 
 # Step 2 - Set Up Environment Variables
 
-> If the project doesn't need any API keys or environment variables, skip this step.
-
-Check the `back_end` (and `front_end`, if applicable) folders for a file called `.env.example`. If one exists:
-
-1. Copy it to a new file named `.env` in the same folder.
-2. Fill in any required values (API keys, database URLs, etc).
+The Generate Report feature uses Groq from the backend. Copy the template,
+then set a private `GROQ_API_KEY` in `back_end/.env`:
 
 ```bash
 cp back_end/.env.example back_end/.env
 ```
+
+Use a freshly rotated key if an earlier key was shared in a message or exposed
+elsewhere. Never put the key in frontend source, a `VITE_` variable, or GitHub.
+The default report model is `openai/gpt-oss-20b`, which supports strict JSON
+schema output. You can override it with `GROQ_REPORT_MODEL`.
+
+The frontend sends report requests to `/api/reports`; Vite and Docker proxy
+those requests to FastAPI. Start both services for Generate Report to work.
 
 ---
 
@@ -129,6 +133,11 @@ Local: http://localhost:5173/
 **Leave this terminal open as well.**
 
 > **Note:** Start the backend (Step 3) before the frontend. If the frontend loads before the backend is running, you may see errors or a broken-looking page until the backend is up.
+
+> **Privacy:** Report generation sends patient age, questionnaire answers, and
+> pain-region details to Groq. The patient's name stays on the ANATOME server.
+> Do not use real protected health information in a public demo. Review
+> privacy, retention, and vendor requirements before clinical use.
 
 ---
 

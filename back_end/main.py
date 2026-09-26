@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 import models
 from database import Base, engine, get_db
-from ai_report_service import generate_ai_report, OPENAI_REPORT_MODEL
+from ai_report_service import generate_ai_report, GROQ_REPORT_MODEL, MissingReportApiKey
 
 
 app = FastAPI(
@@ -63,7 +63,8 @@ class ReportRequest(BaseModel):
     pain_regions: dict[str, Any]
 
 
-@app.post("/reports")
+@app.post("/api/reports")
+@app.post("/reports", include_in_schema=False)
 def create_report(request: ReportRequest, db: Session = Depends(get_db)):
     try:
         ai_report = generate_ai_report(
@@ -72,8 +73,15 @@ def create_report(request: ReportRequest, db: Session = Depends(get_db)):
             questionnaire=request.questionnaire,
             pain_regions=request.pain_regions,
         )
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    except MissingReportApiKey as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:
+        # Provider errors can contain request details. Never return them to
+        # the browser, which may be shared during a patient intake session.
+        raise HTTPException(
+            status_code=502,
+            detail="The AI report service is unavailable. Please try again later.",
+        ) from exc
 
     db_report = models.PatientReport(
         patient_name=request.patient_name,
@@ -82,7 +90,7 @@ def create_report(request: ReportRequest, db: Session = Depends(get_db)):
         questionnaire=request.questionnaire,
         pain_regions=request.pain_regions,
         ai_report=ai_report,
-        ai_model=OPENAI_REPORT_MODEL,
+        ai_model=GROQ_REPORT_MODEL,
         ai_generated_at=datetime.datetime.utcnow(),
     )
 
