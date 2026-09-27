@@ -105,7 +105,7 @@ function layerAllows(mode, system) {
   return mode === "all" || system === mode;
 }
 
-export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, setPainData, painData = {} }) {
+export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, setPainData, painData = {}, frameBodyRef, deselectRef }) {
   const stageRef = useRef(null);
   const hostRef = useRef(null);
   const tooltipRef = useRef(null);
@@ -118,6 +118,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
   const focusPartRef = useRef(() => {});
   const selectPartRef = useRef(() => {});
   const layerRef = useRef("muscular");
+  const selectedRegionRef = useRef(selectedRegion);
 
   const [modelStatus, setModelStatus] = useState("loading");
   const [loadProgress, setLoadProgress] = useState(0);
@@ -128,10 +129,28 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
   const [availableParts, setAvailableParts] = useState([]);
   const selectedAnatomy = anatomyForPart(selectedPart);
 
+  const prevPainCountRef = useRef(Object.keys(painData).length);
+
   useEffect(() => {
+    const prev = prevPainCountRef.current;
+    const next = Object.keys(painData).length;
+    prevPainCountRef.current = next;
     painDataRef.current = painData;
     engineRef.current?.refreshVisuals();
+    // All spots deleted — zoom back to full body
+    if (next === 0 && prev > 0) {
+      engineRef.current?.frameBody();
+    }
   }, [painData]);
+
+  useEffect(() => { selectedRegionRef.current = selectedRegion; }, [selectedRegion]);
+
+  // Expose frameBody to parent via ref so App can trigger zoom-out after save
+  useEffect(() => {
+    if (frameBodyRef) {
+      frameBodyRef.current = () => engineRef.current?.frameBody();
+    }
+  }, [frameBodyRef]);
 
   useEffect(() => {
     const engine = engineRef.current;
@@ -165,7 +184,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
 
     const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
     camera.position.set(0.55, 0.95, 4.2);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance", preserveDrawingBuffer: true });
     renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -306,6 +325,13 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
 
     const selectPart = (part, { createSpot = true, intersection = null } = {}) => {
       if (!part) return;
+
+      // If this region is already saved, don't allow re-clicking to add another report
+      if (createSpot) {
+        const existing = Object.entries(painDataRef.current).find(([, spot]) => canonicalName(spot.regionName) === canonicalName(part.name));
+        if (existing) return;
+      }
+
       selectedPartRef.current = part;
       hoveredPartRef.current = null;
       setSelectedPart(part);
@@ -313,12 +339,6 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       refreshVisuals();
       requestAnimationFrame(() => focusPart(part));
       if (!createSpot) return;
-
-      const existing = Object.entries(painDataRef.current).find(([, spot]) => canonicalName(spot.regionName) === canonicalName(part.name));
-      if (existing) {
-        setSelectedRegion(existing[0]);
-        return;
-      }
       const spotId = crypto.randomUUID();
       setPainData((previous) => ({
         ...previous,
@@ -465,13 +485,29 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     const onClick = (event) => {
       if (pointerDown && Math.hypot(event.clientX - pointerDown.x, event.clientY - pointerDown.y) > 5) return;
       const hit = hitTest(event);
-      if (hit) selectPart(hit.part, { intersection: hit });
+      if (hit) {
+        if (hit.part === selectedPartRef.current) {
+          // Re-clicked the already-selected muscle — deselect
+          deselectRef?.current?.();
+        } else {
+          selectPart(hit.part, { intersection: hit });
+        }
+      } else if (selectedPartRef.current) {
+        // Clicked empty space while something is selected — deselect
+        deselectRef?.current?.();
+      }
+    };
+    const onKeyDown = (event) => {
+      if (event.key === "Escape" && selectedPartRef.current) {
+        deselectRef?.current?.();
+      }
     };
     const onDown = (event) => { pointerDown = { x: event.clientX, y: event.clientY }; };
     renderer.domElement.addEventListener("pointerdown", onDown);
     renderer.domElement.addEventListener("pointermove", onMove);
     renderer.domElement.addEventListener("pointerleave", hideTooltip);
     renderer.domElement.addEventListener("click", onClick);
+    window.addEventListener("keydown", onKeyDown);
 
     const projectedCorner = new THREE.Vector3();
     const projectedCenter = new THREE.Vector3();
@@ -516,6 +552,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       cancelAnimationFrame(frame);
       cancelAnimationFrame(resizeFrame);
       observer.disconnect();
+      window.removeEventListener("keydown", onKeyDown);
       controls.dispose();
       gsap.killTweensOf(camera.position);
       gsap.killTweensOf(controls.target);
@@ -583,7 +620,20 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     gsap.to(engine.controls.target, { ...center, duration: 0.75, ease: "expo.out", overwrite: true });
   };
 
-  const closeDetails = () => {
+  const deselect = () => {
+    const spotId = selectedRegionRef.current;
+    // Remove the spot only if the user never filled in any field (just clicked and bailed)
+    if (spotId) {
+      setPainData((prev) => {
+        const spot = prev[spotId];
+        if (spot && !spot.painType && !spot.notes && !spot.frequency) {
+          const next = { ...prev };
+          delete next[spotId];
+          return next;
+        }
+        return prev;
+      });
+    }
     selectedPartRef.current = null;
     setSelectedPart(null);
     setPanelOpen(false);
@@ -591,6 +641,13 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     engineRef.current?.refreshVisuals();
     engineRef.current?.frameBody();
   };
+
+  // Expose deselect to App so RightPanel Cancel can call it
+  useEffect(() => {
+    if (deselectRef) deselectRef.current = deselect;
+  });
+
+  const closeDetails = deselect;
 
   const handlePartSelect = (event) => {
     const part = availableParts.find((candidate) => candidate.id === event.target.value);

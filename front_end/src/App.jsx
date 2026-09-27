@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react"; // useCallback kept for handlePainSaved
 
 import TopBar from "./components/TopBar";
 import LeftPanel from "./components/LeftPanel";
@@ -25,10 +25,18 @@ export default function App() {
     setAppState("app");
   }
 
+  const framBodyRef = useRef(null);
+  const deselectRef = useRef(null);
+
   const handleClearAll = () => {
     setPainData({});
     setSelectedRegion(null);
   };
+
+  const handlePainSaved = useCallback(() => {
+    setSelectedRegion(null);
+    framBodyRef.current?.();
+  }, []);
 
   return (
     <>
@@ -60,6 +68,8 @@ export default function App() {
               setSelectedRegion={setSelectedRegion}
               setPainData={setPainData}
               painData={painData}
+              frameBodyRef={framBodyRef}
+              deselectRef={deselectRef}
             />
 
             <RightPanel
@@ -67,6 +77,8 @@ export default function App() {
               setSelectedRegion={setSelectedRegion}
               painData={painData}
               setPainData={setPainData}
+              onPainSaved={handlePainSaved}
+              onCancel={() => deselectRef.current?.()}
             />
           </div>
 
