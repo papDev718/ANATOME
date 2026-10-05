@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../css/ReportModal.css";
 import ReportButton from "./ReportButton";
+import { displayAnatomyName } from "../utils/anatomyName";
 
 export default function ReportModal({
   setShowReport,
@@ -16,6 +17,15 @@ export default function ReportModal({
   const [isSaving, setIsSaving] = useState(false);
   const [savedPatientId, setSavedPatientId] = useState(null);
   const [reportError, setReportError] = useState("");
+  const reportErrorRef = useRef(null);
+
+  // The error renders inside the scrollable body, so bring it into view
+  // when the footer buttons fail; otherwise the click looks like a no-op.
+  useEffect(() => {
+    if (reportError) {
+      reportErrorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [reportError]);
 
   const regions = Object.entries(painData || {});
 
@@ -34,7 +44,7 @@ export default function ReportModal({
 
     if (!questionnaireAnswers) {
       throw new Error(
-        "Please complete the questionnaire before generating the report.",
+        "Please describe your pain before generating the report.",
       );
     }
 
@@ -112,44 +122,43 @@ export default function ReportModal({
   return (
     <div className="report-overlay">
       <div className="report-modal">
-        <div
-          className="report-modal-header"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <h2>📋 Clinical Pain Report</h2>
+        <div className="report-modal-header">
+          <div>
+            <p className="report-kicker">Report preview</p>
+            <h2>Clinical Pain Report</h2>
+          </div>
 
           <button
             type="button"
             className="report-close-btn"
             onClick={() => setShowReport(false)}
             disabled={isSaving}
+            aria-label="Close report"
           >
-            ✕
+            Close
           </button>
         </div>
 
         <div className="report-modal-body">
           <div className="patient-info-section">
             <div className="info-group">
-              <label>Patient Name:</label>
+              <label htmlFor="report-name">Patient name</label>
 
               <input
+                id="report-name"
                 type="text"
                 value={patientName}
                 onChange={(event) => setPatientName(event.target.value)}
-                placeholder="Full Name"
+                placeholder="Full name"
                 disabled={isSaving}
               />
             </div>
 
             <div className="info-group">
-              <label>Age:</label>
+              <label htmlFor="report-age">Age</label>
 
               <input
+                id="report-age"
                 type="number"
                 min="0"
                 max="130"
@@ -161,9 +170,10 @@ export default function ReportModal({
             </div>
 
             <div className="info-group">
-              <label>Date:</label>
+              <label htmlFor="report-date">Date</label>
 
               <input
+                id="report-date"
                 type="date"
                 value={reportDate}
                 onChange={(event) => setReportDate(event.target.value)}
@@ -179,7 +189,7 @@ export default function ReportModal({
           )}
 
           {reportError && (
-            <div className="report-error-message">
+            <div ref={reportErrorRef} className="report-error-message" role="alert">
               <strong>Report error:</strong> {reportError}
             </div>
           )}
@@ -204,27 +214,22 @@ export default function ReportModal({
           ) : (
             <div className="pain-list">
               {regions.map(([spotId, data]) => {
-                const displayRegionName = data.regionName || spotId;
+                const displayRegionName = displayAnatomyName(data.regionName) || spotId;
 
                 return (
                   <div key={spotId} className="pain-item">
                     <div className="pain-item-header">
                       <span className="pain-item-title">
-                        📍 {data.regionName || regionName}
+                        {displayRegionName}
                       </span>
 
                       <span
                         className="pain-item-severity"
-                        style={{
-                          backgroundColor:
-                            data.severity <= 3
-                              ? "#4caf50"
-                              : data.severity <= 6
-                                ? "#ff9800"
-                                : "#f44336",
-                        }}
+                        data-level={
+                          data.severity <= 3 ? "low" : data.severity <= 6 ? "mid" : "high"
+                        }
                       >
-                        Severity: {data.severity}/10
+                        {data.severity}/10
                       </span>
                     </div>
 
@@ -262,11 +267,11 @@ export default function ReportModal({
         <div className="report-modal-footer">
           <button
             type="button"
-            className="save-report-button"
+            className="btn btn-secondary"
             onClick={handleSaveOnly}
             disabled={isSaving}
           >
-            {isSaving ? "Generating Report..." : "Save Report"}
+            {isSaving ? "Generating report..." : "Save report"}
           </button>
 
           <ReportButton

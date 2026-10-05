@@ -1,383 +1,298 @@
-import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import AnatomyHero from "./AnatomyHero";
 import "./LandingPage.css";
 
-const fadeUpVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
-  }
+const reveal = {
+  initial: { opacity: 0, y: 14 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 }
-  }
-};
+const PROBLEMS = [
+  {
+    term: "Location",
+    text: "\"My lower back\" covers a dozen muscles. Patients rarely have the words to narrow it down, and forms rarely ask.",
+  },
+  {
+    term: "Intensity",
+    text: "A 7 out of 10 means different things to different people. Without what it stops you doing, the number on its own doesn't say much.",
+  },
+  {
+    term: "Context",
+    text: "Onset, triggers, what helps, what makes it worse. These are the details clinicians ask for first, and the ones a checkbox form tends to lose.",
+  },
+];
 
-const LoopingStory = () => {
-  const [step, setStep] = useState(0);
+const REPORT_SECTIONS = [
+  "Patient information",
+  "Pain assessment by region",
+  "Patient-reported clinical summary",
+  "Aggravating and relieving factors",
+  "Region-specific documentation",
+  "Items for clinician review",
+  "Documentation statement",
+  "Clinician notes",
+];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % 3);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
+const TEAM = [
+  { name: "Pranav Arun Pillai", role: "UI/UX design, lead research, project coordination" },
+  { name: "Arush Banerjee", role: "Team lead, front-end lead, 3D anatomy" },
+  { name: "Kyle Hwang", role: "Lead software engineer, AI model development" },
+  { name: "Mustafa Ali", role: "AI model development" },
+];
 
+function Waveform() {
+  const bars = [4, 9, 14, 7, 18, 11, 22, 16, 8, 13, 20, 10, 6, 15, 9, 5, 12, 17, 7, 4];
   return (
-    <div className="story-container">
-      {/* 1. Patient-clinician conversation */}
-      <motion.div 
-        className="story-scene"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step === 0 ? 1 : 0, scale: step === 0 ? 1 : 0.95 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="chat-bubble user-bubble">
-          <div className="line line-short"></div>
-          <div className="line"></div>
-        </div>
-        <div className="chat-bubble clinician-bubble">
-          <div className="line"></div>
-          <div className="line line-medium"></div>
-        </div>
-      </motion.div>
-
-      {/* 2. Questionnaire cursor */}
-      <motion.div 
-        className="story-scene"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step === 1 ? 1 : 0, y: step === 1 ? 0 : 20 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="mock-quiz">
-          <div className="mock-title"></div>
-          <div className="mock-option mock-selected"></div>
-          <div className="mock-option"></div>
-          <motion.div 
-            className="mock-cursor"
-            animate={step === 1 ? { x: [30, -10, 0], y: [40, 0, 5] } : {}}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M4 4L11 20L14 14L20 11L4 4Z" fill="#ffffff" stroke="#1E2A22" strokeWidth="2"/>
-            </svg>
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* 3. Screening summary */}
-      <motion.div 
-        className="story-scene"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: step === 2 ? 1 : 0, y: step === 2 ? 0 : 20 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="mock-report">
-          <div className="mock-header">
-            <div className="mock-avatar"></div>
-            <div className="mock-lines">
-              <div className="line"></div>
-              <div className="line line-short"></div>
-            </div>
-          </div>
-          <div className="mock-stats">
-            <div className="mock-stat-box">
-              <span className="stat-num">9/10</span>
-              <span className="stat-label">Reported</span>
-            </div>
-            <div className="mock-stat-box">
-              <span className="stat-num">7-8</span>
-              <span className="stat-label">Estimated</span>
-            </div>
-          </div>
-          <div className="mock-bar-container">
-            <motion.div 
-              className="mock-bar"
-              initial={{ width: 0 }}
-              animate={step === 2 ? { width: "75%" } : { width: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-            ></motion.div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
+    <svg className="wave" viewBox="0 0 120 24" aria-hidden="true">
+      {bars.map((h, i) => (
+        <rect key={i} x={i * 6} y={12 - h / 2} width="2" height={h} rx="1" style={{ animationDelay: `${i * 70}ms` }} />
+      ))}
+    </svg>
   );
-};
+}
 
 export default function LandingPage({ onBegin }) {
+  const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
   return (
-    <div className="landing-page">
-      <div className="grain"></div>
+    <div className="landing">
+      <header className="lp-nav">
+        <button type="button" className="lp-wordmark" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          Anatome
+        </button>
+        <nav className="lp-nav__links" aria-label="Sections">
+          <button type="button" onClick={() => scrollTo("how")}>How it works</button>
+          <button type="button" onClick={() => scrollTo("report")}>The report</button>
+          <button type="button" onClick={() => scrollTo("team")}>Team</button>
+        </nav>
+        <button type="button" className="lp-btn lp-btn--small" onClick={onBegin}>
+          Start assessment
+        </button>
+      </header>
 
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="nav-brand">
-          ANATOME<span className="brand-dot">.</span>
-        </div>
-        <div className="nav-links">
-          <a href="#how-it-works">How it works</a>
-          <a href="#team">Team</a>
-        </div>
-        <button className="nav-cta" onClick={onBegin}>Start test</button>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="hero-section">
-        <motion.div 
-          className="hero-content"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.p className="caption" variants={fadeUpVariant}>
-            Comprehensive Pain Intelligence
-          </motion.p>
-          <motion.h1 className="hero-title" variants={fadeUpVariant}>
-            A clearer path from pain to understanding.
+      <section className="lp-hero">
+        <div className="lp-hero__copy">
+          <motion.h1
+            className="lp-hero__title"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            Show us <em>where</em> it hurts.
           </motion.h1>
-          <motion.p className="hero-subtitle" variants={fadeUpVariant}>
-            ANATOME listens to the details that matter, combining interactive 3D pain mapping with a comprehensive questionnaire to create structured context for the next step in care.
-          </motion.p>
-          <motion.div className="hero-ctas" variants={fadeUpVariant}>
-            <button className="btn-secondary" onClick={() => document.getElementById('how-it-works').scrollIntoView({behavior: 'smooth'})}>Watch the story</button>
-            <button className="btn-primary" onClick={onBegin}>Start test</button>
-          </motion.div>
-        </motion.div>
-
-        <motion.div 
-          className="hero-visual"
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          <LoopingStory />
-        </motion.div>
-      </section>
-
-      {/* 1. The Problem */}
-      <section className="problem-section" id="problem">
-        <motion.div 
-          className="section-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.p className="caption text-center" variants={fadeUpVariant}>The Problem</motion.p>
-          <motion.h2 className="section-title text-center" variants={fadeUpVariant}>
-            Pain is personal. Most forms are not.
-          </motion.h2>
-          <motion.p className="section-body text-center" variants={fadeUpVariant}>
-            Static symptom forms flatten complex human experiences into generic text lists. When patients can't accurately point to where it hurts, critical nuance is lost before care even begins.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* 2. Why Conventional Checkers Fail */}
-      <section className="fail-section">
-        <motion.div 
-          className="section-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title text-center" variants={fadeUpVariant}>
-            Words aren't always enough.
-          </motion.h2>
-          <div className="cards-grid">
-            <motion.div className="feature-card" variants={fadeUpVariant}>
-              <div className="card-icon">📋</div>
-              <h3>Text-only descriptions</h3>
-              <p>Trying to describe exact anatomical locations using only words is difficult for patients and ambiguous for providers.</p>
-            </motion.div>
-            <motion.div className="feature-card" variants={fadeUpVariant}>
-              <div className="card-icon">🔢</div>
-              <h3>Raw numbers</h3>
-              <p>A "7 out of 10" means different things to different people. Without functional context, raw numbers mislead.</p>
-            </motion.div>
-            <motion.div className="feature-card" variants={fadeUpVariant}>
-              <div className="card-icon">🌫️</div>
-              <h3>Lost context</h3>
-              <p>Important details about onset, triggers, and emotional toll are often completely ignored by simple intake sheets.</p>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 3. How ANATOME Works */}
-      <section className="how-section" id="how-it-works">
-        <motion.div 
-          className="section-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title text-center" variants={fadeUpVariant}>
-            One experience. Better context.
-          </motion.h2>
-          
-          <div className="steps-container">
-            <motion.div className="step-row" variants={fadeUpVariant}>
-              <div className="step-number">01</div>
-              <div className="step-text">
-                <h3>Map</h3>
-                <p>Pinpoint exact pain locations in full 3D space, capturing precise anatomical context and severity instantly.</p>
-              </div>
-            </motion.div>
-            <motion.div className="step-row" variants={fadeUpVariant}>
-              <div className="step-number">02</div>
-              <div className="step-text">
-                <h3>Detail</h3>
-                <p>Complete a focused questionnaire to provide essential context on triggers, history, and functional impact.</p>
-              </div>
-            </motion.div>
-            <motion.div className="step-row" variants={fadeUpVariant}>
-              <div className="step-number">03</div>
-              <div className="step-text">
-                <h3>Synthesize</h3>
-                <p>Our AI synthesizes your 3D pain map, multiple visual angles, and questionnaire responses into a clinical-ready PDF report.</p>
-              </div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* 4. Adaptive Reasoning */}
-      <section className="reasoning-section">
-        <motion.div 
-          className="reasoning-container"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.div className="reasoning-text" variants={fadeUpVariant}>
-            <h2 className="section-title">Built to synthesize complex signals.</h2>
-            <p className="section-body">
-              ANATOME's AI engine analyzes the combination of your 3D anatomical data, pain descriptors, and detailed questionnaire responses to generate a cohesive, professional clinical picture.
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+          >
+            <p className="lp-hero__lede">
+              Describe your pain out loud, mark it on a detailed model of the human body, and walk
+              into your appointment with a report your clinician can read in a minute.
             </p>
+            <div className="lp-hero__actions">
+              <button type="button" className="lp-btn" onClick={onBegin}>
+                Start assessment
+              </button>
+              <button type="button" className="lp-link" onClick={() => scrollTo("how")}>
+                How it works
+              </button>
+            </div>
           </motion.div>
-          
-          <motion.div className="reasoning-visuals" variants={staggerContainer}>
-            <motion.div className="reasoning-card" variants={fadeUpVariant}>
-              <div className="rc-header">3D Map + Questionnaire</div>
-              <div className="rc-arrow">→</div>
-              <div className="rc-result">Comprehensive Clinical Context</div>
-            </motion.div>
-            <motion.div className="reasoning-card" variants={fadeUpVariant}>
-              <div className="rc-header">Multi-angle Snapshots</div>
-              <div className="rc-arrow">→</div>
-              <div className="rc-result">Visual Anatomic Reference</div>
-            </motion.div>
-            <motion.div className="reasoning-card" variants={fadeUpVariant}>
-              <div className="rc-header">LLM Analysis</div>
-              <div className="rc-arrow">→</div>
-              <div className="rc-result">Professional PDF Report</div>
-            </motion.div>
-          </motion.div>
-        </motion.div>
+        </div>
+
+        <div className="lp-hero__stage">
+          <AnatomyHero />
+        </div>
+
+        <dl className="lp-hero__facts">
+          <div><dt>669</dt><dd>named anatomical structures to select from</dd></div>
+          <div><dt>Voice</dt><dd>or typed intake, in your own words</dd></div>
+          <div><dt>8</dt><dd>section clinical PDF</dd></div>
+          <div><dt>0</dt><dd>accounts or installs needed</dd></div>
+        </dl>
       </section>
 
-      {/* 5. Clinical-Ready Context */}
-      <section className="clinical-section">
-        <motion.div 
-          className="section-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title text-center" variants={fadeUpVariant}>
-            A report that provides the full picture.
-          </motion.h2>
-          <motion.p className="section-body text-center" variants={fadeUpVariant}>
-            ANATOME cross-checks self-reported pain regions, functional impact, descriptors, and associated symptoms to generate a structured clinical summary for your healthcare provider.
-          </motion.p>
-          
-          <motion.div className="clinical-report-card" variants={fadeUpVariant}>
-            <div className="cr-header">Screening Summary</div>
-            <div className="cr-stats">
-              <div className="cr-stat">
-                <span>Regions Marked</span>
-                <strong>2</strong>
-              </div>
-              <div className="cr-stat highlight">
-                <span>Avg Severity</span>
-                <strong>7 / 10</strong>
-              </div>
+      <section className="lp-section lp-problem">
+        <motion.h2 className="lp-statement" {...reveal}>
+          Pain is specific. The forms we use to describe it are not.
+        </motion.h2>
+        <motion.dl className="lp-rows" {...reveal}>
+          {PROBLEMS.map((item) => (
+            <div className="lp-row" key={item.term}>
+              <dt>{item.term}</dt>
+              <dd>{item.text}</dd>
             </div>
-            <div className="cr-progress">
-              <div className="cr-label">
-                <span>Symptoms Recorded</span>
-              </div>
-            </div>
-            <div className="cr-patterns">
-              <span>✓ Nausea, Sweating</span>
-            </div>
-          </motion.div>
-        </motion.div>
+          ))}
+        </motion.dl>
       </section>
 
-      {/* 6. Meet the Team */}
-      <section className="team-section" id="team">
-        <motion.div 
-          className="section-content"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title text-center" variants={fadeUpVariant}>
-            Meet the Team
-          </motion.h2>
-          <div className="team-grid">
-            {[
-              { name: "Pranav Arun Pillai", role: "UI/UX Designer · Lead Researcher · Project Coordinator" },
-              { name: "Arush Banerjee", role: "Main Front-End Lead · Team Lead · 3D Anatomy Developer" },
-              { name: "Kyle Hwang", role: "Lead Software Engineer · AI Model Developer" },
-              { name: "Mustafa Ali", role: "AI Model Developer" }
-            ].map((member, i) => (
-              <motion.div className="team-card" key={i} variants={fadeUpVariant}>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </motion.div>
+      <section className="lp-section" id="how">
+        <motion.header className="lp-section__head" {...reveal}>
+          <h2>How it works</h2>
+          <p>Three steps. Nothing to install, no account.</p>
+        </motion.header>
+
+        <ol className="lp-steps">
+          <motion.li className="lp-step" {...reveal}>
+            <span className="lp-step__num">01</span>
+            <div className="lp-step__text">
+              <h3>Describe it</h3>
+              <p>
+                Talk through what happened, when it started and what makes it worse. Speech is
+                transcribed as you go, and you can edit or tidy it before moving on.
+              </p>
+            </div>
+            <figure className="lp-step__artifact lp-transcript">
+              <div className="lp-transcript__bar">
+                <span className="lp-rec" />
+                <Waveform />
+                <span className="mono">00:21</span>
+              </div>
+              <blockquote>
+                It started about three weeks ago after moving furniture. Aching on the left side of my
+                lower back, worse when I sit for long, a bit better after walking.
+              </blockquote>
+            </figure>
+          </motion.li>
+
+          <motion.li className="lp-step" {...reveal}>
+            <span className="lp-step__num">02</span>
+            <div className="lp-step__text">
+              <h3>Point to it</h3>
+              <p>
+                Rotate a full musculoskeletal model and select the exact structure. Give each one a
+                severity, a pain type, a frequency and when it began.
+              </p>
+            </div>
+            <figure className="lp-step__artifact lp-mapped">
+              <div className="lp-mapped__row">
+                <span className="mono">Selected</span>
+                <strong>Latissimus dorsi muscle, left</strong>
+              </div>
+              <div className="lp-mapped__scale" aria-hidden="true">
+                {Array.from({ length: 10 }, (_, i) => (
+                  <span key={i} className={i < 7 ? "is-on" : ""} />
+                ))}
+              </div>
+              <div className="lp-mapped__meta mono">
+                <span>7 / 10</span><span>Aching</span><span>Intermittent</span>
+              </div>
+            </figure>
+          </motion.li>
+
+          <motion.li className="lp-step" {...reveal}>
+            <span className="lp-step__num">03</span>
+            <div className="lp-step__text">
+              <h3>Take the report</h3>
+              <p>
+                Your description and map are organised into a structured clinical summary, saved, and
+                exported as a PDF you can print or send ahead of your visit.
+              </p>
+            </div>
+            <figure className="lp-step__artifact lp-mini-doc">
+              <span className="mono">Clinical_Pain_Report.pdf</span>
+              <p className="lp-mini-doc__title">Clinical Pain Report</p>
+              <p className="lp-mini-doc__line"><b>Primary region</b> L. latissimus dorsi</p>
+              <p className="lp-mini-doc__line"><b>Aggravating</b> prolonged sitting</p>
+              <p className="lp-mini-doc__line"><b>Relieving</b> walking</p>
+            </figure>
+          </motion.li>
+        </ol>
+      </section>
+
+      <section className="lp-section lp-report" id="report">
+        <motion.div className="lp-report__copy" {...reveal}>
+          <h2>What your clinician receives</h2>
+          <p>
+            A plain, consistent document that puts location, severity and history on one page, in the
+            order a clinician would ask for them. It records what you reported. It does not diagnose.
+          </p>
+          <ol className="lp-report__toc">
+            {REPORT_SECTIONS.map((section, i) => (
+              <li key={section}>
+                <span className="mono">{String(i + 1).padStart(2, "0")}</span>
+                {section}
+              </li>
             ))}
+          </ol>
+        </motion.div>
+
+        <motion.figure className="lp-paper" {...reveal}>
+          <figcaption className="mono">Sample, fictional patient</figcaption>
+          <header className="lp-paper__head">
+            <div>
+              <p className="lp-paper__title">Clinical Pain Report</p>
+              <p className="lp-paper__sub">J. Rivera, 34 · 2 regions recorded</p>
+            </div>
+            <span className="lp-paper__date mono">2026-10-05</span>
+          </header>
+
+          <table className="lp-paper__table">
+            <thead>
+              <tr><th>Region</th><th>Severity</th><th>Type</th><th>Onset</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>L. latissimus dorsi</td>
+                <td><span className="lp-sev lp-sev--high">7</span></td>
+                <td>Aching</td>
+                <td>3 wk</td>
+              </tr>
+              <tr>
+                <td>L. deltoid, acromial part</td>
+                <td><span className="lp-sev lp-sev--mid">5</span></td>
+                <td>Sharp</td>
+                <td>10 d</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="lp-paper__block">
+            <p className="lp-paper__label">Patient-reported summary</p>
+            <p>
+              Onset after lifting furniture. Low back pain is worse with prolonged sitting and eases
+              with walking. Shoulder pain is limited to overhead reaching. No numbness or weakness
+              reported.
+            </p>
           </div>
+          <div className="lp-paper__block">
+            <p className="lp-paper__label">For clinician review</p>
+            <p>Sleep disturbance on two nights per week. Taking over-the-counter analgesia.</p>
+          </div>
+        </motion.figure>
+      </section>
+
+      <section className="lp-section lp-team" id="team">
+        <motion.header className="lp-section__head" {...reveal}>
+          <h2>Built by</h2>
+        </motion.header>
+        <motion.ul className="lp-team__list" {...reveal}>
+          {TEAM.map((member) => (
+            <li key={member.name}>
+              <span className="lp-team__name">{member.name}</span>
+              <span className="lp-team__role">{member.role}</span>
+            </li>
+          ))}
+        </motion.ul>
+      </section>
+
+      <section className="lp-cta">
+        <motion.h2 {...reveal}>Start with where it hurts.</motion.h2>
+        <motion.div {...reveal}>
+          <button type="button" className="lp-btn lp-btn--large" onClick={onBegin}>
+            Start assessment
+          </button>
         </motion.div>
       </section>
 
-      {/* 7. Final CTA */}
-      <section className="cta-section">
-        <motion.div 
-          className="section-content text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          <motion.h2 className="section-title" variants={fadeUpVariant}>
-            Start with a better question.
-          </motion.h2>
-          <motion.p className="section-body" variants={fadeUpVariant}>
-            A focused screening conversation takes only a few minutes.
-          </motion.p>
-          <motion.button className="btn-primary btn-large" onClick={onBegin} variants={fadeUpVariant}>
-            Start your test
-          </motion.button>
-        </motion.div>
-      </section>
-
-      {/* Footer / Disclaimer */}
-      <footer className="footer-disclaimer">
-        <p>ANATOME is an educational clinical screening tool and does not provide medical diagnoses. Always consult a licensed healthcare professional.</p>
+      <footer className="lp-footer">
+        <span className="lp-wordmark lp-wordmark--static">Anatome</span>
+        <p>
+          Anatome is an educational screening tool. It does not provide medical diagnoses. Always
+          consult a licensed healthcare professional.
+        </p>
       </footer>
     </div>
   );

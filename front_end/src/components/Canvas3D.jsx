@@ -267,7 +267,7 @@ export default function Canvas3D({
           }}
           onClick={() => setPanMode(!panMode)}
         >
-          {panMode ? "🖐 Panning Active" : "🖐 Enable Pan Tool"}
+          {panMode ? "Panning active" : "Enable pan tool"}
         </button>
       </div>
 

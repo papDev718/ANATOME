@@ -1,200 +1,243 @@
 .report-overlay {
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.6);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-z-index:1000;
-
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(8, 8, 7, 0.72);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
-
-
 
 .report-modal {
-
-width:600px;
-
-background:#151a2d;
-
-border-radius:20px;
-
-overflow:hidden;
-
+  display: flex;
+  flex-direction: column;
+  width: min(680px, 100%);
+  max-height: calc(100dvh - 32px);
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.9);
 }
-
-
 
 .report-modal-header {
-
-display:flex;
-
-justify-content:space-between;
-
-padding:20px;
-
-border-bottom:1px solid rgba(255,255,255,.1);
-
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px 18px;
+  border-bottom: 1px solid var(--line);
 }
 
+.report-kicker {
+  margin: 0 0 6px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
 
+.report-modal-header h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1;
+}
 
 .report-close-btn {
-
-background:none;
-
-border:none;
-
-color:white;
-
-font-size:20px;
-
+  padding: 6px 0;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  background: none;
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
-
+.report-close-btn:hover:not(:disabled) {
+  color: var(--text);
+}
 
 .report-modal-body {
-
-padding:20px;
-
-min-height:200px;
-
-}
-
-
-
-.report-modal-footer {
-
-padding:20px;
-
-display:flex;
-
-justify-content:flex-end;
-
-gap:10px;
-
-}
-
-.patient-info-section {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.info-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.info-group label {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #a0a5b1;
-}
-
-.info-group input {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: 1px solid #2d3748;
-    background: #1a202c;
-    color: white;
-}
-
-.report-divider {
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px 0;
+  flex: 1;
+  min-height: 200px;
+  padding: 22px 24px;
+  overflow-y: auto;
 }
 
 .report-modal-body h3 {
-    margin-bottom: 15px;
+  margin: 0 0 12px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.report-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line);
+}
+
+.patient-info-section {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 0.7fr) minmax(0, 1.2fr);
+  gap: 12px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-group label {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.info-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  color-scheme: dark;
+}
+
+.info-group input::placeholder {
+  color: var(--text-faint);
+}
+
+.report-status-message,
+.report-error-message,
+.saved-report-message {
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-left: 2px solid var(--line-strong);
+  background: var(--bg-sunken);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.report-error-message {
+  border-left-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.saved-report-message {
+  border-left-color: var(--sev-low);
+}
+
+.report-divider {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+}
+
+.report-empty {
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
 .pain-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-height: 400px;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
 }
 
 .pain-item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .pain-item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
 }
 
 .pain-item-title {
-    font-size: 18px;
-    font-weight: bold;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .pain-item-severity {
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 14px;
-    color: white;
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-ink);
+  background: var(--sev-mid);
 }
 
+.pain-item-severity[data-level="low"] { background: var(--sev-low); }
+.pain-item-severity[data-level="high"] { background: var(--sev-high); }
+
 .pain-item-details p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #e2e8f0;
+  margin: 3px 0;
+  color: var(--text-muted);
+  font-size: 13.5px;
+}
+
+.pain-item-details strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+@media (max-width: 560px) {
+  .patient-info-section {
+    grid-template-columns: 1fr 1fr;
+  }
+  .patient-info-section .info-group:first-child {
+    grid-column: 1 / -1;
+  }
+  .report-modal-footer {
+    flex-direction: column-reverse;
+  }
 }
 
 @media print {
-    body * {
-        visibility: hidden;
-    }
-    .report-modal, .report-modal * {
-        visibility: visible;
-    }
-    .report-modal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        background: white !important;
-        color: black !important;
-        border: none;
-    }
-    .report-close-btn, .report-modal-footer {
-        display: none !important;
-    }
-    .info-group label {
-        color: black;
-    }
-    .info-group input {
-        background: white;
-        color: black;
-        border: 1px solid #ccc;
-    }
-    .pain-item {
-        background: white;
-        border: 1px solid #ccc;
-    }
-    .pain-item-details p {
-        color: black;
-    }
-    .report-divider {
-        border-top: 1px solid black;
-    }
+  body * {
+    visibility: hidden;
+  }
+  .report-modal, .report-modal * {
+    visibility: visible;
+  }
+  .report-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    max-height: none;
+    background: white !important;
+    color: black !important;
+    border: none;
+    box-shadow: none;
+  }
+  .report-close-btn, .report-modal-footer {
+    display: none !important;
+  }
+  .info-group label, .pain-item-details p, .pain-item-details strong {
+    color: black;
+  }
+  .info-group input {
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  .pain-item, .pain-list, .report-divider {
+    border-color: #ccc;
+  }
 }

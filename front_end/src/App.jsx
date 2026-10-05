@@ -5,7 +5,7 @@ import LeftPanel from "./components/LeftPanel";
 import Canvas3D from "./components/BodyPartsCanvas";
 import RightPanel from "./components/RightPanel";
 import ReportModal from "./components/ReportModal";
-import Questionnaire from "./components/Questionnaire";
+import VoiceIntake from "./components/VoiceIntake";
 import LandingPage from "./components/LandingPage";
 
 export default function App() {
@@ -45,7 +45,10 @@ export default function App() {
       )}
 
       {appState === "questionnaire" && (
-        <Questionnaire onFinish={finishQuestionnaire} />
+        <VoiceIntake
+          onFinish={finishQuestionnaire}
+          onBack={() => setAppState("landing")}
+        />
       )}
 
       {appState === "app" && (
@@ -54,6 +57,10 @@ export default function App() {
             <TopBar
               setShowReport={setShowReport}
               onClearAll={handleClearAll}
+              onGoHome={() => {
+                setShowReport(false);
+                setAppState("landing");
+              }}
             />
 
             <LeftPanel

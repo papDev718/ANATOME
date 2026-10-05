@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../css/RightPanel.css";
+import { displayAnatomyName } from "../utils/anatomyName";
 
 const PAIN_TYPES = [
   "Sharp",
@@ -99,24 +100,24 @@ export default function RightPanel({
 
   const getSeverityColor = (value) => {
     if (value <= 3) {
-      return "#4caf50";
+      return "var(--sev-low)";
     }
 
     if (value <= 6) {
-      return "#ff9800";
+      return "var(--sev-mid)";
     }
 
-    return "#f44336";
+    return "var(--sev-high)";
   };
 
   return (
     <aside className="glass-panel panel-right">
       {!selectedRegion ? (
         <div className="no-selection">
-          <div className="no-sel-title">Describe a pain location</div>
+          <div className="no-sel-title">Select where it hurts</div>
 
           <div className="no-sel-desc">
-            Select a muscle or tendon in the 3D model. Its details and pain fields will appear here.
+            Click a muscle or tendon on the model, or choose one from the structure list. Its pain details will open here.
           </div>
         </div>
       ) : (
@@ -124,10 +125,10 @@ export default function RightPanel({
           <div className="detail-header">
             <div>
               <div className="region-title">
-                {selectedSpot?.regionName || "Unknown Region"}
+                {displayAnatomyName(selectedSpot?.regionName) || "Unknown region"}
               </div>
 
-              <div className="region-subtitle">Describe your pain</div>
+              <div className="region-subtitle">Describe the pain at this structure</div>
             </div>
           </div>
 

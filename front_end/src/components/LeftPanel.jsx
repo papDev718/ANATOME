@@ -1,4 +1,5 @@
 import "../css/LeftPanel.css";
+import { displayAnatomyName } from "../utils/anatomyName";
 
 export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRegion, setPainData }) {
 
@@ -36,7 +37,7 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                         <div key={spotId} className={`region-item ${selectedRegion === spotId ? "is-selected" : ""}`}>
                             
                             <div className="region-item__text">
-                                <div className="region-item__name">{data.regionName || "Unknown Region"}</div>
+                                <div className="region-item__name">{displayAnatomyName(data.regionName) || "Unknown region"}</div>
                                 <div className="region-item__meta">
                                     {data.severity}/10 severity · {data.painType || "Pain type not set"}
                                 </div>
