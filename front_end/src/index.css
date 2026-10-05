@@ -1,12 +1,58 @@
+:root {
+  /* Surfaces: warm near-black, never navy. */
+  --bg: #0e0e0d;
+  --bg-raised: #151513;
+  --bg-sunken: #0a0a09;
+  --bg-hover: #1d1d1a;
+
+  /* Ink */
+  --text: #ece7de;
+  --text-muted: #a19c92;
+  --text-faint: #6f6b63;
+
+  /* Hairlines */
+  --line: rgba(236, 231, 222, 0.1);
+  --line-strong: rgba(236, 231, 222, 0.2);
+
+  /* One accent, and it only ever means pain. */
+  --accent: #ff5b3a;
+  --accent-soft: rgba(255, 91, 58, 0.14);
+  --accent-ink: #1c0904;
+
+  /* Severity scale used by panels and the report */
+  --sev-low: #b3b58a;
+  --sev-mid: #e3a14f;
+  --sev-high: #ff5b3a;
+
+  --focus: #f3d9a8;
+
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --radius-sm: 3px;
+  --radius: 6px;
+
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: "Inter", system-ui, sans-serif;
-  background: #0b1020;
-  color: white;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button {
@@ -14,15 +60,28 @@ button {
   cursor: pointer;
 }
 
-#root {
-  height: 100vh;
+button:disabled {
+  cursor: not-allowed;
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+#root {
+  min-height: 100vh;
+}
 
 #app {
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(330px, 24vw, 420px);
-  grid-template-rows: 72px auto minmax(0, 1fr);
+  grid-template-rows: 60px auto minmax(0, 1fr);
   height: 100dvh;
   min-height: 0;
   overflow: hidden;
@@ -36,4 +95,65 @@ button {
     min-height: 100dvh;
     overflow: visible;
   }
+}
+
+/* Shared button system for the app shell */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 9px 14px;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--line-strong);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: rgba(255, 91, 58, 0.4);
+  color: #ff8a70;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+}
+
+.btn-block {
+  flex: 1;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
 }

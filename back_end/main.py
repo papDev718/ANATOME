@@ -10,6 +10,7 @@ from pydantic import BaseModel
 import models
 from database import Base, engine, get_db
 from ai_report_service import generate_ai_report, GROQ_REPORT_MODEL, MissingReportApiKey
+from gemini_service import revise_transcript
 
 
 app = FastAPI(
@@ -53,6 +54,28 @@ def health_check():
         "status": "healthy",
         "database_connected": row[0] == 1,
     }
+
+
+class ReviseRequest(BaseModel):
+    text: str
+
+
+@app.post("/api/revise-transcript")
+def revise_patient_transcript(request: ReviseRequest):
+    text = request.text.strip()
+
+    if not text:
+        raise HTTPException(status_code=400, detail="There is no text to revise.")
+
+    if len(text) > 10000:
+        raise HTTPException(status_code=400, detail="The description is too long to revise.")
+
+    try:
+        revised = revise_transcript(text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    return {"revised": revised}
 
 
 class ReportRequest(BaseModel):

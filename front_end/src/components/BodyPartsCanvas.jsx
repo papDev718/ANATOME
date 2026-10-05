@@ -6,14 +6,15 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "../css/Canvas3D.css";
+import { displayAnatomyName } from "../utils/anatomyName";
 
 gsap.registerPlugin(ScrollTrigger);
 
 // Each selectable structure in this Blender export is an individually named GLB mesh.
 // Keep its original object name when re-exporting so selection and saved pain spots still map correctly.
 const MODEL_URL = "/models/zanatomy_split.glb";
-const SELECTED_COLOR = new THREE.Color("#f43d4a");
-const HOVER_COLOR = new THREE.Color("#649cff");
+const SELECTED_COLOR = new THREE.Color("#ff5b3a");
+const HOVER_COLOR = new THREE.Color("#f3e6cf");
 const MUSCLE_COLOR = new THREE.Color("#a64a50");
 const CONNECTIVE_COLOR = new THREE.Color("#cbb6a2");
 const CONNECTIVE_NAME = /fascia|ligament|tendon|retinaculum|bursa|sheath|aponeurosis|septum|band|capsule/i;
@@ -179,8 +180,8 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     let pointerDown = null;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x060912);
-    scene.fog = new THREE.Fog(0x060912, 4.6, 10);
+    scene.background = new THREE.Color(0x0b0b0a);
+    scene.fog = new THREE.Fog(0x0b0b0a, 4.6, 10);
 
     const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
     camera.position.set(0.55, 0.95, 4.2);
@@ -200,11 +201,11 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     controls.maxDistance = 8;
     controls.target.set(0, 0.9, 0);
 
-    scene.add(new THREE.HemisphereLight(0xe9efff, 0x251017, 1.1));
+    scene.add(new THREE.HemisphereLight(0xf4efe6, 0x1a1210, 1.1));
     const key = new THREE.DirectionalLight(0xfff4e8, 2.2);
     key.position.set(-2.8, 4.5, 4);
     scene.add(key);
-    const fill = new THREE.PointLight(0x5f8fff, 6, 9, 2);
+    const fill = new THREE.PointLight(0xc9d4e0, 5, 9, 2);
     fill.position.set(3, 1.5, 2.4);
     scene.add(fill);
     const rim = new THREE.DirectionalLight(0xff6b78, 1.2);
@@ -213,7 +214,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
 
     const platform = new THREE.Mesh(
       new THREE.CylinderGeometry(0.67, 0.72, 0.035, 96),
-      new THREE.MeshStandardMaterial({ color: 0x141a27, roughness: 0.74, metalness: 0.15 }),
+      new THREE.MeshStandardMaterial({ color: 0x1a1917, roughness: 0.8, metalness: 0.1 }),
     );
     platform.position.y = -0.025;
     scene.add(platform);
@@ -475,7 +476,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       }
       if (!next || !tooltipRef.current) return hideTooltip();
       const rect = stage.getBoundingClientRect();
-      tooltipRef.current.textContent = next.name;
+      tooltipRef.current.textContent = displayAnatomyName(next.name);
       tooltipRef.current.style.left = `${event.clientX - rect.left + 16}px`;
       tooltipRef.current.style.top = `${event.clientY - rect.top + 16}px`;
       tooltipRef.current.style.opacity = "1";
@@ -672,7 +673,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
             <span>Anatomical structure</span>
             <select value={selectedPart?.id || ""} onChange={handlePartSelect} disabled={modelStatus !== "ready"}>
               <option value="">Choose a structure</option>
-              {availableParts.map((part) => <option key={part.id} value={part.id}>{part.name}</option>)}
+              {availableParts.map((part) => <option key={part.id} value={part.id}>{displayAnatomyName(part.name)}</option>)}
             </select>
           </label>
         </div>
@@ -700,7 +701,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
           <header className="anatomy-info__header">
             <div>
               <p className="anatomy-info__context">{selectedPart.system} anatomy</p>
-              <h2>{selectedPart.name}</h2>
+              <h2>{displayAnatomyName(selectedPart.name)}</h2>
             </div>
             <button type="button" className="anatomy-info__close" onClick={closeDetails}>Close</button>
           </header>

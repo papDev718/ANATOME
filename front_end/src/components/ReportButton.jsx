@@ -18,7 +18,14 @@ export default function ReportButton({
         throw new Error("The report-saving function is unavailable.");
       }
 
-      const savedResult = await saveReport();
+      let savedResult;
+
+      try {
+        savedResult = await saveReport();
+      } catch {
+        // ReportModal already shows the error message.
+        return;
+      }
 
       const aiReport = savedResult.ai_report;
       const patientId = savedResult.patient_id;
@@ -425,11 +432,11 @@ export default function ReportButton({
   return (
     <button
       type="button"
-      className="btn btn-primary btn-sm"
+      className="btn btn-primary"
       onClick={generatePDF}
       disabled={isSaving}
     >
-      {isSaving ? "⏳ Generating Report..." : "🖨️ Save & Print Report"}
+      {isSaving ? "Generating report..." : "Save and download PDF"}
     </button>
   );
 }
