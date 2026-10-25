@@ -77,11 +77,15 @@
 
 .report-modal-footer {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 16px;
   padding: 16px 24px;
   border-top: 1px solid var(--line);
 }
+
+.report-footer-hint { margin: 0; color: var(--text-faint); font-size: 12.5px; }
+.report-modal-footer .btn-primary { min-height: 44px; padding-inline: 20px; font-size: 14px; }
 
 .patient-info-section {
   display: grid;
@@ -240,4 +244,48 @@
   .pain-item, .pain-list, .report-divider {
     border-color: #ccc;
   }
+}
+
+/* Wide layout: clinician report on the left, patient tips on the right. */
+.report-modal--wide { width: min(1080px, 100%); }
+.report-modal-columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); flex: 1; min-height: 0; }
+.report-modal-columns .report-modal-body { min-height: 0; }
+
+.care-level-banner {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--sev-low);
+  background: var(--bg-sunken);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+.care-level-banner[data-level="soon"] { border-color: var(--sev-mid); }
+.care-level-banner[data-level="urgent"], .care-level-banner[data-level="emergency"] { border-color: var(--accent); background: var(--accent-soft); }
+
+.pain-item-structures { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line-strong); }
+.pain-item-structures__label { margin: 0 0 6px; color: var(--text-faint); font-family: var(--font-mono); font-size: 10.5px; }
+.pain-item-structures ol { display: grid; gap: 4px; margin: 0; padding-left: 18px; font-size: 13px; }
+.pain-item-structures li { display: list-item; }
+.pain-item-structures li span:first-child { margin-right: 8px; }
+.pain-item-structures__meta { color: var(--text-faint); font-family: var(--font-mono); font-size: 10.5px; }
+.pain-item-structures__caveat { margin: 8px 0 0; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
+
+.care-guide { min-height: 0; padding: 22px 22px 26px; overflow-y: auto; border-left: 1px solid var(--line); background: var(--bg); }
+.care-guide--emergency { background: #2a1410; }
+.care-kicker { margin: 0 0 8px; color: var(--accent); font-family: var(--font-mono); font-size: 10.5px; }
+.care-headline { margin: 0; font-family: var(--font-display); font-size: 22px; font-weight: 400; line-height: 1.2; }
+.care-why { margin: 8px 0 0; color: var(--text-muted); font-size: 12.5px; line-height: 1.5; }
+.care-loading, .care-error { color: var(--text-muted); font-size: 13px; }
+.care-error { color: var(--accent); }
+.care-section { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.care-section h4 { margin: 0 0 8px; color: var(--text-faint); font-family: var(--font-mono); font-size: 10.5px; font-weight: 400; }
+.care-section ul { display: grid; gap: 7px; margin: 0; padding-left: 16px; color: var(--text); font-size: 13px; line-height: 1.5; }
+.care-section--warn ul { color: var(--text); }
+.care-section--warn h4 { color: var(--accent); }
+.care-footnote { margin: 20px 0 0; color: var(--text-faint); font-size: 11px; line-height: 1.5; }
+
+@media (max-width: 860px) {
+  .report-modal-columns { grid-template-columns: 1fr; overflow-y: auto; }
+  .report-modal-columns .report-modal-body { overflow: visible; }
+  .care-guide { overflow: visible; border-left: 0; border-top: 1px solid var(--line); }
 }

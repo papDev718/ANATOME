@@ -1,0 +1,1229 @@
+{
+  "name": "ANATOME Triage-GBM",
+  "version": "1.0",
+  "trained_at": "2026-10-16T22:50:53+00:00",
+  "task": "Estimate the emergency-department triage acuity (ESI-style) and admission likelihood from self-reportable intake information only (no vital signs).",
+  "data": {
+    "source": "CDC / NCHS National Hospital Ambulatory Medical Care Survey (NHAMCS), Emergency Department public-use files",
+    "url": "https://www.cdc.gov/nchs/ahcd/",
+    "years": [
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "inclusion": "Visits with a recorded triage level (1-5), a valid 0-10 pain score and at least one coded reason for visit.",
+    "n_total": 75383,
+    "n_train": 60442,
+    "n_valid": 7722,
+    "n_test": 7219,
+    "national_visits_represented_per_year": 73702585,
+    "class_balance_weighted": {
+      "less_urgent": 0.35735440479311237,
+      "urgent": 0.49984174295927786,
+      "emergent": 0.14280385224760975
+    },
+    "split": "Temporal: train 2015-2020, validate/calibrate 2021, test 2022."
+  },
+  "features": [
+    {
+      "key": "age",
+      "label": "Age"
+    },
+    {
+      "key": "sex_female",
+      "label": "Sex (female)"
+    },
+    {
+      "key": "pain",
+      "label": "Pain score (0-10)"
+    },
+    {
+      "key": "n_regions",
+      "label": "Number of pain regions"
+    },
+    {
+      "key": "n_symptoms",
+      "label": "Number of associated symptoms"
+    },
+    {
+      "key": "n_history",
+      "label": "Number of chronic conditions"
+    },
+    {
+      "key": "head",
+      "label": "Head pain"
+    },
+    {
+      "key": "face_jaw",
+      "label": "Face / jaw pain"
+    },
+    {
+      "key": "neck",
+      "label": "Neck pain"
+    },
+    {
+      "key": "shoulder",
+      "label": "Shoulder pain"
+    },
+    {
+      "key": "arm",
+      "label": "Arm / elbow pain"
+    },
+    {
+      "key": "hand_wrist",
+      "label": "Hand / wrist pain"
+    },
+    {
+      "key": "chest",
+      "label": "Chest pain"
+    },
+    {
+      "key": "abdomen",
+      "label": "Abdominal pain"
+    },
+    {
+      "key": "flank",
+      "label": "Flank pain"
+    },
+    {
+      "key": "back",
+      "label": "Back pain"
+    },
+    {
+      "key": "hip_pelvis",
+      "label": "Hip / pelvic pain"
+    },
+    {
+      "key": "leg",
+      "label": "Leg pain"
+    },
+    {
+      "key": "knee",
+      "label": "Knee pain"
+    },
+    {
+      "key": "ankle_foot",
+      "label": "Ankle / foot pain"
+    },
+    {
+      "key": "nausea_vomiting",
+      "label": "Nausea / vomiting"
+    },
+    {
+      "key": "breathless",
+      "label": "Shortness of breath"
+    },
+    {
+      "key": "fever",
+      "label": "Fever"
+    },
+    {
+      "key": "sweating",
+      "label": "Sweating"
+    },
+    {
+      "key": "numbness",
+      "label": "Numbness / tingling"
+    },
+    {
+      "key": "weakness",
+      "label": "Weakness"
+    },
+    {
+      "key": "dizziness",
+      "label": "Dizziness / fainting"
+    },
+    {
+      "key": "palpitations",
+      "label": "Palpitations"
+    },
+    {
+      "key": "swelling",
+      "label": "Swelling"
+    },
+    {
+      "key": "injury",
+      "label": "Injury / trauma"
+    },
+    {
+      "key": "hx_heart",
+      "label": "History: heart disease"
+    },
+    {
+      "key": "hx_hypertension",
+      "label": "History: high blood pressure"
+    },
+    {
+      "key": "hx_diabetes",
+      "label": "History: diabetes"
+    },
+    {
+      "key": "hx_lung",
+      "label": "History: lung disease"
+    },
+    {
+      "key": "hx_cancer",
+      "label": "History: cancer"
+    },
+    {
+      "key": "hx_kidney",
+      "label": "History: kidney disease"
+    },
+    {
+      "key": "hx_stroke",
+      "label": "History: stroke"
+    }
+  ],
+  "classes": [
+    {
+      "key": "less_urgent",
+      "label": "Less urgent (ESI 4-5)"
+    },
+    {
+      "key": "urgent",
+      "label": "Urgent (ESI 3)"
+    },
+    {
+      "key": "emergent",
+      "label": "Emergent (ESI 1-2)"
+    }
+  ],
+  "acuity": {
+    "model": "HistGradientBoostingClassifier + temperature scaling",
+    "chosen_hyperparameters": {
+      "learning_rate": 0.05,
+      "max_leaf_nodes": 15,
+      "l2_regularization": 0.0,
+      "iterations": 237,
+      "valid_macro_auroc": 0.7475756590615847,
+      "valid_log_loss": 0.8416834834322481
+    },
+    "grid_search": [
+      {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 0.0,
+        "iterations": 237,
+        "valid_macro_auroc": 0.7475756590615847,
+        "valid_log_loss": 0.8416834834322481
+      },
+      {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0,
+        "iterations": 201,
+        "valid_macro_auroc": 0.7462418077879717,
+        "valid_log_loss": 0.8432207705583084
+      },
+      {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 0.0,
+        "iterations": 95,
+        "valid_macro_auroc": 0.7470278237719379,
+        "valid_log_loss": 0.8426087788199866
+      },
+      {
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 1.0,
+        "iterations": 129,
+        "valid_macro_auroc": 0.7456809661937744,
+        "valid_log_loss": 0.8435500104876411
+      },
+      {
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 0.0,
+        "iterations": 91,
+        "valid_macro_auroc": 0.7466239723314466,
+        "valid_log_loss": 0.8429001813581442
+      },
+      {
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 15,
+        "l2_regularization": 1.0,
+        "iterations": 87,
+        "valid_macro_auroc": 0.7470369881109419,
+        "valid_log_loss": 0.8422496752693432
+      },
+      {
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 0.0,
+        "iterations": 78,
+        "valid_macro_auroc": 0.7452281997950783,
+        "valid_log_loss": 0.8440262852298691
+      },
+      {
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 1.0,
+        "iterations": 97,
+        "valid_macro_auroc": 0.7440061614745529,
+        "valid_log_loss": 0.8454250779007882
+      }
+    ],
+    "temperature": 0.9493355558567964,
+    "test": {
+      "macro_auroc": 0.7408942345849668,
+      "auroc_by_class": {
+        "less_urgent": 0.7827585038755898,
+        "urgent": 0.6997570120918059,
+        "emergent": 0.7401671877875048
+      },
+      "log_loss": 0.8506123409901112,
+      "brier_emergent": 0.1177104218149068,
+      "ece_emergent": 0.016680527472528045,
+      "accuracy": 0.6020522018932891
+    },
+    "test_uncalibrated": {
+      "macro_auroc": 0.7408971904387022,
+      "auroc_by_class": {
+        "less_urgent": 0.7827090502757651,
+        "urgent": 0.6997632888217137,
+        "emergent": 0.7402192322186281
+      },
+      "log_loss": 0.850724205132664,
+      "brier_emergent": 0.11756018788259313,
+      "ece_emergent": 0.010700548563321812,
+      "accuracy": 0.6020522018932891
+    },
+    "baselines_test": {
+      "Pain score only (logistic)": {
+        "macro_auroc": 0.5359430113941254,
+        "auroc_by_class": {
+          "less_urgent": 0.5339793856263557,
+          "urgent": 0.5450435015480978,
+          "emergent": 0.5288061470079224
+        },
+        "log_loss": 0.999710632125862,
+        "brier_emergent": 0.13257995111516152,
+        "ece_emergent": 0.017711232821432173,
+        "accuracy": 0.5200239941908349
+      },
+      "All features (logistic)": {
+        "macro_auroc": 0.7260275353473272,
+        "auroc_by_class": {
+          "less_urgent": 0.7718567085596314,
+          "urgent": 0.6851291144267004,
+          "emergent": 0.7210967830556497
+        },
+        "log_loss": 0.8678199473320246,
+        "brier_emergent": 0.12015849207038118,
+        "ece_emergent": 0.014007150215692946,
+        "accuracy": 0.5964254919317215
+      }
+    },
+    "safety_net": {
+      "target_sensitivity": 0.85,
+      "threshold": 0.07096266262375367,
+      "test_sensitivity": 0.8815189011430556,
+      "test_specificity": 0.4125264664787815,
+      "test_ppv": 0.21846445605695688,
+      "test_flag_rate": 0.633649110476237
+    },
+    "confusion_matrix_row_normalised": [
+      [
+        0.6451,
+        0.3531,
+        0.0018
+      ],
+      [
+        0.2478,
+        0.7269,
+        0.0252
+      ],
+      [
+        0.2146,
+        0.6855,
+        0.0998
+      ]
+    ],
+    "roc_emergent": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0066,
+        0.0499
+      ],
+      [
+        0.0157,
+        0.0956
+      ],
+      [
+        0.0255,
+        0.1458
+      ],
+      [
+        0.0357,
+        0.1887
+      ],
+      [
+        0.0452,
+        0.2376
+      ],
+      [
+        0.0583,
+        0.2645
+      ],
+      [
+        0.0709,
+        0.2985
+      ],
+      [
+        0.0827,
+        0.3274
+      ],
+      [
+        0.0977,
+        0.353
+      ],
+      [
+        0.1164,
+        0.3768
+      ],
+      [
+        0.1358,
+        0.4007
+      ],
+      [
+        0.1671,
+        0.4592
+      ],
+      [
+        0.1953,
+        0.514
+      ],
+      [
+        0.2137,
+        0.5421
+      ],
+      [
+        0.2308,
+        0.5631
+      ],
+      [
+        0.2421,
+        0.5827
+      ],
+      [
+        0.2552,
+        0.6018
+      ],
+      [
+        0.2685,
+        0.6097
+      ],
+      [
+        0.2825,
+        0.6351
+      ],
+      [
+        0.2991,
+        0.6622
+      ],
+      [
+        0.3144,
+        0.68
+      ],
+      [
+        0.3283,
+        0.6989
+      ],
+      [
+        0.3454,
+        0.7124
+      ],
+      [
+        0.3625,
+        0.7305
+      ],
+      [
+        0.3766,
+        0.7377
+      ],
+      [
+        0.3931,
+        0.7517
+      ],
+      [
+        0.4065,
+        0.7627
+      ],
+      [
+        0.4265,
+        0.7796
+      ],
+      [
+        0.4432,
+        0.7921
+      ],
+      [
+        0.4602,
+        0.7962
+      ],
+      [
+        0.4751,
+        0.807
+      ],
+      [
+        0.491,
+        0.8146
+      ],
+      [
+        0.5082,
+        0.8261
+      ],
+      [
+        0.5249,
+        0.8419
+      ],
+      [
+        0.5421,
+        0.8562
+      ],
+      [
+        0.5629,
+        0.8687
+      ],
+      [
+        0.5789,
+        0.879
+      ],
+      [
+        0.6008,
+        0.8835
+      ],
+      [
+        0.6176,
+        0.8926
+      ],
+      [
+        0.6349,
+        0.8988
+      ],
+      [
+        0.6523,
+        0.9065
+      ],
+      [
+        0.6719,
+        0.9134
+      ],
+      [
+        0.6927,
+        0.916
+      ],
+      [
+        0.709,
+        0.9215
+      ],
+      [
+        0.7278,
+        0.9271
+      ],
+      [
+        0.7475,
+        0.9325
+      ],
+      [
+        0.7686,
+        0.9431
+      ],
+      [
+        0.7899,
+        0.9439
+      ],
+      [
+        0.8059,
+        0.9565
+      ],
+      [
+        0.8274,
+        0.96
+      ],
+      [
+        0.8473,
+        0.9659
+      ],
+      [
+        0.8657,
+        0.9683
+      ],
+      [
+        0.8862,
+        0.9725
+      ],
+      [
+        0.9059,
+        0.9753
+      ],
+      [
+        0.9305,
+        0.9865
+      ],
+      [
+        0.9538,
+        0.9907
+      ],
+      [
+        0.9677,
+        0.9967
+      ],
+      [
+        0.9834,
+        0.9991
+      ],
+      [
+        1.0,
+        1.0
+      ]
+    ],
+    "calibration_emergent": [
+      {
+        "predicted": 0.0304,
+        "observed": 0.0424,
+        "n": 722
+      },
+      {
+        "predicted": 0.0453,
+        "observed": 0.0473,
+        "n": 722
+      },
+      {
+        "predicted": 0.0566,
+        "observed": 0.0473,
+        "n": 722
+      },
+      {
+        "predicted": 0.069,
+        "observed": 0.0808,
+        "n": 722
+      },
+      {
+        "predicted": 0.0836,
+        "observed": 0.1124,
+        "n": 721
+      },
+      {
+        "predicted": 0.1089,
+        "observed": 0.1259,
+        "n": 722
+      },
+      {
+        "predicted": 0.1438,
+        "observed": 0.1854,
+        "n": 722
+      },
+      {
+        "predicted": 0.2001,
+        "observed": 0.2381,
+        "n": 721
+      },
+      {
+        "predicted": 0.2452,
+        "observed": 0.2404,
+        "n": 721
+      },
+      {
+        "predicted": 0.4185,
+        "observed": 0.4385,
+        "n": 724
+      }
+    ],
+    "permutation_importance": [
+      {
+        "feature": "age",
+        "label": "Age",
+        "auroc_drop": 0.04047606060293182
+      },
+      {
+        "feature": "abdomen",
+        "label": "Abdominal pain",
+        "auroc_drop": 0.035634137075119976
+      },
+      {
+        "feature": "chest",
+        "label": "Chest pain",
+        "auroc_drop": 0.0211423898519771
+      },
+      {
+        "feature": "breathless",
+        "label": "Shortness of breath",
+        "auroc_drop": 0.014374742631961146
+      },
+      {
+        "feature": "pain",
+        "label": "Pain score (0-10)",
+        "auroc_drop": 0.012630744014476355
+      },
+      {
+        "feature": "n_history",
+        "label": "Number of chronic conditions",
+        "auroc_drop": 0.009221097922501476
+      },
+      {
+        "feature": "nausea_vomiting",
+        "label": "Nausea / vomiting",
+        "auroc_drop": 0.008844498093917888
+      },
+      {
+        "feature": "injury",
+        "label": "Injury / trauma",
+        "auroc_drop": 0.008083659592478587
+      },
+      {
+        "feature": "dizziness",
+        "label": "Dizziness / fainting",
+        "auroc_drop": 0.0077650578011447076
+      },
+      {
+        "feature": "n_symptoms",
+        "label": "Number of associated symptoms",
+        "auroc_drop": 0.005965410451382954
+      },
+      {
+        "feature": "flank",
+        "label": "Flank pain",
+        "auroc_drop": 0.005025587267089164
+      },
+      {
+        "feature": "n_regions",
+        "label": "Number of pain regions",
+        "auroc_drop": 0.004279430204845965
+      },
+      {
+        "feature": "head",
+        "label": "Head pain",
+        "auroc_drop": 0.0033568146632203164
+      },
+      {
+        "feature": "hx_kidney",
+        "label": "History: kidney disease",
+        "auroc_drop": 0.0032375817342004862
+      },
+      {
+        "feature": "back",
+        "label": "Back pain",
+        "auroc_drop": 0.002065270563493815
+      },
+      {
+        "feature": "sex_female",
+        "label": "Sex (female)",
+        "auroc_drop": 0.0019160148180754621
+      },
+      {
+        "feature": "face_jaw",
+        "label": "Face / jaw pain",
+        "auroc_drop": 0.0018481735373030068
+      },
+      {
+        "feature": "hand_wrist",
+        "label": "Hand / wrist pain",
+        "auroc_drop": 0.0016282690775119753
+      },
+      {
+        "feature": "knee",
+        "label": "Knee pain",
+        "auroc_drop": 0.0015725669357249394
+      },
+      {
+        "feature": "hx_stroke",
+        "label": "History: stroke",
+        "auroc_drop": 0.0015428246254923044
+      },
+      {
+        "feature": "leg",
+        "label": "Leg pain",
+        "auroc_drop": 0.0015251135328987846
+      },
+      {
+        "feature": "arm",
+        "label": "Arm / elbow pain",
+        "auroc_drop": 0.0013735308046753196
+      },
+      {
+        "feature": "ankle_foot",
+        "label": "Ankle / foot pain",
+        "auroc_drop": 0.001345044357992542
+      },
+      {
+        "feature": "weakness",
+        "label": "Weakness",
+        "auroc_drop": 0.0013175242459595449
+      },
+      {
+        "feature": "palpitations",
+        "label": "Palpitations",
+        "auroc_drop": 0.0012554491678072506
+      },
+      {
+        "feature": "hx_diabetes",
+        "label": "History: diabetes",
+        "auroc_drop": 0.0011463245753857338
+      },
+      {
+        "feature": "hx_hypertension",
+        "label": "History: high blood pressure",
+        "auroc_drop": 0.0010891042500639214
+      },
+      {
+        "feature": "hx_heart",
+        "label": "History: heart disease",
+        "auroc_drop": 0.001030078212721793
+      },
+      {
+        "feature": "fever",
+        "label": "Fever",
+        "auroc_drop": 0.0008177095602642792
+      },
+      {
+        "feature": "hx_cancer",
+        "label": "History: cancer",
+        "auroc_drop": 0.0008119667786149476
+      },
+      {
+        "feature": "numbness",
+        "label": "Numbness / tingling",
+        "auroc_drop": 0.00041146657420591354
+      },
+      {
+        "feature": "neck",
+        "label": "Neck pain",
+        "auroc_drop": 0.00030412878486518746
+      },
+      {
+        "feature": "swelling",
+        "label": "Swelling",
+        "auroc_drop": 0.00028090544904439224
+      },
+      {
+        "feature": "sweating",
+        "label": "Sweating",
+        "auroc_drop": 0.00014073254279937478
+      },
+      {
+        "feature": "hip_pelvis",
+        "label": "Hip / pelvic pain",
+        "auroc_drop": 0.00012485101788125194
+      },
+      {
+        "feature": "hx_lung",
+        "label": "History: lung disease",
+        "auroc_drop": 9.464067207687332e-05
+      },
+      {
+        "feature": "shoulder",
+        "label": "Shoulder pain",
+        "auroc_drop": -4.2614026025122875e-05
+      }
+    ],
+    "fairness": [
+      {
+        "axis": "Sex",
+        "group": "Female",
+        "n": 3867,
+        "auroc_emergent": 0.7453281228547575,
+        "observed_emergent_rate": 0.14470365725467607,
+        "predicted_emergent_rate": 0.13323450867060327,
+        "sensitivity_at_threshold": 0.8852048706980666
+      },
+      {
+        "axis": "Sex",
+        "group": "Male",
+        "n": 3352,
+        "auroc_emergent": 0.731323634032357,
+        "observed_emergent_rate": 0.17263386670237876,
+        "predicted_emergent_rate": 0.15198017395055471,
+        "sensitivity_at_threshold": 0.8776109146878905
+      },
+      {
+        "axis": "Age",
+        "group": "Under 18",
+        "n": 1116,
+        "auroc_emergent": 0.6932257054216509,
+        "observed_emergent_rate": 0.07023737178590678,
+        "predicted_emergent_rate": 0.08033598964315944,
+        "sensitivity_at_threshold": 0.628352336455001
+      },
+      {
+        "axis": "Age",
+        "group": "18-44",
+        "n": 2754,
+        "auroc_emergent": 0.6978847742364318,
+        "observed_emergent_rate": 0.12163928475263552,
+        "predicted_emergent_rate": 0.10562037334683307,
+        "sensitivity_at_threshold": 0.7974616601434207
+      },
+      {
+        "axis": "Age",
+        "group": "45-64",
+        "n": 1842,
+        "auroc_emergent": 0.7250513411356947,
+        "observed_emergent_rate": 0.198329464518117,
+        "predicted_emergent_rate": 0.17023674610920422,
+        "sensitivity_at_threshold": 0.9304770442806427
+      },
+      {
+        "axis": "Age",
+        "group": "65+",
+        "n": 1507,
+        "auroc_emergent": 0.7259685251917232,
+        "observed_emergent_rate": 0.23591800455737516,
+        "predicted_emergent_rate": 0.21689586825475732,
+        "sensitivity_at_threshold": 0.9662460471762685
+      },
+      {
+        "axis": "Race / ethnicity",
+        "group": "Non-Hispanic White",
+        "n": 3910,
+        "auroc_emergent": 0.7379914142926544,
+        "observed_emergent_rate": 0.17071023674641786,
+        "predicted_emergent_rate": 0.1447788614992672,
+        "sensitivity_at_threshold": 0.8864714489716705
+      },
+      {
+        "axis": "Race / ethnicity",
+        "group": "Non-Hispanic Black",
+        "n": 1783,
+        "auroc_emergent": 0.7170637189296558,
+        "observed_emergent_rate": 0.155898025906136,
+        "predicted_emergent_rate": 0.14785627737822998,
+        "sensitivity_at_threshold": 0.8590756432325221
+      },
+      {
+        "axis": "Race / ethnicity",
+        "group": "Hispanic",
+        "n": 1244,
+        "auroc_emergent": 0.7681001317894676,
+        "observed_emergent_rate": 0.1082295600337937,
+        "predicted_emergent_rate": 0.11846745569251926,
+        "sensitivity_at_threshold": 0.8935059084661534
+      },
+      {
+        "axis": "Race / ethnicity",
+        "group": "Non-Hispanic Other",
+        "n": 282,
+        "auroc_emergent": 0.7496569044688701,
+        "observed_emergent_rate": 0.2020572527161235,
+        "predicted_emergent_rate": 0.16482361049888228,
+        "sensitivity_at_threshold": 0.9042545607234772
+      }
+    ]
+  },
+  "admission": {
+    "model": "HistGradientBoostingClassifier",
+    "test_auroc": 0.8084156450137793,
+    "test_brier": 0.08220325465187696,
+    "test_ece": 0.006619956471170994,
+    "base_rate": 0.10951680964150766,
+    "roc": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0077,
+        0.0643
+      ],
+      [
+        0.0147,
+        0.1331
+      ],
+      [
+        0.0236,
+        0.1932
+      ],
+      [
+        0.035,
+        0.24
+      ],
+      [
+        0.0453,
+        0.2993
+      ],
+      [
+        0.0601,
+        0.3435
+      ],
+      [
+        0.0712,
+        0.3929
+      ],
+      [
+        0.0805,
+        0.4433
+      ],
+      [
+        0.0915,
+        0.4649
+      ],
+      [
+        0.1045,
+        0.4904
+      ],
+      [
+        0.1167,
+        0.5155
+      ],
+      [
+        0.127,
+        0.5469
+      ],
+      [
+        0.1427,
+        0.5803
+      ],
+      [
+        0.157,
+        0.6078
+      ],
+      [
+        0.1721,
+        0.6239
+      ],
+      [
+        0.1885,
+        0.6435
+      ],
+      [
+        0.2013,
+        0.6695
+      ],
+      [
+        0.2168,
+        0.68
+      ],
+      [
+        0.2301,
+        0.6965
+      ],
+      [
+        0.2442,
+        0.7263
+      ],
+      [
+        0.2589,
+        0.7415
+      ],
+      [
+        0.2749,
+        0.7548
+      ],
+      [
+        0.2919,
+        0.7738
+      ],
+      [
+        0.3059,
+        0.7964
+      ],
+      [
+        0.3209,
+        0.8074
+      ],
+      [
+        0.338,
+        0.8094
+      ],
+      [
+        0.3509,
+        0.8175
+      ],
+      [
+        0.3656,
+        0.827
+      ],
+      [
+        0.3817,
+        0.835
+      ],
+      [
+        0.3986,
+        0.8466
+      ],
+      [
+        0.4194,
+        0.8555
+      ],
+      [
+        0.4383,
+        0.8683
+      ],
+      [
+        0.4587,
+        0.8744
+      ],
+      [
+        0.4787,
+        0.8809
+      ],
+      [
+        0.4986,
+        0.8873
+      ],
+      [
+        0.5156,
+        0.8945
+      ],
+      [
+        0.5313,
+        0.8999
+      ],
+      [
+        0.5508,
+        0.905
+      ],
+      [
+        0.5676,
+        0.9082
+      ],
+      [
+        0.5897,
+        0.9257
+      ],
+      [
+        0.6066,
+        0.9317
+      ],
+      [
+        0.6266,
+        0.9358
+      ],
+      [
+        0.6512,
+        0.9402
+      ],
+      [
+        0.6769,
+        0.9451
+      ],
+      [
+        0.6999,
+        0.9504
+      ],
+      [
+        0.7239,
+        0.9558
+      ],
+      [
+        0.7529,
+        0.9627
+      ],
+      [
+        0.7815,
+        0.9747
+      ],
+      [
+        0.8126,
+        0.9798
+      ],
+      [
+        0.8419,
+        0.9853
+      ],
+      [
+        0.8637,
+        0.9878
+      ],
+      [
+        0.8849,
+        0.9932
+      ],
+      [
+        0.9069,
+        0.9938
+      ],
+      [
+        0.9257,
+        0.9958
+      ],
+      [
+        0.9422,
+        0.9958
+      ],
+      [
+        0.9567,
+        0.9969
+      ],
+      [
+        0.9706,
+        0.9971
+      ],
+      [
+        0.9867,
+        1.0
+      ],
+      [
+        1.0,
+        1.0
+      ]
+    ],
+    "calibration": [
+      {
+        "predicted": 0.0157,
+        "observed": 0.008,
+        "n": 722
+      },
+      {
+        "predicted": 0.0251,
+        "observed": 0.0192,
+        "n": 719
+      },
+      {
+        "predicted": 0.0319,
+        "observed": 0.0331,
+        "n": 725
+      },
+      {
+        "predicted": 0.0403,
+        "observed": 0.0404,
+        "n": 722
+      },
+      {
+        "predicted": 0.0531,
+        "observed": 0.0386,
+        "n": 720
+      },
+      {
+        "predicted": 0.0705,
+        "observed": 0.0619,
+        "n": 723
+      },
+      {
+        "predicted": 0.0963,
+        "observed": 0.0938,
+        "n": 722
+      },
+      {
+        "predicted": 0.1393,
+        "observed": 0.1413,
+        "n": 722
+      },
+      {
+        "predicted": 0.2139,
+        "observed": 0.2343,
+        "n": 722
+      },
+      {
+        "predicted": 0.4054,
+        "observed": 0.3993,
+        "n": 722
+      }
+    ]
+  },
+  "limitations": [
+    "Triage nurses use vital signs and appearance; this model sees only self-reported information, so it is deliberately a screening aid, not a triage decision.",
+    "NHAMCS describes patients who came to an emergency department; people who stayed home are not represented.",
+    "Reason-for-visit codes are mapped to ANATOME body regions with keyword rules; some mismatch between survey coding and 3D-body selections is expected.",
+    "Rule-based red-flag checks run alongside the model and always take precedence."
+  ]
+}

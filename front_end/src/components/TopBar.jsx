@@ -1,12 +1,8 @@
 import "../css/TopBar.css";
 
-export default function TopBar({ setShowReport, onClearAll, onGoHome }) {
-    const handleClearAll = () => {
-        if (window.confirm("Are you sure you want to clear all logged pain data?")) {
-            onClearAll();
-        }
-    };
+const STEPS = ["Describe", "Mark where it hurts", "Get your report"];
 
+export default function TopBar({ onOpenReport, onGoHome, savedCount = 0 }) {
     return (
         <header className="top-bar">
             <button
@@ -16,16 +12,23 @@ export default function TopBar({ setShowReport, onClearAll, onGoHome }) {
                 aria-label="Go to home page"
             >
                 <span className="logo-text">Anatome</span>
-                <span className="logo-tag">Pain map</span>
             </button>
 
-            <div className="top-bar-actions">
-                <button className="btn btn-secondary" onClick={handleClearAll}>
-                    Clear all
-                </button>
+            <ol className="top-steps" aria-label="Progress">
+                {STEPS.map((step, index) => {
+                    const state = index === 0 ? "done" : index === 1 ? "current" : "todo";
+                    return (
+                        <li key={step} className={`top-step is-${state}`} aria-current={state === "current" ? "step" : undefined}>
+                            <span className="top-step__dot" aria-hidden="true">{state === "done" ? "✓" : index + 1}</span>
+                            <span className="top-step__label">{step}</span>
+                        </li>
+                    );
+                })}
+            </ol>
 
-                <button className="btn btn-primary" onClick={() => setShowReport(true)}>
-                    Generate report
+            <div className="top-bar-actions">
+                <button className="btn btn-primary" onClick={onOpenReport} disabled={savedCount === 0} title={savedCount === 0 ? "Save at least one spot first" : undefined}>
+                    Make report{savedCount > 0 ? ` (${savedCount})` : ""}
                 </button>
             </div>
         </header>

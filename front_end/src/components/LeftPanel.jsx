@@ -1,22 +1,21 @@
 import "../css/LeftPanel.css";
 import { displayAnatomyName } from "../utils/anatomyName";
 
-export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRegion, setPainData }) {
+export default function LeftPanel({ activeSpotId, painData = {}, onEdit, onDelete }) {
 
     const savedRegions = Object.entries(painData);
     const numRegions = savedRegions.length;
-    
-    let avgSeverity = "—";
+
+    let maxSeverity = "—";
     if (numRegions > 0) {
-        const total = savedRegions.reduce((sum, [_, data]) => sum + data.severity, 0);
-        avgSeverity = (total / numRegions).toFixed(1);
+        maxSeverity = Math.max(...savedRegions.map(([, data]) => data.severity || 0));
     }
 
     return (
 
         <aside className="glass-panel panel-left">
 
-            <div className="panel-title">Marked areas <span>{numRegions}</span></div>
+            <div className="panel-title">Saved spots <span>{numRegions}</span></div>
 
             <div className="panel-summary">
                 <div className="summary-stat">
@@ -25,53 +24,49 @@ export default function LeftPanel({ selectedRegion, painData = {}, setSelectedRe
                 </div>
 
                 <div className="summary-stat">
-                    <div className="stat-value">{avgSeverity}</div>
-                    <div className="stat-label">Avg Severity</div>
+                    <div className="stat-value">{maxSeverity}</div>
+                    <div className="stat-label">Worst pain</div>
                 </div>
             </div>
 
             <div className="region-list">
 
                 {numRegions > 0 ? (
-                    savedRegions.map(([spotId, data]) => (
-                        <div key={spotId} className={`region-item ${selectedRegion === spotId ? "is-selected" : ""}`}>
-                            
-                            <div className="region-item__text">
-                                <div className="region-item__name">{displayAnatomyName(data.regionName) || "Unknown region"}</div>
-                                <div className="region-item__meta">
-                                    {data.severity}/10 severity · {data.painType || "Pain type not set"}
+                    savedRegions.map(([spotId, data]) => {
+                        const label = data.mode === "area" ? data.areaLabel : displayAnatomyName(data.regionName);
+                        return (
+                            <div key={spotId} className={`region-item ${activeSpotId === spotId ? "is-selected" : ""}`}>
+
+                                <div className="region-item__text">
+                                    <div className="region-item__name">{label || "Unknown region"}</div>
+                                    <div className="region-item__meta">
+                                        {data.severity}/10 · {data.painType} · {data.onset}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div className="region-item__actions">
-                                <button 
-                                    onClick={() => setSelectedRegion(spotId)}
-                                    className="region-item__edit"
-                                    title={`Edit ${data.regionName}`}
-                                >
-                                    Edit
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        const newData = { ...painData };
-                                        delete newData[spotId];
-                                        setPainData(newData);
-                                        if (selectedRegion === spotId) {
-                                            setSelectedRegion(null);
-                                        }
-                                    }}
-                                    className="region-item__delete"
-                                    title={`Delete ${data.regionName}`}
-                                >
-                                    Delete
-                                </button>
-                            </div>
+                                <div className="region-item__actions">
+                                    <button
+                                        onClick={() => onEdit(spotId)}
+                                        className="region-item__edit"
+                                        aria-label={`Edit ${label}`}
+                                    >
+                                        Edit
+                                    </button>
+                                    <button
+                                        onClick={() => onDelete(spotId)}
+                                        className="region-item__delete"
+                                        aria-label={`Delete ${label}`}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
 
-                        </div>
-                    ))
+                            </div>
+                        );
+                    })
                 ) : (
                     <div className="empty-state">
-                        <div>Select a muscle on the model to add a pain location.</div>
+                        <div>Nothing saved yet. Tap where it hurts, answer the questions, then press Save.</div>
                     </div>
                 )}
 

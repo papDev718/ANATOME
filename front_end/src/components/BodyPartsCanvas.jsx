@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import "../css/Canvas3D.css";
 import { displayAnatomyName } from "../utils/anatomyName";
+import { areaAt, areaGroupKey, areaLabel, areaOf, sideOf } from "../utils/bodyAreas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 const MODEL_URL = "/models/zanatomy_split.glb";
 const SELECTED_COLOR = new THREE.Color("#ff5b3a");
 const HOVER_COLOR = new THREE.Color("#f3e6cf");
+const SUGGESTED_COLOR = new THREE.Color("#e3a14f");
 const MUSCLE_COLOR = new THREE.Color("#a64a50");
 const CONNECTIVE_COLOR = new THREE.Color("#cbb6a2");
 const CONNECTIVE_NAME = /fascia|ligament|tendon|retinaculum|bursa|sheath|aponeurosis|septum|band|capsule/i;
@@ -102,11 +104,40 @@ function anatomyForPart(part) {
   return match ? ANATOMY_LIBRARY[match] : DEFAULTS[part?.system] || DEFAULTS.muscular;
 }
 
-function layerAllows(mode, system) {
-  return mode === "all" || system === mode;
+// Broad fascia sheets wrap whole regions; in the body-area layer they would
+// hide the muscles and tendons a patient recognises.
+const SHEET_NAME = /fascia(?!e latae)|aponeurosis|septum/i;
+
+function layerAllows(mode, part) {
+  if (mode === "area") return !part.isSheet;
+  return part.system === mode;
 }
 
-export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, setPainData, painData = {}, frameBodyRef, deselectRef }) {
+const LAYERS = [["area", "Body areas"], ["muscular", "Muscles"], ["connective", "Connective tissue"]];
+
+
+// A target is what the patient pointed at: one structure (Muscles /
+// Connective layers) or one everyday area (Body areas layer). Pointing only
+// proposes a spot; App records it when the patient presses Save.
+function targetForPart(part, layer, point) {
+  const clickPosition = point ? `${point.x} ${point.y} ${point.z}` : null;
+  if (layer === "area" && part.area) {
+    const area = areaAt(part.name, point) || part.area;
+    return {
+      mode: "area",
+      key: areaGroupKey(area, part.side),
+      regionName: areaLabel(area, part.side),
+      areaKey: area,
+      areaLabel: areaLabel(area, part.side),
+      side: part.side,
+      system: "area",
+      clickPosition,
+    };
+  }
+  return { mode: "structure", key: part.name, regionName: part.name, system: part.system, clickPosition };
+}
+
+export default function BodyPartsCanvas({ activeTarget, painData = {}, onPick, onDismiss, frameBodyRef, pickAreaRef, suggestedKeys = [] }) {
   const stageRef = useRef(null);
   const hostRef = useRef(null);
   const tooltipRef = useRef(null);
@@ -114,60 +145,74 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
   const infoPanelRef = useRef(null);
   const engineRef = useRef(null);
   const painDataRef = useRef(painData);
-  const selectedPartRef = useRef(null);
-  const hoveredPartRef = useRef(null);
-  const focusPartRef = useRef(() => {});
-  const selectPartRef = useRef(() => {});
-  const layerRef = useRef("muscular");
-  const selectedRegionRef = useRef(selectedRegion);
+  const selectedRef = useRef(null); // { key, parts: Set, center, bounds, name }
+  const hoveredKeyRef = useRef(null);
+  const focusRef = useRef(() => {});
+  const layerRef = useRef("area");
+  const onPickRef = useRef(onPick);
+  const onDismissRef = useRef(onDismiss);
+  const activeKeyRef = useRef(activeTarget?.key || null);
 
   const [modelStatus, setModelStatus] = useState("loading");
   const [loadProgress, setLoadProgress] = useState(0);
   const [loadError, setLoadError] = useState("");
-  const [layerMode, setLayerMode] = useState("muscular");
-  const [panelOpen, setPanelOpen] = useState(false);
-  const [selectedPart, setSelectedPart] = useState(null);
-  const [availableParts, setAvailableParts] = useState([]);
-  const selectedAnatomy = anatomyForPart(selectedPart);
+  const [layerMode, setLayerMode] = useState("area");
+  const [selection, setSelection] = useState(null);
+  const [pickerOptions, setPickerOptions] = useState([]);
+
+  useEffect(() => { onPickRef.current = onPick; onDismissRef.current = onDismiss; });
+  useEffect(() => { activeKeyRef.current = activeTarget?.key || null; }, [activeTarget]);
 
   const prevPainCountRef = useRef(Object.keys(painData).length);
-
   useEffect(() => {
     const prev = prevPainCountRef.current;
     const next = Object.keys(painData).length;
     prevPainCountRef.current = next;
     painDataRef.current = painData;
     engineRef.current?.refreshVisuals();
-    // All spots deleted — zoom back to full body
-    if (next === 0 && prev > 0) {
-      engineRef.current?.frameBody();
-    }
+    if (next === 0 && prev > 0 && !activeKeyRef.current) engineRef.current?.frameBody();
   }, [painData]);
 
-  useEffect(() => { selectedRegionRef.current = selectedRegion; }, [selectedRegion]);
-
-  // Expose frameBody to parent via ref so App can trigger zoom-out after save
   useEffect(() => {
-    if (frameBodyRef) {
-      frameBodyRef.current = () => engineRef.current?.frameBody();
-    }
+    if (frameBodyRef) frameBodyRef.current = () => engineRef.current?.frameBody();
   }, [frameBodyRef]);
 
   useEffect(() => {
+    if (!pickAreaRef) return;
+    pickAreaRef.current = (key) => {
+      const target = engineRef.current?.targetFor(key);
+      if (target) onPickRef.current?.(target);
+    };
+  }, [pickAreaRef]);
+
+  const suggestedRef = useRef(new Set());
+  const suggestedSignature = suggestedKeys.join("|");
+  useEffect(() => {
+    suggestedRef.current = new Set(suggestedSignature ? suggestedSignature.split("|") : []);
+    engineRef.current?.refreshVisuals();
+  }, [suggestedSignature]);
+
+  // Follow the active target chosen in App (a click, the picker, or Edit in the list).
+  useEffect(() => {
     const engine = engineRef.current;
-    if (!selectedRegion) {
-      selectedPartRef.current = null;
-      hoveredPartRef.current = null;
-      setSelectedPart(null);
-      setPanelOpen(false);
-      engine?.refreshVisuals();
+    if (!engine?.ready) return;
+    if (!activeTarget) {
+      if (selectedRef.current) {
+        selectedRef.current = null;
+        setSelection(null);
+        engine.refreshVisuals();
+        engine.frameBody();
+      }
       return;
     }
-    if (!engine) return;
-    const regionName = painData[selectedRegion]?.regionName;
-    const part = engine.parts.find((candidate) => canonicalName(candidate.name) === canonicalName(regionName));
-    if (part && part !== selectedPartRef.current) selectPartRef.current(part, { createSpot: false });
-  }, [selectedRegion, painData]);
+    const wanted = activeTarget.mode === "area" ? "area" : activeTarget.system === "connective" ? "connective" : "muscular";
+    if (layerRef.current !== wanted) {
+      layerRef.current = wanted;
+      setLayerMode(wanted);
+      engine.updatePicker();
+    }
+    if (selectedRef.current?.key !== activeTarget.key) engine.select(activeTarget.key);
+  }, [activeTarget, modelStatus]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -226,6 +271,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     const parts = [];
     const pickableMeshes = [];
     const partByMesh = new Map();
+    const groups = new Map(); // area group key -> { key, label, area, parts, bounds, center }
 
     const resize = () => {
       cancelAnimationFrame(resizeFrame);
@@ -264,10 +310,10 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       animateCamera(target.clone().add(new THREE.Vector3(0.16, 0.04, 1).normalize().multiplyScalar(distance)), target, 1);
     };
 
-    const focusPart = (part, view = 0) => {
-      if (!part) return;
-      const center = part.center;
-      const size = part.bounds.getSize(new THREE.Vector3());
+    const focusOn = (item, view = 0) => {
+      if (!item) return;
+      const center = item.center;
+      const size = item.bounds.getSize(new THREE.Vector3());
       const vertical = THREE.MathUtils.degToRad(camera.fov);
       const horizontal = 2 * Math.atan(Math.tan(vertical / 2) * camera.aspect);
       const fitDistance = Math.max(
@@ -286,28 +332,40 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       if (view === 2) direction.applyAxisAngle(new THREE.Vector3(0, 1, 0), -0.32);
       animateCamera(center.clone().add(direction.multiplyScalar(distance)), center, 0.95);
     };
-    focusPartRef.current = focusPart;
+    focusRef.current = (view) => focusOn(selectedRef.current, view);
+
+    const keyForHit = (part, point) => {
+      if (layerRef.current !== "area") return part.name;
+      return areaGroupKey(areaAt(part.name, point) || part.area, part.side);
+    };
+    const hoveredPartRef = { current: null };
 
     const refreshVisuals = () => {
-      const selected = selectedPartRef.current;
-      const hovered = hoveredPartRef.current;
-      const savedByName = new Map(Object.values(painDataRef.current).map((spot) => [canonicalName(spot.regionName), spot]));
+      const selected = selectedRef.current;
+      const hoveredKey = hoveredKeyRef.current;
+      const spots = Object.values(painDataRef.current);
+      const savedByName = new Map(spots.filter((s) => s.mode !== "area").map((spot) => [canonicalName(spot.regionName), spot]));
+      const savedByArea = new Map(spots.filter((s) => s.mode === "area").map((spot) => [areaGroupKey(spot.areaKey, spot.side), spot]));
       parts.forEach((part) => {
-        const isVisible = layerAllows(layerRef.current, part.system) || part === selected;
-        const spot = savedByName.get(canonicalName(part.name));
-        const dimmed = Boolean(selected && part !== selected);
+        const isSelected = Boolean(selected?.parts.has(part));
+        const partKey = layerRef.current === "area" ? part.groupKey : part.name;
+        const isHovered = !isSelected && hoveredKey !== null && (partKey === hoveredKey || part === hoveredPartRef.current);
+        const isVisible = layerAllows(layerRef.current, part) || isSelected;
+        const spot = savedByName.get(canonicalName(part.name)) || savedByArea.get(part.groupKey);
+        const dimmed = Boolean(selected && !isSelected);
         part.meshes.forEach((mesh) => { mesh.visible = isVisible; });
         part.materials.forEach((material, index) => {
           if (material.color) {
             material.color.copy(part.baseColors[index]);
             if (spot) material.color.lerp(SELECTED_COLOR, Math.min((spot.severity || 5) / 12, 0.7));
-            if (part === hovered) material.color.lerp(HOVER_COLOR, 0.72);
-            if (part === selected) material.color.lerp(SELECTED_COLOR, 0.92);
+            else if (layerRef.current === "area" && !selected && suggestedRef.current.has(part.groupKey)) material.color.lerp(SUGGESTED_COLOR, 0.45);
+            if (isHovered) material.color.lerp(HOVER_COLOR, 0.72);
+            if (isSelected) material.color.lerp(SELECTED_COLOR, 0.92);
           }
           if (material.emissive) {
             material.emissive.copy(part.baseEmissives[index]);
-            if (part === hovered) material.emissive.lerp(HOVER_COLOR, 0.28);
-            if (part === selected) material.emissive.lerp(SELECTED_COLOR, 0.3);
+            if (isHovered) material.emissive.lerp(HOVER_COLOR, 0.28);
+            if (isSelected) material.emissive.lerp(SELECTED_COLOR, 0.3);
           }
           const transparent = dimmed || part.baseTransparent[index];
           if (material.transparent !== transparent) {
@@ -320,61 +378,55 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       });
     };
 
-    const updatePartList = () => {
-      setAvailableParts(parts.filter((part) => layerAllows(layerRef.current, part.system)).sort((a, b) => a.name.localeCompare(b.name)));
-    };
-
-    const selectPart = (part, { createSpot = true, intersection = null } = {}) => {
-      if (!part) return;
-
-      // If this region is already saved, don't allow re-clicking to add another report
-      if (createSpot) {
-        const existing = Object.entries(painDataRef.current).find(([, spot]) => canonicalName(spot.regionName) === canonicalName(part.name));
-        if (existing) return;
+    const updatePicker = () => {
+      if (layerRef.current === "area") {
+        setPickerOptions([...groups.values()].map((g) => ({ key: g.key, label: g.label })).sort((a, b) => a.label.localeCompare(b.label)));
+      } else {
+        setPickerOptions(parts.filter((part) => layerAllows(layerRef.current, part))
+          .map((part) => ({ key: part.name, label: displayAnatomyName(part.name) }))
+          .sort((a, b) => a.label.localeCompare(b.label)));
       }
-
-      selectedPartRef.current = part;
-      hoveredPartRef.current = null;
-      setSelectedPart(part);
-      setPanelOpen(true);
-      refreshVisuals();
-      requestAnimationFrame(() => focusPart(part));
-      if (!createSpot) return;
-      const spotId = crypto.randomUUID();
-      setPainData((previous) => ({
-        ...previous,
-        [spotId]: {
-          regionName: part.name,
-          severity: 5,
-          painType: "",
-          notes: "",
-          startDate: "",
-          frequency: "",
-          clickPosition: intersection?.point ? `${intersection.point.x} ${intersection.point.y} ${intersection.point.z}` : null,
-          anatomicalSystem: part.system,
-        },
-      }));
-      setSelectedRegion(spotId);
     };
-    selectPartRef.current = selectPart;
+
+    const selectionFor = (targetKey) => {
+      const group = groups.get(targetKey);
+      if (group) return { key: targetKey, name: group.label, area: group.area, parts: new Set(group.parts), center: group.center, bounds: group.bounds, count: group.parts.length };
+      const part = parts.find((candidate) => canonicalName(candidate.name) === canonicalName(targetKey));
+      if (!part) return null;
+      return { key: targetKey, name: part.name, system: part.system, part, parts: new Set([part]), center: part.center, bounds: part.bounds };
+    };
+
+    const select = (targetKey) => {
+      const next = selectionFor(targetKey);
+      if (!next) return;
+      selectedRef.current = next;
+      hoveredKeyRef.current = null;
+      setSelection(next);
+      refreshVisuals();
+      requestAnimationFrame(() => focusOn(next));
+    };
 
     const engine = {
       parts,
       camera,
       controls,
       root,
+      ready: false,
       frameBody,
       refreshVisuals,
+      updatePicker,
+      select,
+      targetFor(targetKey) {
+        const group = groups.get(targetKey);
+        if (group) return targetForPart(group.parts[0], "area", null);
+        const part = parts.find((candidate) => candidate.name === targetKey);
+        return part ? targetForPart(part, layerRef.current, null) : null;
+      },
       setLayer(mode) {
         layerRef.current = mode;
-        selectedPartRef.current = null;
-        hoveredPartRef.current = null;
+        hoveredKeyRef.current = null;
         refreshVisuals();
-        updatePartList();
-        setSelectedPart(null);
-        setPanelOpen(false);
-        setSelectedRegion(null);
-        frameBody();
+        updatePicker();
       },
     };
     engineRef.current = engine;
@@ -413,10 +465,16 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
           });
           const bounds = new THREE.Box3().setFromObject(node);
           if (bounds.isEmpty()) return;
+          const side = sideOf(name);
+          const area = areaOf(name);
           const part = {
             id: node.uuid,
             name,
             system,
+            side,
+            area,
+            groupKey: area ? areaGroupKey(area, side) : name,
+            isSheet: SHEET_NAME.test(name),
             meshes,
             materials,
             baseColors: materials.map((material) => material.color?.clone() || null),
@@ -432,10 +490,24 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
             pickableMeshes.push(mesh);
             partByMesh.set(mesh, part);
           });
+          if (area) {
+            if (!groups.has(part.groupKey)) {
+              groups.set(part.groupKey, { key: part.groupKey, label: areaLabel(area, side), area, parts: [], bounds: new THREE.Box3() });
+            }
+            const group = groups.get(part.groupKey);
+            group.parts.push(part);
+            // Fascia sheets reach far beyond the area; frame on what is visible.
+            if (!part.isSheet) group.bounds.union(bounds);
+          }
         });
         if (parts.length === 0) throw new Error("This GLB contains no selectable anatomy meshes.");
+        groups.forEach((group) => {
+          if (group.bounds.isEmpty()) group.parts.forEach((part) => group.bounds.union(part.bounds));
+          group.center = group.bounds.getCenter(new THREE.Vector3());
+        });
+        engine.ready = true;
         refreshVisuals();
-        updatePartList();
+        updatePicker();
         frameBody();
         setLoadProgress(100);
         setModelStatus("ready");
@@ -469,14 +541,16 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       if (event.buttons) return hideTooltip();
       const hit = hitTest(event);
       const next = hit?.part || null;
-      if (next !== hoveredPartRef.current) {
+      const nextKey = next ? keyForHit(next, hit.point) : null;
+      if (nextKey !== hoveredKeyRef.current || next !== hoveredPartRef.current) {
+        hoveredKeyRef.current = nextKey;
         hoveredPartRef.current = next;
         refreshVisuals();
         renderer.domElement.style.cursor = next ? "pointer" : "grab";
       }
       if (!next || !tooltipRef.current) return hideTooltip();
       const rect = stage.getBoundingClientRect();
-      tooltipRef.current.textContent = displayAnatomyName(next.name);
+      tooltipRef.current.textContent = layerRef.current === "area" && next.area ? areaLabel(areaAt(next.name, hit.point) || next.area, next.side) : displayAnatomyName(next.name);
       tooltipRef.current.style.left = `${event.clientX - rect.left + 16}px`;
       tooltipRef.current.style.top = `${event.clientY - rect.top + 16}px`;
       tooltipRef.current.style.opacity = "1";
@@ -486,22 +560,16 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     const onClick = (event) => {
       if (pointerDown && Math.hypot(event.clientX - pointerDown.x, event.clientY - pointerDown.y) > 5) return;
       const hit = hitTest(event);
-      if (hit) {
-        if (hit.part === selectedPartRef.current) {
-          // Re-clicked the already-selected muscle — deselect
-          deselectRef?.current?.();
-        } else {
-          selectPart(hit.part, { intersection: hit });
-        }
-      } else if (selectedPartRef.current) {
-        // Clicked empty space while something is selected — deselect
-        deselectRef?.current?.();
+      if (hit?.part) {
+        // A tap inside the open area marks the exact spot; empty space,
+        // Escape or Close dismiss it.
+        onPickRef.current?.(targetForPart(hit.part, layerRef.current, hit.point));
+      } else if (selectedRef.current) {
+        onDismissRef.current?.();
       }
     };
     const onKeyDown = (event) => {
-      if (event.key === "Escape" && selectedPartRef.current) {
-        deselectRef?.current?.();
-      }
+      if (event.key === "Escape" && selectedRef.current) onDismissRef.current?.();
     };
     const onDown = (event) => { pointerDown = { x: event.clientX, y: event.clientY }; };
     renderer.domElement.addEventListener("pointerdown", onDown);
@@ -514,7 +582,7 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     const projectedCenter = new THREE.Vector3();
     const render = () => {
       controls.update();
-      const selected = selectedPartRef.current;
+      const selected = selectedRef.current;
       const blur = blurRef.current;
       if (selected && blur) {
         camera.updateMatrixWorld();
@@ -571,10 +639,13 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
       renderer.domElement.remove();
       engineRef.current = null;
     };
-  }, [setPainData, setSelectedRegion]);
+  }, []);
+
+  const panelOpen = Boolean(selection);
+  const selectedAnatomy = selection?.part ? anatomyForPart(selection.part) : null;
 
   useLayoutEffect(() => {
-    if (!panelOpen || !infoPanelRef.current) return undefined;
+    if (!panelOpen || !infoPanelRef.current || !selectedAnatomy) return undefined;
     const context = gsap.context(() => {
       gsap.utils.toArray(".anatomy-info__section").forEach((section, index) => {
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) gsap.fromTo(section, { opacity: 0.4, y: 12, clipPath: "inset(0 0 10% 0)" }, {
@@ -590,18 +661,21 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
           scroller: infoPanelRef.current,
           start: "top 56%",
           end: "bottom 38%",
-          onEnter: () => focusPartRef.current(selectedPartRef.current, index),
-          onEnterBack: () => focusPartRef.current(selectedPartRef.current, index),
+          onEnter: () => focusRef.current(index),
+          onEnterBack: () => focusRef.current(index),
         });
       });
     }, infoPanelRef);
     requestAnimationFrame(() => ScrollTrigger.refresh());
     return () => context.revert();
-  }, [panelOpen, selectedPart]);
+  }, [panelOpen, selection, selectedAnatomy]);
 
   const changeLayer = (mode) => {
+    if (mode === layerMode) return;
     setLayerMode(mode);
     engineRef.current?.setLayer(mode);
+    // A proposal made in another layer no longer matches what is on screen.
+    if (activeKeyRef.current) onDismissRef.current?.();
   };
 
   const setView = (view) => {
@@ -621,39 +695,12 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
     gsap.to(engine.controls.target, { ...center, duration: 0.75, ease: "expo.out", overwrite: true });
   };
 
-  const deselect = () => {
-    const spotId = selectedRegionRef.current;
-    // Remove the spot only if the user never filled in any field (just clicked and bailed)
-    if (spotId) {
-      setPainData((prev) => {
-        const spot = prev[spotId];
-        if (spot && !spot.painType && !spot.notes && !spot.frequency) {
-          const next = { ...prev };
-          delete next[spotId];
-          return next;
-        }
-        return prev;
-      });
-    }
-    selectedPartRef.current = null;
-    setSelectedPart(null);
-    setPanelOpen(false);
-    setSelectedRegion(null);
-    engineRef.current?.refreshVisuals();
-    engineRef.current?.frameBody();
+  const handlePickerChange = (event) => {
+    const target = engineRef.current?.targetFor(event.target.value);
+    if (target) onPickRef.current?.(target);
   };
 
-  // Expose deselect to App so RightPanel Cancel can call it
-  useEffect(() => {
-    if (deselectRef) deselectRef.current = deselect;
-  });
-
-  const closeDetails = deselect;
-
-  const handlePartSelect = (event) => {
-    const part = availableParts.find((candidate) => candidate.id === event.target.value);
-    if (part) selectPartRef.current(part);
-  };
+  const areaHint = layerMode === "area" ? "Tap where it hurts." : "Tap a muscle or tissue.";
 
   return (
     <main ref={stageRef} className={`anatomy-explorer ${panelOpen ? "anatomy-explorer--split" : ""}`}>
@@ -662,25 +709,24 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
         <div ref={blurRef} className={`anatomy-stage__focus-blur ${panelOpen ? "is-active" : ""}`} aria-hidden="true" />
 
         <div className="anatomy-stage__topline">
-          <div className={`anatomy-stage__status ${modelStatus === "error" ? "is-error" : ""}`} aria-live="polite">
+          <div className={`anatomy-stage__status ${modelStatus === "error" ? "is-error" : ""} ${modelStatus === "ready" ? "is-hidden" : ""}`} aria-live="polite">
             <span className="anatomy-stage__status-dot" aria-hidden="true" />
-            {modelStatus === "loading" && `Loading detailed anatomy · ${loadProgress}%`}
-            {modelStatus === "ready" && `${availableParts.length} selectable structures`}
+            {modelStatus === "loading" && `Loading the body · ${loadProgress}%`}
             {modelStatus === "error" && "Anatomy unavailable"}
           </div>
 
           <label className="anatomy-stage__region-picker">
-            <span>Anatomical structure</span>
-            <select value={selectedPart?.id || ""} onChange={handlePartSelect} disabled={modelStatus !== "ready"}>
-              <option value="">Choose a structure</option>
-              {availableParts.map((part) => <option key={part.id} value={part.id}>{displayAnatomyName(part.name)}</option>)}
+            <span>{layerMode === "area" ? "Can't find it? Pick from a list" : "Or choose a structure"}</span>
+            <select value={activeTarget?.key && pickerOptions.some((o) => o.key === activeTarget.key) ? activeTarget.key : ""} onChange={handlePickerChange} disabled={modelStatus !== "ready"}>
+              <option value="">{layerMode === "area" ? "Choose an area" : "Choose a structure"}</option>
+              {pickerOptions.map((option) => <option key={option.key} value={option.key}>{option.label}</option>)}
             </select>
           </label>
         </div>
 
-        <div className="anatomy-stage__layer-controls" aria-label="Anatomy layers">
-          {[['muscular', 'Muscles'], ['connective', 'Connective'], ['all', 'All']].map(([mode, label]) => (
-            <button key={mode} type="button" className={layerMode === mode ? "is-active" : ""} onClick={() => changeLayer(mode)}>{label}</button>
+        <div className="anatomy-stage__layer-controls" role="group" aria-label="What to point at">
+          {LAYERS.map(([mode, label]) => (
+            <button key={mode} type="button" className={layerMode === mode ? "is-active" : ""} aria-pressed={layerMode === mode} onClick={() => changeLayer(mode)}>{label}</button>
           ))}
         </div>
 
@@ -690,20 +736,20 @@ export default function BodyPartsCanvas({ selectedRegion, setSelectedRegion, set
           ))}
         </div>
 
-        <p className="anatomy-stage__hint">Drag to rotate. Scroll to zoom. Select a structure to document pain.</p>
+        <p className="anatomy-stage__hint">{areaHint} Drag to turn the body, scroll to zoom.</p>
         {modelStatus === "error" && <p className="anatomy-stage__error">{loadError}</p>}
-        <p className="anatomy-stage__attribution">Blender anatomy model · GLB</p>
+        <p className="anatomy-stage__attribution">Z-Anatomy model · GLB</p>
         <div ref={tooltipRef} className="anatomy-tooltip" role="status" />
       </section>
 
-      {panelOpen && selectedPart && (
+      {panelOpen && selectedAnatomy && (
         <aside ref={infoPanelRef} className="anatomy-info" aria-label="Selected anatomy details">
           <header className="anatomy-info__header">
             <div>
-              <p className="anatomy-info__context">{selectedPart.system} anatomy</p>
-              <h2>{displayAnatomyName(selectedPart.name)}</h2>
+              <p className="anatomy-info__context">{selection.system} anatomy</p>
+              <h2>{displayAnatomyName(selection.name)}</h2>
             </div>
-            <button type="button" className="anatomy-info__close" onClick={closeDetails}>Close</button>
+            <button type="button" className="anatomy-info__close" onClick={() => onDismissRef.current?.()}>Close</button>
           </header>
           <section className="anatomy-info__section">
             <p className="anatomy-info__label">Scientific context</p>

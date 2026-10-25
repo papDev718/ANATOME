@@ -9,3 +9,6 @@ venv/
 back_end/venv/
 __pycache__/
 *.pyc
+back_end/ml/data/
+# Full-precision PainBERT; the int8 build is committed instead
+back_end/ml/artifacts/painbert/painbert.onnx

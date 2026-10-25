@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "../css/ReportModal.css";
 import ReportButton from "./ReportButton";
+import CareGuide from "./CareGuide";
 import { displayAnatomyName } from "../utils/anatomyName";
 
 export default function ReportModal({
@@ -29,13 +30,46 @@ export default function ReportModal({
 
   const regions = Object.entries(painData || {});
 
+  // Analysis + patient tips load as soon as the modal opens; no name needed.
+  const [guideState, setGuideState] = useState({ status: "loading", guide: null, analysis: null, error: "" });
+  const [guideRequest, setGuideRequest] = useState(0);
+  const ageForGuide = patientAge !== "" && !Number.isNaN(Number(patientAge)) ? Number(patientAge) : null;
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const timer = setTimeout(async () => {
+      setGuideState((current) => ({ ...current, status: "loading", error: "" }));
+      try {
+        const response = await fetch("/api/care-guide", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ age: ageForGuide, questionnaire: questionnaireAnswers || {}, pain_regions: painData }),
+          signal: controller.signal,
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(typeof result.detail === "string" ? result.detail : "The tips could not be loaded.");
+        setGuideState({ status: "ready", guide: result.guide, analysis: result.analysis, error: "" });
+      } catch (error) {
+        if (error.name === "AbortError") return;
+        setGuideState({ status: "error", guide: null, analysis: null, error: error.message || "The tips could not be loaded. Is the server running?" });
+      }
+    }, ageForGuide === null ? 0 : 500);
+    return () => {
+      clearTimeout(timer);
+      controller.abort();
+    };
+  }, [ageForGuide, painData, questionnaireAnswers, guideRequest]);
+
+  const careLevel = guideState.analysis?.care_level;
+  const localization = guideState.analysis?.localization || {};
+
   function validateReport() {
     if (!patientName.trim()) {
-      throw new Error("Please enter the patient's name.");
+      throw new Error("Please enter your name.");
     }
 
-    if (patientAge === "" || Number.isNaN(Number(patientAge))) {
-      throw new Error("Please enter a valid patient age.");
+    if (patientAge === "" || Number.isNaN(Number(patientAge)) || Number(patientAge) < 0 || Number(patientAge) > 120) {
+      throw new Error("Please enter your age (0 to 120).");
     }
 
     if (!reportDate) {
@@ -109,22 +143,12 @@ export default function ReportModal({
     }
   }
 
-  async function handleSaveOnly() {
-    try {
-      const result = await saveReport();
-
-      alert(`Report saved successfully.\nPatient ID: ${result.patient_id}`);
-    } catch {
-      // The error is already displayed in reportError.
-    }
-  }
-
   return (
     <div className="report-overlay">
-      <div className="report-modal">
+      <div className="report-modal report-modal--wide">
         <div className="report-modal-header">
           <div>
-            <p className="report-kicker">Report preview</p>
+            <p className="report-kicker">Step 3 · Check it, then download</p>
             <h2>Clinical Pain Report</h2>
           </div>
 
@@ -135,14 +159,21 @@ export default function ReportModal({
             disabled={isSaving}
             aria-label="Close report"
           >
-            Close
+            Back to body map
           </button>
         </div>
 
+        <div className="report-modal-columns">
         <div className="report-modal-body">
+          {careLevel && (
+            <div className="care-level-banner" data-level={careLevel.level}>
+              <strong>{careLevel.title}.</strong> {careLevel.action}
+            </div>
+          )}
+
           <div className="patient-info-section">
             <div className="info-group">
-              <label htmlFor="report-name">Patient name</label>
+              <label htmlFor="report-name">Your name</label>
 
               <input
                 id="report-name"
@@ -150,12 +181,13 @@ export default function ReportModal({
                 value={patientName}
                 onChange={(event) => setPatientName(event.target.value)}
                 placeholder="Full name"
+                autoFocus
                 disabled={isSaving}
               />
             </div>
 
             <div className="info-group">
-              <label htmlFor="report-age">Age</label>
+              <label htmlFor="report-age">Your age</label>
 
               <input
                 id="report-age"
@@ -214,7 +246,8 @@ export default function ReportModal({
           ) : (
             <div className="pain-list">
               {regions.map(([spotId, data]) => {
-                const displayRegionName = displayAnatomyName(data.regionName) || spotId;
+                const displayRegionName = (data.mode === "area" ? data.areaLabel : displayAnatomyName(data.regionName)) || spotId;
+                const located = localization[spotId];
 
                 return (
                   <div key={spotId} className="pain-item">
@@ -245,9 +278,9 @@ export default function ReportModal({
                         </p>
                       )}
 
-                      {data.startDate && (
+                      {data.onset && (
                         <p>
-                          <strong>Onset Date:</strong> {data.startDate}
+                          <strong>Started:</strong> {data.onset}
                         </p>
                       )}
 
@@ -257,6 +290,27 @@ export default function ReportModal({
                         </p>
                       )}
                     </div>
+
+                    {located && !located.candidates?.length && located.note && (
+                      <p className="pain-item-structures__caveat">{located.note}</p>
+                    )}
+
+                    {located?.candidates?.length > 0 && (
+                      <div className="pain-item-structures">
+                        <p className="pain-item-structures__label">
+                          Under the spot you tapped{located.where ? ` (${located.where})` : ""} · screening estimate, {located.confidence || "unranked"} confidence
+                        </p>
+                        <ol>
+                          {located.candidates.slice(0, 3).map((candidate) => (
+                            <li key={candidate.name}>
+                              <span>{candidate.display}</span>
+                              <span className="pain-item-structures__meta">{candidate.type} · {Math.round(candidate.share * 100)}%</span>
+                            </li>
+                          ))}
+                        </ol>
+                        {located.caveat && <p className="pain-item-structures__caveat">{located.caveat}</p>}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -264,15 +318,18 @@ export default function ReportModal({
           )}
         </div>
 
+        <CareGuide
+          guide={guideState.guide}
+          status={guideState.status}
+          error={guideState.error}
+          onRetry={() => setGuideRequest((n) => n + 1)}
+        />
+        </div>
+
         <div className="report-modal-footer">
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={handleSaveOnly}
-            disabled={isSaving}
-          >
-            {isSaving ? "Generating report..." : "Save report"}
-          </button>
+          <p className="report-footer-hint">
+            {patientName.trim() && patientAge !== "" ? "Ready. Your PDF downloads in a few seconds." : "Add your name and age above, then download."}
+          </p>
 
           <ReportButton
             patientName={patientName}

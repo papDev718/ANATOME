@@ -1,0 +1,6 @@
+# Extra packages needed only to retrain the models (see ml/README.md)
+-r requirements.txt
+torch==2.14.1
+transformers==5.20.1
+onnx==1.23.2
+onnxscript==0.7.2

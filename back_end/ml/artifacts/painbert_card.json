@@ -1,0 +1,1077 @@
+{
+  "name": "PainBERT",
+  "version": "1.0",
+  "trained_at": "2026-10-17T03:39:17+00:00",
+  "task": "Multi-label tagging of 21 clinical pain descriptors in a patient's own free-text description.",
+  "architecture": {
+    "backbone": "BAAI/bge-small-en-v1.5",
+    "parameters_millions": 33.4,
+    "head": "Mean pooling -> dropout(0.1) -> linear(384 -> 21) -> sigmoid",
+    "loss": "Binary cross-entropy with square-root inverse-frequency positive weights",
+    "optimizer": "AdamW, one-cycle schedule (encoder 4e-5, head 1e-3), 6 epochs, batch 32",
+    "runtime": "ONNX (opset 17), int8 dynamic quantization, onnxruntime CPU",
+    "onnx_parity_max_abs_logit_diff": 9.5367431640625e-06
+  },
+  "labels": [
+    {
+      "key": "burning",
+      "name": "Burning",
+      "group": "quality",
+      "definition": "Burning, hot, scalding or searing sensation.",
+      "dn4": true,
+      "threshold": 0.3,
+      "train_positives": 283
+    },
+    {
+      "key": "electric",
+      "name": "Electric / shooting",
+      "group": "quality",
+      "definition": "Electric-shock, zapping, lightning-like or shooting jolts.",
+      "dn4": true,
+      "threshold": 0.575,
+      "train_positives": 285
+    },
+    {
+      "key": "tingling",
+      "name": "Tingling / pins and needles",
+      "group": "quality",
+      "definition": "Tingling, pins and needles, prickling, crawling or buzzing.",
+      "dn4": true,
+      "threshold": 0.5249999999999999,
+      "train_positives": 308
+    },
+    {
+      "key": "numbness",
+      "name": "Numbness",
+      "group": "quality",
+      "definition": "Numbness, reduced or lost feeling, 'dead' or asleep sensation.",
+      "dn4": true,
+      "threshold": 0.44999999999999996,
+      "train_positives": 287
+    },
+    {
+      "key": "itching",
+      "name": "Itching",
+      "group": "quality",
+      "definition": "Itching or itchy sensation in the painful area.",
+      "dn4": true,
+      "threshold": 0.5249999999999999,
+      "train_positives": 296
+    },
+    {
+      "key": "cold_pain",
+      "name": "Painful cold",
+      "group": "quality",
+      "definition": "Pain that feels freezing/icy, or is triggered by cold.",
+      "dn4": true,
+      "threshold": 0.475,
+      "train_positives": 283
+    },
+    {
+      "key": "sharp",
+      "name": "Sharp / stabbing",
+      "group": "quality",
+      "definition": "Sharp, stabbing, knife-like, cutting or piercing pain.",
+      "dn4": false,
+      "threshold": 0.44999999999999996,
+      "train_positives": 298
+    },
+    {
+      "key": "throbbing",
+      "name": "Throbbing / pulsing",
+      "group": "quality",
+      "definition": "Throbbing, pounding, pulsing or beating pain.",
+      "dn4": false,
+      "threshold": 0.375,
+      "train_positives": 281
+    },
+    {
+      "key": "aching",
+      "name": "Dull / aching",
+      "group": "quality",
+      "definition": "Dull, aching, sore, heavy or nagging pain.",
+      "dn4": false,
+      "threshold": 0.6,
+      "train_positives": 289
+    },
+    {
+      "key": "pressure",
+      "name": "Pressure / cramping",
+      "group": "quality",
+      "definition": "Pressure, squeezing, tightness, cramping or crushing pain.",
+      "dn4": false,
+      "threshold": 0.35,
+      "train_positives": 301
+    },
+    {
+      "key": "radiating",
+      "name": "Radiating",
+      "group": "pattern",
+      "definition": "Pain that spreads, travels or radiates to another area.",
+      "dn4": false,
+      "threshold": 0.5,
+      "train_positives": 311
+    },
+    {
+      "key": "night_pain",
+      "name": "Night pain",
+      "group": "pattern",
+      "definition": "Pain that is worse at night or wakes the patient up.",
+      "dn4": false,
+      "threshold": 0.39999999999999997,
+      "train_positives": 285
+    },
+    {
+      "key": "stiffness",
+      "name": "Stiffness",
+      "group": "pattern",
+      "definition": "Stiffness, especially morning stiffness or difficulty loosening up.",
+      "dn4": false,
+      "threshold": 0.5499999999999999,
+      "train_positives": 278
+    },
+    {
+      "key": "weakness",
+      "name": "Weakness",
+      "group": "associated",
+      "definition": "Muscle weakness, limb giving way, dropping things, foot drop.",
+      "dn4": false,
+      "threshold": 0.44999999999999996,
+      "train_positives": 285
+    },
+    {
+      "key": "swelling",
+      "name": "Swelling / redness",
+      "group": "associated",
+      "definition": "Swelling, puffiness, redness or warmth at the site.",
+      "dn4": false,
+      "threshold": 0.575,
+      "train_positives": 291
+    },
+    {
+      "key": "trauma",
+      "name": "Injury / trauma",
+      "group": "associated",
+      "definition": "Pain that began with a fall, accident, impact, sports injury or a pop.",
+      "dn4": false,
+      "threshold": 0.5499999999999999,
+      "train_positives": 293
+    },
+    {
+      "key": "fever",
+      "name": "Fever / chills",
+      "group": "associated",
+      "definition": "Fever, chills, night sweats or feeling feverish.",
+      "dn4": false,
+      "threshold": 0.3,
+      "train_positives": 282
+    },
+    {
+      "key": "bladder_bowel",
+      "name": "Bladder / bowel change",
+      "group": "associated",
+      "definition": "New bladder or bowel control problems or numbness in the saddle/groin area.",
+      "dn4": false,
+      "threshold": 0.35,
+      "train_positives": 300
+    },
+    {
+      "key": "sleep_loss",
+      "name": "Sleep disruption",
+      "group": "impact",
+      "definition": "Trouble falling or staying asleep because of the pain.",
+      "dn4": false,
+      "threshold": 0.5249999999999999,
+      "train_positives": 267
+    },
+    {
+      "key": "function_loss",
+      "name": "Functional limitation",
+      "group": "impact",
+      "definition": "Pain stops or limits walking, work, school, sport, chores or self-care.",
+      "dn4": false,
+      "threshold": 0.3,
+      "train_positives": 285
+    },
+    {
+      "key": "distress",
+      "name": "Emotional distress",
+      "group": "impact",
+      "definition": "Worry, fear, low mood, frustration, hopelessness or not coping.",
+      "dn4": false,
+      "threshold": 0.44999999999999996,
+      "train_positives": 299
+    }
+  ],
+  "data": {
+    "method": "Specification-first synthetic generation: label sets are sampled first (inverse-frequency balanced, with explicit negations), each label gets a sampled everyday phrasing and the label's own name is often banned, then an LLM writes a patient note expressing exactly those labels.",
+    "lexical_diversity_note": "Version 1 of the data let generators reuse label names ('throbbing', 'pressure'); the word 'cramp' never appeared in 2,508 notes. Version 2 added phrasing hints and word bans; both versions are used for training, only version 2 for testing.",
+    "train_generator": "openai/gpt-oss-120b and openai/gpt-oss-20b",
+    "test_generator": "qwen/qwen3.8-27b, version 2 prompts (different model family, never seen in training)",
+    "n_train": 3031,
+    "n_valid": 336,
+    "n_test": 200,
+    "n_challenge": 79,
+    "challenge_set": "Hand-written notes with negation ('no tingling'), slang, metaphor ('ants crawling') and label-free distractors, written before any model was trained."
+  },
+  "training_history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.6098595931560676,
+      "valid_micro_f1": 0.740080971659919
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.2567038224233884,
+      "valid_micro_f1": 0.8781869688385269
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.14225835063814607,
+      "valid_micro_f1": 0.9011913104414856
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.10202518839995015,
+      "valid_micro_f1": 0.9106382978723404
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.08413431718478459,
+      "valid_micro_f1": 0.9167862266857962
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.0790800583176745,
+      "valid_micro_f1": 0.9158345221112696
+    }
+  ],
+  "results": {
+    "test_cross_generator": {
+      "PainBERT (fine-tuned transformer)": {
+        "micro_f1": 0.7859922178988327,
+        "macro_f1": 0.7855375943029037,
+        "exact_match": 0.51,
+        "per_label": {
+          "burning": {
+            "precision": 0.7647058823529411,
+            "recall": 0.8666666666666667,
+            "f1": 0.8125,
+            "support": 15
+          },
+          "electric": {
+            "precision": 0.8,
+            "recall": 0.9523809523809523,
+            "f1": 0.8695652173913043,
+            "support": 21
+          },
+          "tingling": {
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5,
+            "support": 14
+          },
+          "numbness": {
+            "precision": 0.84,
+            "recall": 0.9130434782608695,
+            "f1": 0.875,
+            "support": 23
+          },
+          "itching": {
+            "precision": 0.9473684210526315,
+            "recall": 0.8571428571428571,
+            "f1": 0.9,
+            "support": 21
+          },
+          "cold_pain": {
+            "precision": 0.7647058823529411,
+            "recall": 1.0,
+            "f1": 0.8666666666666667,
+            "support": 13
+          },
+          "sharp": {
+            "precision": 1.0,
+            "recall": 0.7272727272727273,
+            "f1": 0.8421052631578947,
+            "support": 22
+          },
+          "throbbing": {
+            "precision": 0.65,
+            "recall": 1.0,
+            "f1": 0.7878787878787878,
+            "support": 13
+          },
+          "aching": {
+            "precision": 0.625,
+            "recall": 0.75,
+            "f1": 0.6818181818181818,
+            "support": 20
+          },
+          "pressure": {
+            "precision": 0.6666666666666666,
+            "recall": 0.7692307692307693,
+            "f1": 0.7142857142857143,
+            "support": 13
+          },
+          "radiating": {
+            "precision": 0.9285714285714286,
+            "recall": 0.8125,
+            "f1": 0.8666666666666667,
+            "support": 16
+          },
+          "night_pain": {
+            "precision": 0.7894736842105263,
+            "recall": 0.6521739130434783,
+            "f1": 0.7142857142857143,
+            "support": 23
+          },
+          "stiffness": {
+            "precision": 1.0,
+            "recall": 0.7272727272727273,
+            "f1": 0.8421052631578947,
+            "support": 22
+          },
+          "weakness": {
+            "precision": 0.7647058823529411,
+            "recall": 0.7222222222222222,
+            "f1": 0.7428571428571429,
+            "support": 18
+          },
+          "swelling": {
+            "precision": 0.8235294117647058,
+            "recall": 0.875,
+            "f1": 0.8484848484848485,
+            "support": 16
+          },
+          "trauma": {
+            "precision": 0.9333333333333333,
+            "recall": 0.9333333333333333,
+            "f1": 0.9333333333333333,
+            "support": 15
+          },
+          "fever": {
+            "precision": 0.8947368421052632,
+            "recall": 0.9444444444444444,
+            "f1": 0.918918918918919,
+            "support": 18
+          },
+          "bladder_bowel": {
+            "precision": 0.7777777777777778,
+            "recall": 0.7777777777777778,
+            "f1": 0.7777777777777778,
+            "support": 18
+          },
+          "sleep_loss": {
+            "precision": 0.7777777777777778,
+            "recall": 0.5833333333333334,
+            "f1": 0.6666666666666666,
+            "support": 24
+          },
+          "function_loss": {
+            "precision": 0.5833333333333334,
+            "recall": 0.7368421052631579,
+            "f1": 0.6511627906976745,
+            "support": 19
+          },
+          "distress": {
+            "precision": 0.6842105263157895,
+            "recall": 0.6842105263157895,
+            "f1": 0.6842105263157895,
+            "support": 19
+          }
+        }
+      },
+      "Keyword lexicon": {
+        "micro_f1": 0.4379746835443038,
+        "macro_f1": 0.42956559617396906,
+        "exact_match": 0.115,
+        "per_label": {
+          "burning": {
+            "precision": 0.45,
+            "recall": 0.6,
+            "f1": 0.5142857142857142,
+            "support": 15
+          },
+          "electric": {
+            "precision": 0.6666666666666666,
+            "recall": 0.8571428571428571,
+            "f1": 0.75,
+            "support": 21
+          },
+          "tingling": {
+            "precision": 0.4090909090909091,
+            "recall": 0.6428571428571429,
+            "f1": 0.5,
+            "support": 14
+          },
+          "numbness": {
+            "precision": 0.358974358974359,
+            "recall": 0.6086956521739131,
+            "f1": 0.45161290322580644,
+            "support": 23
+          },
+          "itching": {
+            "precision": 0.5454545454545454,
+            "recall": 0.2857142857142857,
+            "f1": 0.375,
+            "support": 21
+          },
+          "cold_pain": {
+            "precision": 0.5,
+            "recall": 0.6153846153846154,
+            "f1": 0.5517241379310345,
+            "support": 13
+          },
+          "sharp": {
+            "precision": 0.8125,
+            "recall": 0.5909090909090909,
+            "f1": 0.6842105263157895,
+            "support": 22
+          },
+          "throbbing": {
+            "precision": 0.46153846153846156,
+            "recall": 0.46153846153846156,
+            "f1": 0.46153846153846156,
+            "support": 13
+          },
+          "aching": {
+            "precision": 0.48148148148148145,
+            "recall": 0.65,
+            "f1": 0.5531914893617021,
+            "support": 20
+          },
+          "pressure": {
+            "precision": 0.7058823529411765,
+            "recall": 0.9230769230769231,
+            "f1": 0.8,
+            "support": 13
+          },
+          "radiating": {
+            "precision": 0.625,
+            "recall": 0.3125,
+            "f1": 0.4166666666666667,
+            "support": 16
+          },
+          "night_pain": {
+            "precision": 0.4,
+            "recall": 0.17391304347826086,
+            "f1": 0.24242424242424243,
+            "support": 23
+          },
+          "stiffness": {
+            "precision": 0.631578947368421,
+            "recall": 0.5454545454545454,
+            "f1": 0.5853658536585366,
+            "support": 22
+          },
+          "weakness": {
+            "precision": 0.4090909090909091,
+            "recall": 0.5,
+            "f1": 0.45,
+            "support": 18
+          },
+          "swelling": {
+            "precision": 0.5,
+            "recall": 0.0625,
+            "f1": 0.1111111111111111,
+            "support": 16
+          },
+          "trauma": {
+            "precision": 0.125,
+            "recall": 0.06666666666666667,
+            "f1": 0.08695652173913043,
+            "support": 15
+          },
+          "fever": {
+            "precision": 0.2564102564102564,
+            "recall": 0.5555555555555556,
+            "f1": 0.3508771929824561,
+            "support": 18
+          },
+          "bladder_bowel": {
+            "precision": 0.4166666666666667,
+            "recall": 0.2777777777777778,
+            "f1": 0.3333333333333333,
+            "support": 18
+          },
+          "sleep_loss": {
+            "precision": 0.5,
+            "recall": 0.08333333333333333,
+            "f1": 0.14285714285714285,
+            "support": 24
+          },
+          "function_loss": {
+            "precision": 0.5384615384615384,
+            "recall": 0.3684210526315789,
+            "f1": 0.4375,
+            "support": 19
+          },
+          "distress": {
+            "precision": 0.14516129032258066,
+            "recall": 0.47368421052631576,
+            "f1": 0.2222222222222222,
+            "support": 19
+          }
+        }
+      },
+      "TF-IDF + logistic regression": {
+        "micro_f1": 0.6295180722891566,
+        "macro_f1": 0.6197925751512356,
+        "exact_match": 0.29,
+        "per_label": {
+          "burning": {
+            "precision": 0.5789473684210527,
+            "recall": 0.7333333333333333,
+            "f1": 0.6470588235294118,
+            "support": 15
+          },
+          "electric": {
+            "precision": 0.9375,
+            "recall": 0.7142857142857143,
+            "f1": 0.8108108108108109,
+            "support": 21
+          },
+          "tingling": {
+            "precision": 0.625,
+            "recall": 0.35714285714285715,
+            "f1": 0.45454545454545453,
+            "support": 14
+          },
+          "numbness": {
+            "precision": 0.8333333333333334,
+            "recall": 0.6521739130434783,
+            "f1": 0.7317073170731707,
+            "support": 23
+          },
+          "itching": {
+            "precision": 0.8888888888888888,
+            "recall": 0.7619047619047619,
+            "f1": 0.8205128205128205,
+            "support": 21
+          },
+          "cold_pain": {
+            "precision": 0.7272727272727273,
+            "recall": 0.6153846153846154,
+            "f1": 0.6666666666666666,
+            "support": 13
+          },
+          "sharp": {
+            "precision": 0.6666666666666666,
+            "recall": 0.18181818181818182,
+            "f1": 0.2857142857142857,
+            "support": 22
+          },
+          "throbbing": {
+            "precision": 0.7,
+            "recall": 0.5384615384615384,
+            "f1": 0.6086956521739131,
+            "support": 13
+          },
+          "aching": {
+            "precision": 0.6875,
+            "recall": 0.55,
+            "f1": 0.6111111111111112,
+            "support": 20
+          },
+          "pressure": {
+            "precision": 1.0,
+            "recall": 0.6923076923076923,
+            "f1": 0.8181818181818182,
+            "support": 13
+          },
+          "radiating": {
+            "precision": 0.9285714285714286,
+            "recall": 0.8125,
+            "f1": 0.8666666666666667,
+            "support": 16
+          },
+          "night_pain": {
+            "precision": 0.9090909090909091,
+            "recall": 0.43478260869565216,
+            "f1": 0.5882352941176471,
+            "support": 23
+          },
+          "stiffness": {
+            "precision": 0.8,
+            "recall": 0.7272727272727273,
+            "f1": 0.7619047619047619,
+            "support": 22
+          },
+          "weakness": {
+            "precision": 0.8333333333333334,
+            "recall": 0.2777777777777778,
+            "f1": 0.4166666666666667,
+            "support": 18
+          },
+          "swelling": {
+            "precision": 0.6,
+            "recall": 0.5625,
+            "f1": 0.5806451612903226,
+            "support": 16
+          },
+          "trauma": {
+            "precision": 0.7142857142857143,
+            "recall": 0.6666666666666666,
+            "f1": 0.6896551724137931,
+            "support": 15
+          },
+          "fever": {
+            "precision": 0.6363636363636364,
+            "recall": 0.3888888888888889,
+            "f1": 0.4827586206896552,
+            "support": 18
+          },
+          "bladder_bowel": {
+            "precision": 0.6666666666666666,
+            "recall": 0.4444444444444444,
+            "f1": 0.5333333333333333,
+            "support": 18
+          },
+          "sleep_loss": {
+            "precision": 0.8,
+            "recall": 0.5,
+            "f1": 0.6153846153846154,
+            "support": 24
+          },
+          "function_loss": {
+            "precision": 0.5714285714285714,
+            "recall": 0.42105263157894735,
+            "f1": 0.48484848484848486,
+            "support": 19
+          },
+          "distress": {
+            "precision": 0.5555555555555556,
+            "recall": 0.5263157894736842,
+            "f1": 0.5405405405405406,
+            "support": 19
+          }
+        }
+      }
+    },
+    "challenge_handwritten": {
+      "PainBERT (fine-tuned transformer)": {
+        "micro_f1": 0.8240740740740741,
+        "macro_f1": 0.8275423611558065,
+        "exact_match": 0.5949367088607594,
+        "per_label": {
+          "burning": {
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693,
+            "support": 6
+          },
+          "electric": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "support": 6
+          },
+          "tingling": {
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1": 0.9090909090909091,
+            "support": 5
+          },
+          "numbness": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 5
+          },
+          "itching": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 3
+          },
+          "cold_pain": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 2
+          },
+          "sharp": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 5
+          },
+          "throbbing": {
+            "precision": 0.8,
+            "recall": 0.8,
+            "f1": 0.8,
+            "support": 5
+          },
+          "aching": {
+            "precision": 0.8333333333333334,
+            "recall": 0.45454545454545453,
+            "f1": 0.5882352941176471,
+            "support": 11
+          },
+          "pressure": {
+            "precision": 0.8571428571428571,
+            "recall": 0.8571428571428571,
+            "f1": 0.8571428571428571,
+            "support": 7
+          },
+          "radiating": {
+            "precision": 0.8,
+            "recall": 0.8,
+            "f1": 0.8,
+            "support": 5
+          },
+          "night_pain": {
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1": 0.9090909090909091,
+            "support": 5
+          },
+          "stiffness": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 4
+          },
+          "weakness": {
+            "precision": 0.75,
+            "recall": 0.6,
+            "f1": 0.6666666666666666,
+            "support": 5
+          },
+          "swelling": {
+            "precision": 1.0,
+            "recall": 0.8333333333333334,
+            "f1": 0.9090909090909091,
+            "support": 6
+          },
+          "trauma": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 6
+          },
+          "fever": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 3
+          },
+          "bladder_bowel": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1": 0.6666666666666666,
+            "support": 3
+          },
+          "sleep_loss": {
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5,
+            "support": 4
+          },
+          "function_loss": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 6
+          },
+          "distress": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 6
+          }
+        }
+      },
+      "Keyword lexicon": {
+        "micro_f1": 0.5938864628820961,
+        "macro_f1": 0.5929111193817077,
+        "exact_match": 0.3037974683544304,
+        "per_label": {
+          "burning": {
+            "precision": 0.5714285714285714,
+            "recall": 0.6666666666666666,
+            "f1": 0.6153846153846154,
+            "support": 6
+          },
+          "electric": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 6
+          },
+          "tingling": {
+            "precision": 0.7142857142857143,
+            "recall": 1.0,
+            "f1": 0.8333333333333334,
+            "support": 5
+          },
+          "numbness": {
+            "precision": 0.3333333333333333,
+            "recall": 0.6,
+            "f1": 0.42857142857142855,
+            "support": 5
+          },
+          "itching": {
+            "precision": 1.0,
+            "recall": 0.6666666666666666,
+            "f1": 0.8,
+            "support": 3
+          },
+          "cold_pain": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 2
+          },
+          "sharp": {
+            "precision": 0.8,
+            "recall": 0.8,
+            "f1": 0.8,
+            "support": 5
+          },
+          "throbbing": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 5
+          },
+          "aching": {
+            "precision": 0.8333333333333334,
+            "recall": 0.45454545454545453,
+            "f1": 0.5882352941176471,
+            "support": 11
+          },
+          "pressure": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 7
+          },
+          "radiating": {
+            "precision": 0.5,
+            "recall": 0.4,
+            "f1": 0.4444444444444444,
+            "support": 5
+          },
+          "night_pain": {
+            "precision": 0.625,
+            "recall": 1.0,
+            "f1": 0.7692307692307693,
+            "support": 5
+          },
+          "stiffness": {
+            "precision": 0.5714285714285714,
+            "recall": 1.0,
+            "f1": 0.7272727272727273,
+            "support": 4
+          },
+          "weakness": {
+            "precision": 0.2857142857142857,
+            "recall": 0.4,
+            "f1": 0.3333333333333333,
+            "support": 5
+          },
+          "swelling": {
+            "precision": 0.5,
+            "recall": 0.16666666666666666,
+            "f1": 0.25,
+            "support": 6
+          },
+          "trauma": {
+            "precision": 0.6,
+            "recall": 0.5,
+            "f1": 0.5454545454545454,
+            "support": 6
+          },
+          "fever": {
+            "precision": 0.15384615384615385,
+            "recall": 0.6666666666666666,
+            "f1": 0.25,
+            "support": 3
+          },
+          "bladder_bowel": {
+            "precision": 0.5,
+            "recall": 0.6666666666666666,
+            "f1": 0.5714285714285714,
+            "support": 3
+          },
+          "sleep_loss": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 4
+          },
+          "function_loss": {
+            "precision": 0.6666666666666666,
+            "recall": 0.3333333333333333,
+            "f1": 0.4444444444444444,
+            "support": 6
+          },
+          "distress": {
+            "precision": 0.2,
+            "recall": 0.3333333333333333,
+            "f1": 0.25,
+            "support": 6
+          }
+        }
+      },
+      "TF-IDF + logistic regression": {
+        "micro_f1": 0.7699530516431925,
+        "macro_f1": 0.7534666702733929,
+        "exact_match": 0.5316455696202531,
+        "per_label": {
+          "burning": {
+            "precision": 0.7142857142857143,
+            "recall": 0.8333333333333334,
+            "f1": 0.7692307692307693,
+            "support": 6
+          },
+          "electric": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 6
+          },
+          "tingling": {
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1": 0.9090909090909091,
+            "support": 5
+          },
+          "numbness": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 5
+          },
+          "itching": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 3
+          },
+          "cold_pain": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 2
+          },
+          "sharp": {
+            "precision": 1.0,
+            "recall": 0.8,
+            "f1": 0.8888888888888888,
+            "support": 5
+          },
+          "throbbing": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 5
+          },
+          "aching": {
+            "precision": 0.8333333333333334,
+            "recall": 0.45454545454545453,
+            "f1": 0.5882352941176471,
+            "support": 11
+          },
+          "pressure": {
+            "precision": 1.0,
+            "recall": 0.7142857142857143,
+            "f1": 0.8333333333333334,
+            "support": 7
+          },
+          "radiating": {
+            "precision": 0.8333333333333334,
+            "recall": 1.0,
+            "f1": 0.9090909090909091,
+            "support": 5
+          },
+          "night_pain": {
+            "precision": 0.7142857142857143,
+            "recall": 1.0,
+            "f1": 0.8333333333333334,
+            "support": 5
+          },
+          "stiffness": {
+            "precision": 0.6666666666666666,
+            "recall": 1.0,
+            "f1": 0.8,
+            "support": 4
+          },
+          "weakness": {
+            "precision": 1.0,
+            "recall": 0.4,
+            "f1": 0.5714285714285714,
+            "support": 5
+          },
+          "swelling": {
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "f1": 0.6666666666666666,
+            "support": 6
+          },
+          "trauma": {
+            "precision": 0.5454545454545454,
+            "recall": 1.0,
+            "f1": 0.7058823529411765,
+            "support": 6
+          },
+          "fever": {
+            "precision": 0.75,
+            "recall": 1.0,
+            "f1": 0.8571428571428571,
+            "support": 3
+          },
+          "bladder_bowel": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 3
+          },
+          "sleep_loss": {
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666,
+            "support": 4
+          },
+          "function_loss": {
+            "precision": 0.8333333333333334,
+            "recall": 0.8333333333333334,
+            "f1": 0.8333333333333334,
+            "support": 6
+          },
+          "distress": {
+            "precision": 1.0,
+            "recall": 0.5,
+            "f1": 0.6666666666666666,
+            "support": 6
+          }
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Training text is synthetic; real patient notes may contain spelling, dialects and topics not represented.",
+    "English only. Spanish and other languages are handled upstream by speech translation.",
+    "Descriptors are not diagnoses: neuropathic-sounding words raise a screening flag only."
+  ],
+  "quantization": {
+    "method": "onnxruntime dynamic quantization, int8 weights (QInt8)",
+    "size_mb_fp32": 133.1,
+    "size_mb_int8": 33.8,
+    "challenge_handwritten": {
+      "micro_f1_fp32": 0.8240740740740741,
+      "micro_f1_int8": 0.827906976744186,
+      "max_probability_diff": 0.506165623664856,
+      "latency_ms_fp32": 3.13,
+      "latency_ms_int8": 2.23
+    },
+    "test_cross_generator": {
+      "micro_f1_fp32": 0.7859922178988327,
+      "micro_f1_int8": 0.7582562747688243,
+      "max_probability_diff": 0.6773195266723633,
+      "latency_ms_fp32": 3.3,
+      "latency_ms_int8": 3.25
+    }
+  }
+}

@@ -1,4 +1,31 @@
-# ANATOME Setup Guide
+# ANATOME
+
+ANATOME is a pain-intake tool. Patients mark the muscles that hurt on a 3D
+body with 337 anatomical structures, answer a short questionnaire, describe
+the pain in their own words, and leave with a clinician-ready PDF report.
+
+When the report is generated, four decision-support engines run on the
+ANATOME server and their findings are passed to the report writer:
+
+* **Triage-GBM**: gradient-boosted trees trained on 75,383 real U.S.
+  emergency-department visits from the CDC's NHAMCS survey (2015–2022).
+  Estimates triage urgency and admission likelihood, with per-patient
+  explanations. Macro AUROC 0.741 on the unseen 2022 year.
+* **PainBERT**: a fine-tuned 33M-parameter transformer that tags 21 clinical
+  pain descriptors in free text (including the DN4 nerve-pain items) and
+  highlights the words behind each one.
+* **Anatomy engine**: maps every structure to its nerve and spinal roots,
+  detects shared-segment patterns (for example L5) and scores the ACR
+  Widespread Pain Index.
+* **Red-flag rules**: guideline warning signs (AHA, NICE, CDC) that always
+  override the models.
+
+The API also exposes them directly (`POST /api/analyze`, `POST /api/nlp/tag`,
+`GET /api/models`, `POST /api/transcribe`). Model details, metrics and the
+fairness audit are in [`back_end/ml/README.md`](back_end/ml/README.md) and the
+model-card JSON files in `back_end/ml/artifacts/`.
+
+# Setup Guide
 This guide will walk you through setting up and running the project from start to finish.
 
 ---
@@ -43,7 +70,11 @@ cp back_end/.env.example back_end/.env
 Use a freshly rotated key if an earlier key was shared in a message or exposed
 elsewhere. Never put the key in frontend source, a `VITE_` variable, or GitHub.
 The default report model is `openai/gpt-oss-20b`, which supports strict JSON
-schema output. You can override it with `GROQ_REPORT_MODEL`.
+schema output. You can override it with `GROQ_REPORT_MODEL`. The same key
+powers the `/api/transcribe` endpoint (Whisper speech-to-text and translation).
+
+The trained models ship in `back_end/ml/artifacts/`, so the analysis features
+work without retraining. To retrain them, see `back_end/ml/README.md`.
 
 The frontend sends report requests to `/api/reports`; Vite and Docker proxy
 those requests to FastAPI. Start both services for Generate Report to work.

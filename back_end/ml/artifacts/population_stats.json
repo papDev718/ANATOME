@@ -1,0 +1,1468 @@
+{
+  "overall": {
+    "n_visits_sampled": 75383,
+    "national_visits_per_year": 73702585,
+    "pct_emergent": 0.1428,
+    "pct_admitted": 0.1039,
+    "median_wait_min": 15.0,
+    "median_hospital_days_if_admitted": 4.0
+  },
+  "by_concept": {
+    "head": {
+      "all": {
+        "n_visits_sampled": 7610,
+        "national_visits_per_year": 7538366,
+        "pct_emergent": 0.1244,
+        "pct_admitted": 0.0568,
+        "median_wait_min": 16.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 651,
+          "national_visits_per_year": 645788,
+          "pct_emergent": 0.055,
+          "pct_admitted": 0.0161,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 627,
+          "national_visits_per_year": 635020,
+          "pct_emergent": 0.1247,
+          "pct_admitted": 0.0389,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 395,
+          "national_visits_per_year": 366292,
+          "pct_emergent": 0.2226,
+          "pct_admitted": 0.0782,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 412,
+          "national_visits_per_year": 442313,
+          "pct_emergent": 0.2336,
+          "pct_admitted": 0.1567,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 405,
+          "national_visits_per_year": 449690,
+          "pct_emergent": 0.075,
+          "pct_admitted": 0.0133,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 824,
+          "national_visits_per_year": 803218,
+          "pct_emergent": 0.0683,
+          "pct_admitted": 0.0302,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 419,
+          "national_visits_per_year": 423395,
+          "pct_emergent": 0.1348,
+          "pct_admitted": 0.0733,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 294,
+          "national_visits_per_year": 279443,
+          "pct_emergent": 0.1894,
+          "pct_admitted": 0.1432,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 379,
+          "national_visits_per_year": 381462,
+          "pct_emergent": 0.0883,
+          "pct_admitted": 0.0234,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 1869,
+          "national_visits_per_year": 1783703,
+          "pct_emergent": 0.09,
+          "pct_admitted": 0.0382,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 956,
+          "national_visits_per_year": 941365,
+          "pct_emergent": 0.1688,
+          "pct_admitted": 0.0647,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 379,
+          "national_visits_per_year": 386672,
+          "pct_emergent": 0.2233,
+          "pct_admitted": 0.1445,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 3.0
+        }
+      }
+    },
+    "face_jaw": {
+      "all": {
+        "n_visits_sampled": 2532,
+        "national_visits_per_year": 2464823,
+        "pct_emergent": 0.1062,
+        "pct_admitted": 0.047,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 271,
+          "national_visits_per_year": 251154,
+          "pct_emergent": 0.0508,
+          "pct_admitted": 0.0084,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 207,
+          "national_visits_per_year": 211642,
+          "pct_emergent": 0.1281,
+          "pct_admitted": 0.0135,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 127,
+          "national_visits_per_year": 124307,
+          "pct_emergent": 0.2141,
+          "pct_admitted": 0.0976,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 114,
+          "national_visits_per_year": 132382,
+          "pct_emergent": 0.2048,
+          "pct_admitted": 0.1698,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 114,
+          "national_visits_per_year": 103767,
+          "pct_emergent": 0.0542,
+          "pct_admitted": 0.03,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 266,
+          "national_visits_per_year": 271815,
+          "pct_emergent": 0.0397,
+          "pct_admitted": 0.009,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 105,
+          "national_visits_per_year": 100792,
+          "pct_emergent": 0.2075,
+          "pct_admitted": 0.1161,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 40,
+          "national_visits_per_year": 33982,
+          "pct_emergent": 0.2117,
+          "pct_admitted": 0.1219,
+          "median_wait_min": 9.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 97,
+          "national_visits_per_year": 98908,
+          "pct_emergent": 0.1508,
+          "pct_admitted": 0.0518,
+          "median_wait_min": 23.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 840,
+          "national_visits_per_year": 811964,
+          "pct_emergent": 0.0574,
+          "pct_admitted": 0.0184,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 274,
+          "national_visits_per_year": 238307,
+          "pct_emergent": 0.1366,
+          "pct_admitted": 0.064,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 77,
+          "national_visits_per_year": 85798,
+          "pct_emergent": 0.3456,
+          "pct_admitted": 0.229,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        }
+      }
+    },
+    "neck": {
+      "all": {
+        "n_visits_sampled": 2318,
+        "national_visits_per_year": 2263167,
+        "pct_emergent": 0.1172,
+        "pct_admitted": 0.04,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 134,
+          "national_visits_per_year": 121457,
+          "pct_emergent": 0.0412,
+          "pct_admitted": 0.0289,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 156,
+          "national_visits_per_year": 139817,
+          "pct_emergent": 0.1035,
+          "pct_admitted": 0.057,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 95,
+          "national_visits_per_year": 107967,
+          "pct_emergent": 0.1708,
+          "pct_admitted": 0.048,
+          "median_wait_min": 9.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 109,
+          "national_visits_per_year": 99407,
+          "pct_emergent": 0.2464,
+          "pct_admitted": 0.0979,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 82,
+          "national_visits_per_year": 92476,
+          "pct_emergent": 0.1163,
+          "pct_admitted": 0.0148,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 266,
+          "national_visits_per_year": 248560,
+          "pct_emergent": 0.097,
+          "pct_admitted": 0.0135,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 132,
+          "national_visits_per_year": 126358,
+          "pct_emergent": 0.1011,
+          "pct_admitted": 0.0419,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 85,
+          "national_visits_per_year": 92566,
+          "pct_emergent": 0.1242,
+          "pct_admitted": 0.1131,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 81,
+          "national_visits_per_year": 69371,
+          "pct_emergent": 0.0687,
+          "pct_admitted": 0.0,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 617,
+          "national_visits_per_year": 599304,
+          "pct_emergent": 0.1144,
+          "pct_admitted": 0.0208,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 375,
+          "national_visits_per_year": 370097,
+          "pct_emergent": 0.0917,
+          "pct_admitted": 0.0396,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 186,
+          "national_visits_per_year": 195780,
+          "pct_emergent": 0.1859,
+          "pct_admitted": 0.0848,
+          "median_wait_min": 20.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "shoulder": {
+      "all": {
+        "n_visits_sampled": 1640,
+        "national_visits_per_year": 1598166,
+        "pct_emergent": 0.1419,
+        "pct_admitted": 0.0497,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|18-44": {
+          "n_visits_sampled": 66,
+          "national_visits_per_year": 64756,
+          "pct_emergent": 0.3324,
+          "pct_admitted": 0.0,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 56,
+          "national_visits_per_year": 55791,
+          "pct_emergent": 0.2645,
+          "pct_admitted": 0.0467,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 61,
+          "national_visits_per_year": 56933,
+          "pct_emergent": 0.2835,
+          "pct_admitted": 0.21,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 168,
+          "national_visits_per_year": 150805,
+          "pct_emergent": 0.0813,
+          "pct_admitted": 0.0483,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 110,
+          "national_visits_per_year": 114705,
+          "pct_emergent": 0.1888,
+          "pct_admitted": 0.0925,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 85,
+          "national_visits_per_year": 94862,
+          "pct_emergent": 0.0993,
+          "pct_admitted": 0.0544,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 54,
+          "national_visits_per_year": 57211,
+          "pct_emergent": 0.0559,
+          "pct_admitted": 0.0,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 428,
+          "national_visits_per_year": 408391,
+          "pct_emergent": 0.0766,
+          "pct_admitted": 0.0277,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 377,
+          "national_visits_per_year": 361791,
+          "pct_emergent": 0.1558,
+          "pct_admitted": 0.0454,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 174,
+          "national_visits_per_year": 169127,
+          "pct_emergent": 0.1979,
+          "pct_admitted": 0.0834,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "arm": {
+      "all": {
+        "n_visits_sampled": 3609,
+        "national_visits_per_year": 3518456,
+        "pct_emergent": 0.1437,
+        "pct_admitted": 0.0746,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 220,
+          "national_visits_per_year": 227068,
+          "pct_emergent": 0.1126,
+          "pct_admitted": 0.0243,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 394,
+          "national_visits_per_year": 347239,
+          "pct_emergent": 0.1048,
+          "pct_admitted": 0.0325,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 261,
+          "national_visits_per_year": 236316,
+          "pct_emergent": 0.2573,
+          "pct_admitted": 0.1339,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 225,
+          "national_visits_per_year": 218636,
+          "pct_emergent": 0.2762,
+          "pct_admitted": 0.1921,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 196,
+          "national_visits_per_year": 213047,
+          "pct_emergent": 0.0718,
+          "pct_admitted": 0.0156,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 346,
+          "national_visits_per_year": 297030,
+          "pct_emergent": 0.1189,
+          "pct_admitted": 0.0208,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 251,
+          "national_visits_per_year": 221469,
+          "pct_emergent": 0.2065,
+          "pct_admitted": 0.1398,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 138,
+          "national_visits_per_year": 170231,
+          "pct_emergent": 0.1308,
+          "pct_admitted": 0.1454,
+          "median_wait_min": 10.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 203,
+          "national_visits_per_year": 215906,
+          "pct_emergent": 0.0857,
+          "pct_admitted": 0.0317,
+          "median_wait_min": 9.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 703,
+          "national_visits_per_year": 690121,
+          "pct_emergent": 0.095,
+          "pct_admitted": 0.0376,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 456,
+          "national_visits_per_year": 453952,
+          "pct_emergent": 0.1722,
+          "pct_admitted": 0.0898,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 216,
+          "national_visits_per_year": 227436,
+          "pct_emergent": 0.1826,
+          "pct_admitted": 0.146,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 4.0
+        }
+      }
+    },
+    "hand_wrist": {
+      "all": {
+        "n_visits_sampled": 2348,
+        "national_visits_per_year": 2170848,
+        "pct_emergent": 0.0599,
+        "pct_admitted": 0.041,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 142,
+          "national_visits_per_year": 135043,
+          "pct_emergent": 0.0101,
+          "pct_admitted": 0.0144,
+          "median_wait_min": 20.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 182,
+          "national_visits_per_year": 163528,
+          "pct_emergent": 0.0492,
+          "pct_admitted": 0.025,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 116,
+          "national_visits_per_year": 113636,
+          "pct_emergent": 0.1392,
+          "pct_admitted": 0.0409,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 74,
+          "national_visits_per_year": 72907,
+          "pct_emergent": 0.0559,
+          "pct_admitted": 0.0778,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 175,
+          "national_visits_per_year": 160660,
+          "pct_emergent": 0.0215,
+          "pct_admitted": 0.0085,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 251,
+          "national_visits_per_year": 229694,
+          "pct_emergent": 0.0615,
+          "pct_admitted": 0.005,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 119,
+          "national_visits_per_year": 111534,
+          "pct_emergent": 0.1053,
+          "pct_admitted": 0.117,
+          "median_wait_min": 23.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 80,
+          "national_visits_per_year": 65801,
+          "pct_emergent": 0.1072,
+          "pct_admitted": 0.0317,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 184,
+          "national_visits_per_year": 164213,
+          "pct_emergent": 0.0669,
+          "pct_admitted": 0.0165,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 565,
+          "national_visits_per_year": 523166,
+          "pct_emergent": 0.0442,
+          "pct_admitted": 0.0209,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 331,
+          "national_visits_per_year": 302942,
+          "pct_emergent": 0.0601,
+          "pct_admitted": 0.0757,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 129,
+          "national_visits_per_year": 127716,
+          "pct_emergent": 0.0941,
+          "pct_admitted": 0.145,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 6.0
+        }
+      }
+    },
+    "chest": {
+      "all": {
+        "n_visits_sampled": 7065,
+        "national_visits_per_year": 7166282,
+        "pct_emergent": 0.3269,
+        "pct_admitted": 0.1687,
+        "median_wait_min": 13.0,
+        "median_hospital_days_if_admitted": 3.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 165,
+          "national_visits_per_year": 163414,
+          "pct_emergent": 0.0937,
+          "pct_admitted": 0.0565,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 634,
+          "national_visits_per_year": 614776,
+          "pct_emergent": 0.1921,
+          "pct_admitted": 0.0451,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 596,
+          "national_visits_per_year": 548566,
+          "pct_emergent": 0.4131,
+          "pct_admitted": 0.2276,
+          "median_wait_min": 10.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 564,
+          "national_visits_per_year": 568575,
+          "pct_emergent": 0.4379,
+          "pct_admitted": 0.3418,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 120,
+          "national_visits_per_year": 127200,
+          "pct_emergent": 0.1524,
+          "pct_admitted": 0.0023,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 804,
+          "national_visits_per_year": 784803,
+          "pct_emergent": 0.2031,
+          "pct_admitted": 0.0592,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 625,
+          "national_visits_per_year": 649080,
+          "pct_emergent": 0.4429,
+          "pct_admitted": 0.2231,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 437,
+          "national_visits_per_year": 460184,
+          "pct_emergent": 0.4508,
+          "pct_admitted": 0.3048,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 130,
+          "national_visits_per_year": 142720,
+          "pct_emergent": 0.1436,
+          "pct_admitted": 0.0614,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 1321,
+          "national_visits_per_year": 1336311,
+          "pct_emergent": 0.2381,
+          "pct_admitted": 0.079,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 1164,
+          "national_visits_per_year": 1245646,
+          "pct_emergent": 0.4008,
+          "pct_admitted": 0.1861,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 505,
+          "national_visits_per_year": 525001,
+          "pct_emergent": 0.4226,
+          "pct_admitted": 0.3328,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 4.0
+        }
+      }
+    },
+    "abdomen": {
+      "all": {
+        "n_visits_sampled": 11070,
+        "national_visits_per_year": 11073060,
+        "pct_emergent": 0.0885,
+        "pct_admitted": 0.1327,
+        "median_wait_min": 17.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 483,
+          "national_visits_per_year": 472038,
+          "pct_emergent": 0.0753,
+          "pct_admitted": 0.0371,
+          "median_wait_min": 22.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 792,
+          "national_visits_per_year": 733186,
+          "pct_emergent": 0.0595,
+          "pct_admitted": 0.0674,
+          "median_wait_min": 22.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 408,
+          "national_visits_per_year": 388089,
+          "pct_emergent": 0.1342,
+          "pct_admitted": 0.1606,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 407,
+          "national_visits_per_year": 421912,
+          "pct_emergent": 0.1812,
+          "pct_admitted": 0.3006,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 460,
+          "national_visits_per_year": 494899,
+          "pct_emergent": 0.0307,
+          "pct_admitted": 0.0381,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 1359,
+          "national_visits_per_year": 1387528,
+          "pct_emergent": 0.0586,
+          "pct_admitted": 0.0599,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 610,
+          "national_visits_per_year": 599543,
+          "pct_emergent": 0.0912,
+          "pct_admitted": 0.1546,
+          "median_wait_min": 20.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 453,
+          "national_visits_per_year": 464791,
+          "pct_emergent": 0.0967,
+          "pct_admitted": 0.2934,
+          "median_wait_min": 21.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 526,
+          "national_visits_per_year": 538128,
+          "pct_emergent": 0.064,
+          "pct_admitted": 0.0823,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 3166,
+          "national_visits_per_year": 3125347,
+          "pct_emergent": 0.0788,
+          "pct_admitted": 0.1025,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 1670,
+          "national_visits_per_year": 1674673,
+          "pct_emergent": 0.1112,
+          "pct_admitted": 0.181,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 736,
+          "national_visits_per_year": 772918,
+          "pct_emergent": 0.1414,
+          "pct_admitted": 0.2774,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 4.0
+        }
+      }
+    },
+    "flank": {
+      "all": {
+        "n_visits_sampled": 1911,
+        "national_visits_per_year": 1866036,
+        "pct_emergent": 0.0774,
+        "pct_admitted": 0.0863,
+        "median_wait_min": 17.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|18-44": {
+          "n_visits_sampled": 96,
+          "national_visits_per_year": 80662,
+          "pct_emergent": 0.0265,
+          "pct_admitted": 0.0522,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 55,
+          "national_visits_per_year": 49239,
+          "pct_emergent": 0.1572,
+          "pct_admitted": 0.1451,
+          "median_wait_min": 28.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 41,
+          "national_visits_per_year": 49496,
+          "pct_emergent": 0.0897,
+          "pct_admitted": 0.1197,
+          "median_wait_min": 38.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 208,
+          "national_visits_per_year": 182090,
+          "pct_emergent": 0.0686,
+          "pct_admitted": 0.0269,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 111,
+          "national_visits_per_year": 120728,
+          "pct_emergent": 0.0416,
+          "pct_admitted": 0.1098,
+          "median_wait_min": 21.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 72,
+          "national_visits_per_year": 67272,
+          "pct_emergent": 0.0578,
+          "pct_admitted": 0.1574,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 48,
+          "national_visits_per_year": 42531,
+          "pct_emergent": 0.0341,
+          "pct_admitted": 0.0223,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 641,
+          "national_visits_per_year": 620132,
+          "pct_emergent": 0.0878,
+          "pct_admitted": 0.0639,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 5.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 447,
+          "national_visits_per_year": 459121,
+          "pct_emergent": 0.0905,
+          "pct_admitted": 0.1043,
+          "median_wait_min": 20.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 143,
+          "national_visits_per_year": 147782,
+          "pct_emergent": 0.0544,
+          "pct_admitted": 0.1681,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 4.0
+        }
+      }
+    },
+    "back": {
+      "all": {
+        "n_visits_sampled": 5457,
+        "national_visits_per_year": 5307719,
+        "pct_emergent": 0.0868,
+        "pct_admitted": 0.0694,
+        "median_wait_min": 17.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 52,
+          "national_visits_per_year": 43011,
+          "pct_emergent": 0.0707,
+          "pct_admitted": 0.0,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 231,
+          "national_visits_per_year": 217638,
+          "pct_emergent": 0.0438,
+          "pct_admitted": 0.0624,
+          "median_wait_min": 22.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 170,
+          "national_visits_per_year": 150545,
+          "pct_emergent": 0.2001,
+          "pct_admitted": 0.1339,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 135,
+          "national_visits_per_year": 136194,
+          "pct_emergent": 0.1699,
+          "pct_admitted": 0.1544,
+          "median_wait_min": 22.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 74,
+          "national_visits_per_year": 86064,
+          "pct_emergent": 0.0323,
+          "pct_admitted": 0.0104,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 570,
+          "national_visits_per_year": 538778,
+          "pct_emergent": 0.048,
+          "pct_admitted": 0.0174,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 297,
+          "national_visits_per_year": 293442,
+          "pct_emergent": 0.1049,
+          "pct_admitted": 0.0543,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 196,
+          "national_visits_per_year": 214369,
+          "pct_emergent": 0.1672,
+          "pct_admitted": 0.1242,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 135,
+          "national_visits_per_year": 131099,
+          "pct_emergent": 0.0869,
+          "pct_admitted": 0.0163,
+          "median_wait_min": 23.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 1794,
+          "national_visits_per_year": 1706439,
+          "pct_emergent": 0.0832,
+          "pct_admitted": 0.0451,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 3.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 1215,
+          "national_visits_per_year": 1175838,
+          "pct_emergent": 0.0655,
+          "pct_admitted": 0.063,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 588,
+          "national_visits_per_year": 614297,
+          "pct_emergent": 0.113,
+          "pct_admitted": 0.175,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "hip_pelvis": {
+      "all": {
+        "n_visits_sampled": 1819,
+        "national_visits_per_year": 1785697,
+        "pct_emergent": 0.0895,
+        "pct_admitted": 0.1227,
+        "median_wait_min": 16.0,
+        "median_hospital_days_if_admitted": 5.0
+      },
+      "cells": {
+        "0-3|18-44": {
+          "n_visits_sampled": 130,
+          "national_visits_per_year": 112873,
+          "pct_emergent": 0.0793,
+          "pct_admitted": 0.0654,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 43,
+          "national_visits_per_year": 33661,
+          "pct_emergent": 0.0479,
+          "pct_admitted": 0.137,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 87,
+          "national_visits_per_year": 90313,
+          "pct_emergent": 0.1371,
+          "pct_admitted": 0.4317,
+          "median_wait_min": 10.0,
+          "median_hospital_days_if_admitted": 5.0
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 169,
+          "national_visits_per_year": 173875,
+          "pct_emergent": 0.0307,
+          "pct_admitted": 0.0353,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 82,
+          "national_visits_per_year": 75516,
+          "pct_emergent": 0.0629,
+          "pct_admitted": 0.1333,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 125,
+          "national_visits_per_year": 117455,
+          "pct_emergent": 0.1406,
+          "pct_admitted": 0.2258,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 5.0
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 466,
+          "national_visits_per_year": 470603,
+          "pct_emergent": 0.0682,
+          "pct_admitted": 0.036,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 322,
+          "national_visits_per_year": 316950,
+          "pct_emergent": 0.1083,
+          "pct_admitted": 0.0838,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 296,
+          "national_visits_per_year": 288868,
+          "pct_emergent": 0.1257,
+          "pct_admitted": 0.2817,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "leg": {
+      "all": {
+        "n_visits_sampled": 3578,
+        "national_visits_per_year": 3429548,
+        "pct_emergent": 0.1027,
+        "pct_admitted": 0.1228,
+        "median_wait_min": 16.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 138,
+          "national_visits_per_year": 140122,
+          "pct_emergent": 0.0602,
+          "pct_admitted": 0.0,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 220,
+          "national_visits_per_year": 196240,
+          "pct_emergent": 0.1105,
+          "pct_admitted": 0.0592,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 2.0
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 224,
+          "national_visits_per_year": 218837,
+          "pct_emergent": 0.1598,
+          "pct_admitted": 0.1204,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": 5.0
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 306,
+          "national_visits_per_year": 296409,
+          "pct_emergent": 0.1705,
+          "pct_admitted": 0.2327,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 110,
+          "national_visits_per_year": 111851,
+          "pct_emergent": 0.0357,
+          "pct_admitted": 0.0211,
+          "median_wait_min": 21.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 245,
+          "national_visits_per_year": 232296,
+          "pct_emergent": 0.047,
+          "pct_admitted": 0.0441,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 258,
+          "national_visits_per_year": 269937,
+          "pct_emergent": 0.0898,
+          "pct_admitted": 0.1136,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 6.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 197,
+          "national_visits_per_year": 187928,
+          "pct_emergent": 0.1403,
+          "pct_admitted": 0.2372,
+          "median_wait_min": 13.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 120,
+          "national_visits_per_year": 126180,
+          "pct_emergent": 0.1949,
+          "pct_admitted": 0.133,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 692,
+          "national_visits_per_year": 675374,
+          "pct_emergent": 0.071,
+          "pct_admitted": 0.0677,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 677,
+          "national_visits_per_year": 577900,
+          "pct_emergent": 0.0931,
+          "pct_admitted": 0.1112,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 391,
+          "national_visits_per_year": 396468,
+          "pct_emergent": 0.1132,
+          "pct_admitted": 0.2509,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "knee": {
+      "all": {
+        "n_visits_sampled": 1760,
+        "national_visits_per_year": 1741951,
+        "pct_emergent": 0.0434,
+        "pct_admitted": 0.0456,
+        "median_wait_min": 15.0,
+        "median_hospital_days_if_admitted": 4.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 48,
+          "national_visits_per_year": 44784,
+          "pct_emergent": 0.086,
+          "pct_admitted": 0.0,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 66,
+          "national_visits_per_year": 50594,
+          "pct_emergent": 0.0204,
+          "pct_admitted": 0.0153,
+          "median_wait_min": 23.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 61,
+          "national_visits_per_year": 61149,
+          "pct_emergent": 0.0291,
+          "pct_admitted": 0.0516,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 77,
+          "national_visits_per_year": 82005,
+          "pct_emergent": 0.1,
+          "pct_admitted": 0.1051,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": 4.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 76,
+          "national_visits_per_year": 79283,
+          "pct_emergent": 0.0276,
+          "pct_admitted": 0.0067,
+          "median_wait_min": 25.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 160,
+          "national_visits_per_year": 163447,
+          "pct_emergent": 0.0432,
+          "pct_admitted": 0.0124,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 125,
+          "national_visits_per_year": 123648,
+          "pct_emergent": 0.0478,
+          "pct_admitted": 0.032,
+          "median_wait_min": 14.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 83,
+          "national_visits_per_year": 74935,
+          "pct_emergent": 0.0228,
+          "pct_admitted": 0.0841,
+          "median_wait_min": 12.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 93,
+          "national_visits_per_year": 90522,
+          "pct_emergent": 0.0778,
+          "pct_admitted": 0.0142,
+          "median_wait_min": 9.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 370,
+          "national_visits_per_year": 385167,
+          "pct_emergent": 0.0143,
+          "pct_admitted": 0.0241,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 374,
+          "national_visits_per_year": 357470,
+          "pct_emergent": 0.0658,
+          "pct_admitted": 0.0494,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 6.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 227,
+          "national_visits_per_year": 228941,
+          "pct_emergent": 0.0343,
+          "pct_admitted": 0.1129,
+          "median_wait_min": 20.0,
+          "median_hospital_days_if_admitted": 5.0
+        }
+      }
+    },
+    "ankle_foot": {
+      "all": {
+        "n_visits_sampled": 2752,
+        "national_visits_per_year": 2613523,
+        "pct_emergent": 0.0649,
+        "pct_admitted": 0.0512,
+        "median_wait_min": 17.0,
+        "median_hospital_days_if_admitted": 6.0
+      },
+      "cells": {
+        "0-3|0-17": {
+          "n_visits_sampled": 124,
+          "national_visits_per_year": 116319,
+          "pct_emergent": 0.0244,
+          "pct_admitted": 0.0,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|18-44": {
+          "n_visits_sampled": 152,
+          "national_visits_per_year": 119813,
+          "pct_emergent": 0.0657,
+          "pct_admitted": 0.036,
+          "median_wait_min": 11.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|45-64": {
+          "n_visits_sampled": 114,
+          "national_visits_per_year": 120530,
+          "pct_emergent": 0.1001,
+          "pct_admitted": 0.0709,
+          "median_wait_min": 24.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "0-3|65+": {
+          "n_visits_sampled": 107,
+          "national_visits_per_year": 96246,
+          "pct_emergent": 0.1811,
+          "pct_admitted": 0.191,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 8.0
+        },
+        "4-6|0-17": {
+          "n_visits_sampled": 159,
+          "national_visits_per_year": 162940,
+          "pct_emergent": 0.029,
+          "pct_admitted": 0.0084,
+          "median_wait_min": 17.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|18-44": {
+          "n_visits_sampled": 287,
+          "national_visits_per_year": 260257,
+          "pct_emergent": 0.0357,
+          "pct_admitted": 0.0067,
+          "median_wait_min": 19.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "4-6|45-64": {
+          "n_visits_sampled": 161,
+          "national_visits_per_year": 151903,
+          "pct_emergent": 0.079,
+          "pct_admitted": 0.1556,
+          "median_wait_min": 24.0,
+          "median_hospital_days_if_admitted": 5.0
+        },
+        "4-6|65+": {
+          "n_visits_sampled": 95,
+          "national_visits_per_year": 87317,
+          "pct_emergent": 0.1046,
+          "pct_admitted": 0.0955,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|0-17": {
+          "n_visits_sampled": 207,
+          "national_visits_per_year": 200161,
+          "pct_emergent": 0.054,
+          "pct_admitted": 0.0,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|18-44": {
+          "n_visits_sampled": 659,
+          "national_visits_per_year": 642090,
+          "pct_emergent": 0.0526,
+          "pct_admitted": 0.0231,
+          "median_wait_min": 18.0,
+          "median_hospital_days_if_admitted": null
+        },
+        "7-10|45-64": {
+          "n_visits_sampled": 478,
+          "national_visits_per_year": 446649,
+          "pct_emergent": 0.075,
+          "pct_admitted": 0.074,
+          "median_wait_min": 16.0,
+          "median_hospital_days_if_admitted": 6.0
+        },
+        "7-10|65+": {
+          "n_visits_sampled": 209,
+          "national_visits_per_year": 209290,
+          "pct_emergent": 0.0771,
+          "pct_admitted": 0.0937,
+          "median_wait_min": 15.0,
+          "median_hospital_days_if_admitted": 6.0
+        }
+      }
+    }
+  }
+}

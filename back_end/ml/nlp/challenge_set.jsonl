@@ -1,0 +1,79 @@
+{"text": "feels like my foot is on fire especially at night, can't sleep", "labels": ["burning", "night_pain", "sleep_loss"]}
+{"text": "No numbness or tingling, just a deep ache in my lower back that is worse in the morning and loosens up after a shower.", "labels": ["aching", "stiffness"]}
+{"text": "it zaps down my leg like an electric fence every time I bend", "labels": ["electric", "radiating"]}
+{"text": "Pins and needles in my fingertips, and I keep dropping my coffee mug.", "labels": ["tingling", "weakness"]}
+{"text": "my knee swelled up like a balloon after I fell off my bike", "labels": ["swelling", "trauma"]}
+{"text": "Honestly I'm scared it's something serious, the pain in my chest wall is sharp when I breathe in.", "labels": ["distress", "sharp"]}
+{"text": "There is no swelling and I didn't injure it. It just throbs.", "labels": ["throbbing"]}
+{"text": "my toes feel dead, like they belong to someone else", "labels": ["numbness"]}
+{"text": "It's itchy and burning on the outside of my thigh, wearing jeans makes it worse", "labels": ["itching", "burning"]}
+{"text": "Cold weather makes my hands ache like they're in ice water", "labels": ["cold_pain", "aching"]}
+{"text": "I wet myself yesterday and the inside of my thighs feels numb, along with the back pain", "labels": ["bladder_bowel", "numbness"]}
+{"text": "fever and chills since tuesday and my back is killing me", "labels": ["fever"]}
+{"text": "I can't walk to the mailbox anymore without stopping", "labels": ["function_loss"]}
+{"text": "Feels like a tight band squeezing around my calf after running.", "labels": ["pressure"]}
+{"text": "Sharp stabbing pain right under the kneecap when I take stairs, otherwise fine.", "labels": ["sharp"]}
+{"text": "Burning? No. Tingling? No. It's more of a dull soreness.", "labels": ["aching"]}
+{"text": "I'm fine during the day but it wakes me at 3am every night", "labels": ["night_pain", "sleep_loss"]}
+{"text": "shoulder pain", "labels": []}
+{"text": "Hurts.", "labels": []}
+{"text": "Since the car accident my neck is stiff and it shoots into my right arm", "labels": ["trauma", "stiffness", "electric", "radiating"]}
+{"text": "My heel feels like I'm stepping on glass first thing in the morning.", "labels": ["sharp"]}
+{"text": "It pounds with my heartbeat", "labels": ["throbbing"]}
+{"text": "I've been crying a lot because nothing helps and I feel hopeless about this hip", "labels": ["distress"]}
+{"text": "my wrist feels like ants are crawling under the skin", "labels": ["tingling"]}
+{"text": "The ache spreads from my buttock down to my ankle.", "labels": ["aching", "radiating"]}
+{"text": "Hot, red and puffy around the big toe joint, I can't even put a sock on", "labels": ["swelling", "function_loss"]}
+{"text": "no fever, no chills, no weakness, just cramping in my calves at night", "labels": ["pressure", "night_pain"]}
+{"text": "It feels like electricity but it does not spread anywhere", "labels": ["electric"]}
+{"text": "Hard to get out of bed in the morning, everything is stiff for about an hour", "labels": ["stiffness"]}
+{"text": "My leg gave out on the stairs twice this week", "labels": ["weakness"]}
+{"text": "I had to quit soccer and I miss school because of the back pain", "labels": ["function_loss"]}
+{"text": "Ankle rolled during basketball, heard a pop, now it's huge", "labels": ["trauma", "swelling"]}
+{"text": "it's not sharp, it's not burning, it's a heavy dragging feeling", "labels": ["aching"]}
+{"text": "Freezing cold feeling in my feet even when they are warm to touch, and it hurts", "labels": ["cold_pain"]}
+{"text": "Like a knife twisting in my lower right belly", "labels": ["sharp"]}
+{"text": "I'm worried I'll lose my job, I can't lift boxes anymore", "labels": ["distress", "function_loss"]}
+{"text": "The skin on my shin is so sensitive and itchy I can't stand the bedsheets touching it", "labels": ["itching"]}
+{"text": "pain is kind of everywhere and dull, no specific spot", "labels": ["aching"]}
+{"text": "I lost control of my bowels this morning and my back hurts badly", "labels": ["bladder_bowel"]}
+{"text": "jaw clicks and aches when I chew", "labels": ["aching"]}
+{"text": "Throbbing headache behind my eyes that wakes me up at night", "labels": ["throbbing", "night_pain"]}
+{"text": "my hands are numb and tingly when I wake up", "labels": ["numbness", "tingling"]}
+{"text": "It doesn't keep me up at night and it doesn't spread", "labels": []}
+{"text": "Muscle spasm in my neck, feels like a cramp that won't let go", "labels": ["pressure"]}
+{"text": "stubbed it on the door frame, now it's bruised and throbbing", "labels": ["trauma", "throbbing"]}
+{"text": "I can't sleep more than two hours because of the shoulder", "labels": ["sleep_loss"]}
+{"text": "Shooting pain from my elbow down into my pinky finger", "labels": ["electric", "radiating"]}
+{"text": "I feel very anxious about all this and frustrated nobody can find the cause", "labels": ["distress"]}
+{"text": "sore after the gym, nothing crazy", "labels": ["aching"]}
+{"text": "There's a burning pressure in my upper back between my shoulder blades", "labels": ["burning", "pressure"]}
+{"text": "No injury, no fall, it just started on its own and now my foot drops when I walk", "labels": ["weakness"]}
+{"text": "My knee is warm and swollen and I have had a temperature of 101", "labels": ["swelling", "fever"]}
+{"text": "Electric shocks in my face when I brush my teeth", "labels": ["electric"]}
+{"text": "pins & needles + burning in both feet, worse at night, diabetic", "labels": ["tingling", "burning", "night_pain"]}
+{"text": "i cant feel the outside of my thigh it's like it's asleep", "labels": ["numbness"]}
+{"text": "The pain moves around: sometimes the hip, sometimes the knee", "labels": []}
+{"text": "Stiff and achy hands every morning for more than an hour", "labels": ["stiffness", "aching"]}
+{"text": "it stings and itches where the shingles rash was", "labels": ["itching", "burning"]}
+{"text": "Pulsing pain in my big toe that started overnight, it's red and shiny", "labels": ["throbbing", "swelling"]}
+{"text": "Not stiff at all, I can move it fine, but it's sharp when I twist.", "labels": ["sharp"]}
+{"text": "The cold makes it worse but it isn't a cold feeling", "labels": []}
+{"text": "Crushing feeling in my lower back like someone is sitting on it", "labels": ["pressure"]}
+{"text": "I haven't been able to work for three weeks and I'm getting depressed", "labels": ["function_loss", "distress"]}
+{"text": "had a bad fall on ice, wrist is swollen and I can't grip anything", "labels": ["trauma", "swelling", "weakness"]}
+{"text": "burning when i pee and pain in my side", "labels": ["burning"]}
+{"text": "My legs feel weak and wobbly and I have numbness in the saddle area", "labels": ["weakness", "numbness", "bladder_bowel"]}
+{"text": "it radiates into my groin", "labels": ["radiating"]}
+{"text": "I'd describe it as nagging, always there in the background", "labels": ["aching"]}
+{"text": "Pain level is about a 6 and it started two days ago.", "labels": []}
+{"text": "sudden jolts like being tasered in my lower back", "labels": ["electric"]}
+{"text": "Neither swollen nor red. Mostly tight.", "labels": ["pressure"]}
+{"text": "Night sweats and losing weight, plus this back pain that won't quit", "labels": ["fever"]}
+{"text": "the arch of my foot cramps up when I point my toes", "labels": ["pressure"]}
+{"text": "Prickly, buzzing sensation along the side of my calf", "labels": ["tingling"]}
+{"text": "I tossed and turned all night with it", "labels": ["sleep_loss"]}
+{"text": "Can't lift my arm above my head to wash my hair", "labels": ["function_loss"]}
+{"text": "It began after I lifted a heavy box at work and felt something tear", "labels": ["trauma"]}
+{"text": "feels like a bruise but I never hit it", "labels": ["aching"]}
+{"text": "My mom says I'm overreacting but it really is unbearable and I'm terrified", "labels": ["distress"]}

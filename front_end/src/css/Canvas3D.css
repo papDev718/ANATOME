@@ -26,17 +26,20 @@
   transition: opacity 240ms ease;
 }
 .anatomy-stage__focus-blur.is-active { opacity: 1; }
-.anatomy-stage__topline { position: absolute; z-index: 4; top: 22px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; pointer-events: none; }
+.anatomy-stage__topline { position: absolute; z-index: 4; top: 22px; left: 24px; right: 24px; display: flex; justify-content: flex-end; align-items: flex-start; gap: 18px; pointer-events: none; }
 .anatomy-stage__status, .anatomy-stage__region-picker { color: var(--text); background: rgba(14,14,13,.86); border: 1px solid var(--line-strong); backdrop-filter: blur(12px); }
 .anatomy-stage__status { display: flex; align-items: center; gap: 9px; min-height: 36px; padding: 0 12px; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 11px; font-weight: 400; }
 .anatomy-stage__status-dot { width: 6px; height: 6px; border-radius: 50%; background: #b3b58a; box-shadow: 0 0 0 3px rgba(179,181,138,.15); }
+.anatomy-stage__status.is-hidden { display: none; }
+/* Loading/error status sits centred so it never covers the controls. */
+.anatomy-stage__topline .anatomy-stage__status { position: absolute; top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap; }
 .anatomy-stage__status.is-error .anatomy-stage__status-dot { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .anatomy-stage__region-picker { display: grid; gap: 3px; width: min(240px, 40%); padding: 8px 10px; border-radius: var(--radius-sm); pointer-events: auto; }
 .anatomy-stage__region-picker span { color: var(--text-faint); font-family: var(--font-mono); font-size: 10.5px; }
 .anatomy-stage__region-picker select { width: 100%; border: 0; outline: 0; color: var(--text); background: transparent; font: inherit; font-size: 13px; cursor: pointer; }
 .anatomy-stage__region-picker select option { background: var(--bg-raised); }
 .anatomy-stage__layer-controls, .anatomy-stage__view-controls { position: absolute; z-index: 4; display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: rgba(14,14,13,.88); backdrop-filter: blur(12px); }
-.anatomy-stage__layer-controls { top: 75px; left: 24px; }
+.anatomy-stage__layer-controls { top: 22px; left: 24px; }
 .anatomy-stage__view-controls { left: 50%; bottom: 46px; transform: translateX(-50%); }
 .anatomy-stage__layer-controls button, .anatomy-stage__view-controls button, .anatomy-info__close { min-height: 30px; padding: 6px 10px; border: 0; border-radius: var(--radius-sm); color: var(--text-muted); background: transparent; font: inherit; font-size: 12px; font-weight: 500; transition: background-color 150ms ease, color 150ms ease; }
 .anatomy-stage__layer-controls button:hover, .anatomy-stage__view-controls button:hover, .anatomy-info__close:hover { color: var(--text); background: var(--bg-hover); }
@@ -73,7 +76,8 @@
   .anatomy-stage__topline { top: 13px; left: 14px; right: 14px; }
   .anatomy-stage__status { display: none; }
   .anatomy-stage__region-picker { width: min(230px, 72%); margin-left: auto; }
-  .anatomy-stage__layer-controls { top: 65px; left: 14px; }
+  .anatomy-stage__layer-controls { top: 13px; left: 14px; }
+  .anatomy-stage__region-picker { margin-top: 48px; }
   .anatomy-stage__view-controls { bottom: 40px; }
   .anatomy-stage__hint { right: 14px; bottom: 12px; left: 14px; text-align: center; }
   .anatomy-stage__attribution { display: none; }

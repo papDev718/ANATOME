@@ -17,4 +17,5 @@ class PatientReport(Base):
     ai_report = Column(JSON, nullable=False)
     ai_model = Column(String(100), nullable=False)
     ai_generated_at = Column(DateTime, nullable=False)
+    analysis = Column(JSON, nullable=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow, nullable=False)

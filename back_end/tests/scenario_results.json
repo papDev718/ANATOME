@@ -1,0 +1,3676 @@
+{
+ "summary": {
+  "scenarios": 41,
+  "passed": 41,
+  "localizer_top3": "19/19",
+  "localizer_top3_jittered_1_5cm": "55/57"
+ },
+ "results": [
+  {
+   "id": "abd_appendix_like",
+   "persona": "19-year-old, lower right belly pain since morning, threw up, fever",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "abdomen_severe"
+   ],
+   "symptoms": {
+    "nausea_vomiting": "threw up",
+    "fever": "fever"
+   },
+   "onset": "Today",
+   "triage_p_emergent": 0.0939,
+   "localization": {
+    "s0": {
+     "where": "central right",
+     "confidence": "low",
+     "top3": [
+      "External abdominal oblique muscle (right) 21%",
+      "Internal abdominal oblique muscle (right) 20%",
+      "Rectus abdominis muscle (right) 20%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Rectus abdominis muscle.r",
+     "hit": "External abdominal oblique muscle.r",
+     "area": "abdomen"
+    }
+   },
+   "tips": [
+    "abd_fluids",
+    "abd_no_nsaid",
+    "abd_no_alcohol",
+    "abd_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Severe abdominal pain with fever or vomiting"
+    ],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "abd_mild_cramps",
+   "persona": "16-year-old with mild period-type lower belly cramps",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "Today",
+   "triage_p_emergent": 0.0455,
+   "localization": {
+    "s0": {
+     "where": "central left",
+     "confidence": "low",
+     "top3": [
+      "External abdominal oblique muscle (left) 24%",
+      "Internal abdominal oblique muscle (left) 23%",
+      "Rectus abdominis muscle (left) 22%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Rectus abdominis muscle.l",
+     "hit": "External abdominal oblique muscle.l",
+     "area": "abdomen"
+    }
+   },
+   "tips": [
+    "abd_fluids",
+    "abd_light_food",
+    "abd_heat",
+    "abd_no_nsaid",
+    "abd_no_alcohol",
+    "abd_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you feel like eating, choose small, plain meals.",
+     "A hot water bottle or warm heat pad on the belly may ease cramping pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "abd_gi_bleed",
+   "persona": "58-year-old with upper belly pain and black stool",
+   "problems": [],
+   "care": "emergency",
+   "flags": [
+    "bleeding"
+   ],
+   "symptoms": {
+    "blood": "poo was black"
+   },
+   "onset": "4–7 days ago",
+   "triage_p_emergent": 0.057,
+   "localization": {
+    "s0": {
+     "where": "central left",
+     "confidence": "low",
+     "top3": [
+      "External abdominal oblique muscle (left) 20%",
+      "Internal abdominal oblique muscle (left) 19%",
+      "Rectus abdominis muscle (left) 19%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Rectus abdominis muscle.l",
+     "hit": "External abdominal oblique muscle.l",
+     "area": "abdomen"
+    }
+   },
+   "tips": [],
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Blood in vomit, stool or urine"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": []
+   }
+  },
+  {
+   "id": "abd_side_stitch",
+   "persona": "Runner with a side stitch after a 10k",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "Today",
+   "triage_p_emergent": 0.046,
+   "localization": {
+    "s0": {
+     "where": "central left",
+     "confidence": "low",
+     "top3": [
+      "External abdominal oblique muscle (left) 18%",
+      "Internal intercostal muscles (left) 17%",
+      "Diaphragm 15%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "External abdominal oblique muscle.l",
+     "hit": "External abdominal oblique muscle.l",
+     "area": "abdomen"
+    }
+   },
+   "tips": [
+    "abd_fluids",
+    "abd_light_food",
+    "abd_heat",
+    "abd_no_nsaid",
+    "abd_no_alcohol",
+    "abd_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you feel like eating, choose small, plain meals.",
+     "A hot water bottle or warm heat pad on the belly may ease cramping pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "abd_severe_alone",
+   "persona": "30-year-old, 9/10 belly pain, nothing else",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "abdomen_severe"
+   ],
+   "symptoms": {},
+   "onset": "Within the last hour",
+   "triage_p_emergent": 0.0476,
+   "localization": {
+    "s0": {
+     "where": "central right",
+     "confidence": "low",
+     "top3": [
+      "External abdominal oblique muscle (right) 21%",
+      "Internal abdominal oblique muscle (right) 20%",
+      "Rectus abdominis muscle (right) 20%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Rectus abdominis muscle.r",
+     "hit": "External abdominal oblique muscle.r",
+     "area": "abdomen"
+    }
+   },
+   "tips": [
+    "abd_fluids",
+    "abd_no_nsaid",
+    "abd_no_alcohol",
+    "abd_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Severe abdominal pain"
+    ],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "chest_cardiac",
+   "persona": "62-year-old man, chest pressure with sweating",
+   "problems": [],
+   "care": "emergency",
+   "flags": [
+    "chest_plus",
+    "support"
+   ],
+   "symptoms": {
+    "nausea_vomiting": "feel sick",
+    "sweating": "sweat"
+   },
+   "onset": "Within the last hour",
+   "triage_p_emergent": 0.3377,
+   "localization": {
+    "s0": {
+     "where": "upper left",
+     "confidence": "low",
+     "top3": [
+      "Sternocostal head of pectoralis major muscle (left) 22%",
+      "Pectoral fascia (left) 13%",
+      "Pectoralis minor muscle (left) 11%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Sternocostal head of pectoralis major muscle.l",
+     "hit": "Sternocostal head of pectoralis major muscle.l",
+     "area": "chest"
+    }
+   },
+   "tips": [],
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Chest pain with breathing difficulty, sweating or nausea"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": []
+   }
+  },
+  {
+   "id": "chest_tight_alone",
+   "persona": "45-year-old, tight chest spreading to the left arm, nothing else",
+   "problems": [],
+   "care": "emergency",
+   "flags": [
+    "chest_pressure"
+   ],
+   "symptoms": {},
+   "onset": "Today",
+   "triage_p_emergent": 0.2979,
+   "localization": {
+    "s0": {
+     "where": "upper left",
+     "confidence": "low",
+     "top3": [
+      "Sternocostal head of pectoralis major muscle (left) 22%",
+      "Pectoral fascia (left) 13%",
+      "Pectoralis minor muscle (left) 11%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Sternocostal head of pectoralis major muscle.l",
+     "hit": "Sternocostal head of pectoralis major muscle.l",
+     "area": "chest"
+    }
+   },
+   "tips": [],
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Chest pain that feels tight, heavy or spreads"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": []
+   }
+  },
+  {
+   "id": "chest_pec_strain",
+   "persona": "22-year-old after heavy bench press",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.1272,
+   "localization": {
+    "s0": {
+     "where": "upper right",
+     "confidence": "low",
+     "top3": [
+      "Sternocostal head of pectoralis major muscle (right) 24%",
+      "Pectoralis minor muscle (right) 12%",
+      "Abdominal part of pectoralis major muscle (right) 12%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Sternocostal head of pectoralis major muscle.r",
+     "hit": "Sternocostal head of pectoralis major muscle.r",
+     "area": "chest"
+    }
+   },
+   "tips": [
+    "chest_rest",
+    "chest_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest and avoid strenuous activity or heavy lifting until a clinician has checked your chest pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note whether the pain changes with breathing, movement or pressing on the spot, and whether it comes on with exertion.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have chest pain, trouble breathing, or feel faint"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "chest_mild_no_cause",
+   "persona": "35-year-old, mild chest ache with no injury",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "chest_any"
+   ],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.1839,
+   "localization": {
+    "s0": {
+     "where": "upper left",
+     "confidence": "low",
+     "top3": [
+      "Sternocostal head of pectoralis major muscle (left) 22%",
+      "Pectoral fascia (left) 14%",
+      "Pectoralis minor muscle (left) 11%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Sternocostal head of pectoralis major muscle.l",
+     "hit": "Sternocostal head of pectoralis major muscle.l",
+     "area": "chest"
+    }
+   },
+   "tips": [
+    "chest_rest",
+    "chest_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Chest pain without a clear injury"
+    ],
+    "do_now": [
+     "Rest and avoid strenuous activity or heavy lifting until a clinician has checked your chest pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note whether the pain changes with breathing, movement or pressing on the spot, and whether it comes on with exertion.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have chest pain, trouble breathing, or feel faint"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "back_lifting",
+   "persona": "40-year-old warehouse worker, low back after lifting",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0447,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Latissimus dorsi muscle (left) 13%",
+      "Serratus posterior inferior muscle (left) 12%",
+      "Longissimus thoracis muscle (left) 12%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Multifidus lumborum muscle.l",
+     "hit": "Latissimus dorsi muscle.l",
+     "area": "lower_back"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "back_chronic",
+   "persona": "55-year-old office worker, back pain for months",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "More than one month ago",
+   "triage_p_emergent": 0.0512,
+   "localization": {
+    "s0": {
+     "where": "upper right",
+     "confidence": "low",
+     "top3": [
+      "Serratus posterior inferior muscle (right) 14%",
+      "Latissimus dorsi muscle (right) 14%",
+      "Iliocostalis lumborum muscle (right) 13%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Iliocostalis lumborum muscle.r",
+     "hit": "Serratus posterior inferior muscle.r",
+     "area": "lower_back"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "no_bed_rest",
+    "pace",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "Pace activities: break heavy jobs into smaller chunks with rests in between rather than pushing through pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "back_cauda",
+   "persona": "48-year-old, back pain and can't pee, numb groin",
+   "problems": [],
+   "care": "emergency",
+   "flags": [
+    "cauda_equina"
+   ],
+   "symptoms": {
+    "numbness": "numb",
+    "bladder_bowel": "can't pee"
+   },
+   "onset": "Today",
+   "triage_p_emergent": 0.0609,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Latissimus dorsi muscle (right) 12%",
+      "Serratus posterior inferior muscle (right) 11%",
+      "Longissimus thoracis muscle (right) 10%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Multifidus lumborum muscle.r",
+     "hit": "Latissimus dorsi muscle.r",
+     "area": "lower_back"
+    }
+   },
+   "tips": [],
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Back pain with bladder/bowel change or saddle numbness"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": []
+   }
+  },
+  {
+   "id": "back_fever",
+   "persona": "33-year-old, back pain with fever",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "spinal_infection"
+   ],
+   "symptoms": {
+    "fever": "chills"
+   },
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0421,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Latissimus dorsi muscle (left) 12%",
+      "Serratus posterior inferior muscle (left) 11%",
+      "Longissimus thoracis muscle (left) 10%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Multifidus lumborum muscle.l",
+     "hit": "Latissimus dorsi muscle.l",
+     "area": "lower_back"
+    }
+   },
+   "tips": [
+    "no_bed_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Back pain with fever"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "sciatica_like",
+   "persona": "38-year-old, buttock pain shooting down the leg with tingling",
+   "problems": [],
+   "care": "soon",
+   "flags": [],
+   "symptoms": {
+    "numbness": "pins and needles"
+   },
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0654,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Gluteus maximus muscle (left) 39%",
+      "Fascia lata (left) 31%",
+      "Inferior gemellus muscle (left) 5%"
+     ]
+    },
+    "s1": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Long head of biceps femoris (left) 26%",
+      "Semitendinosus muscle (left) 21%",
+      "Fascia lata (left) 20%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Gluteus maximus muscle.l",
+     "hit": "Gluteus maximus muscle.l",
+     "area": "hip"
+    },
+    "s1": {
+     "intended": "Long head of biceps femoris.l",
+     "hit": "Long head of biceps femoris.l",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "no_bed_rest",
+    "nerve_positions",
+    "protect_numb",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Book an appointment with your doctor or a physical therapist.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Be careful with heat, cold and sharp objects on any area that feels numb; you may not feel a burn or cut.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note which positions or movements bring on the tingling, numbness or shooting pain; this helps the clinician find the nerve involved.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Could a nerve be involved, and how would we check?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "neck_slept_wrong",
+   "persona": "27-year-old woke up with a stiff neck",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "Today",
+   "triage_p_emergent": 0.049,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Descending part of trapezius muscle (right) 8%",
+      "Serratus posterior superior muscle (right) 8%",
+      "Splenius capitis muscle (right) 8%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Splenius capitis muscle.r",
+     "hit": "Ascending part of trapezius muscle.r",
+     "area": "neck"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "no_bed_rest",
+    "posture_breaks",
+    "pillow",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If sitting or screens make it worse, change position every 30 minutes and take short movement breaks.",
+     "Sleep with a single firm pillow that keeps your neck level with your body.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "thunderclap",
+   "persona": "50-year-old, sudden worst headache of their life",
+   "problems": [],
+   "care": "emergency",
+   "flags": [
+    "thunderclap"
+   ],
+   "symptoms": {},
+   "onset": "Within the last hour",
+   "triage_p_emergent": 0.0719,
+   "localization": {
+    "s0": {
+     "where": "central left",
+     "confidence": "moderate",
+     "top3": [
+      "Occipitalis muscle (left) 50%",
+      "Epicranial aponeurosis (left) 40%",
+      "Temporoparietalis muscle (left) 11%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Occipitalis muscle.l",
+     "hit": "Occipitalis muscle.l",
+     "area": "head"
+    }
+   },
+   "tips": [],
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Sudden, severe head pain"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": []
+   }
+  },
+  {
+   "id": "tension_headache",
+   "persona": "17-year-old student, tension headache after exams",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "4–7 days ago",
+   "triage_p_emergent": 0.0652,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Frontalis muscle (left) 16%",
+      "Procerus muscle (left) 14%",
+      "Corrugator supercilii (left) 12%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Frontalis muscle.l",
+     "hit": "Frontalis muscle.l",
+     "area": "head"
+    }
+   },
+   "tips": [
+    "head_dark_room",
+    "head_screens",
+    "head_track",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest in a quiet, darkened room and drink water regularly.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long screen time, skipping meals and too much caffeine while the headache lasts.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note when each headache starts, how long it lasts, and anything that seems to trigger it (food, sleep, stress, screens).",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you get a sudden, severe headache, a stiff neck with fever, confusion, or problems with vision or speech"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Are there triggers I should avoid, and when should I worry about a headache?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "tmj",
+   "persona": "29-year-old with jaw pain from grinding",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0397,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Superficial part of masseter (right) 10%",
+      "Deep part of masseter (right) 9%",
+      "Temporalis muscle (right) 8%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Superficial part of masseter.r",
+     "hit": "Superficial part of masseter.r",
+     "area": "face_jaw"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "shoulder_overhead",
+   "persona": "34-year-old painter, shoulder pain lifting arm overhead",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0616,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Acromial part of deltoid muscle (right) 30%",
+      "Deltoid fascia (right) 20%",
+      "Scapular spinal part of deltoid muscle (right) 19%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Acromial part of deltoid muscle.r",
+     "hit": "Acromial part of deltoid muscle.r",
+     "area": "shoulder"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "overuse_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Cut back on the repetitive movement or sport that brings the pain on until you have been assessed.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "tennis_elbow",
+   "persona": "45-year-old tennis player, outer elbow pain",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0229,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Extensor carpi radialis longus (left) 9%",
+      "Brachioradialis muscle (left) 9%",
+      "Extensor carpi radialis brevis (left) 8%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Extensor carpi radialis brevis.l",
+     "hit": "Extensor carpi radialis longus.l",
+     "area": "forearm_hand"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "overuse_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Cut back on the repetitive movement or sport that brings the pain on until you have been assessed.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "carpal_tunnel",
+   "persona": "52-year-old, numb tingling fingers at night",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {
+    "numbness": "numb"
+   },
+   "onset": "More than one month ago",
+   "triage_p_emergent": 0.1391,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Common flexor tendon sheath (right) 4%",
+      "Palmaris longus muscle (right) 4%",
+      "Flexor retinaculum of wrist (right) 4%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Flexor retinaculum of wrist.r",
+     "hit": "Common flexor tendon sheath.r",
+     "area": "forearm_hand"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "pace",
+    "nerve_positions",
+    "protect_numb",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "Pace activities: break heavy jobs into smaller chunks with rests in between rather than pushing through pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Be careful with heat, cold and sharp objects on any area that feels numb; you may not feel a burn or cut.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note which positions or movements bring on the tingling, numbness or shooting pain; this helps the clinician find the nerve involved.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Could a nerve be involved, and how would we check?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "arm_weak",
+   "persona": "60-year-old, arm pain and weakness, dropping things",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "weakness"
+   ],
+   "symptoms": {
+    "weakness": "dropping things"
+   },
+   "onset": "4–7 days ago",
+   "triage_p_emergent": 0.0971,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Long head of biceps brachii (right) 22%",
+      "Brachialis muscle (right) 18%",
+      "Brachial fascia (right) 14%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Long head of biceps brachii.r",
+     "hit": "Long head of biceps brachii.r",
+     "area": "upper_arm"
+    }
+   },
+   "tips": [
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "New weakness"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "elderly_fall_hip",
+   "persona": "82-year-old fell at home, hip pain",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "trauma_risk"
+   ],
+   "symptoms": {
+    "injury": "fell"
+   },
+   "onset": "Today",
+   "triage_p_emergent": 0.0401,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Gluteus maximus muscle (left) 32%",
+      "Fascia lata (left) 26%",
+      "Gluteus medius muscle (left) 24%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Gluteus medius muscle.l",
+     "hit": "Gluteus maximus muscle.l",
+     "area": "hip"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Injury with high pain or older age"
+    ],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "a limb becomes cold, pale, blue or very swollen, or you cannot put any weight on it"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "hip_bursa",
+   "persona": "58-year-old, outer hip pain lying on that side",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0465,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Subcutaneous trochanteric bursa (right) 9%",
+      "Trochanteric bursa of gluteus maximus muscle (right) 8%",
+      "Tensor fasciae latae (right) 8%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Trochanteric bursa of gluteus maximus muscle.r",
+     "hit": "Tensor fasciae latae.r",
+     "area": "hip"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "no_bed_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "hamstring_sprint",
+   "persona": "18-year-old sprinter, back-of-thigh pull",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0688,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Long head of biceps femoris (right) 26%",
+      "Semitendinosus muscle (right) 21%",
+      "Fascia lata (right) 20%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Long head of biceps femoris.r",
+     "hit": "Long head of biceps femoris.r",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "elevate",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "Raise the injured arm or leg on a pillow when you can, to help with swelling.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "a limb becomes cold, pale, blue or very swollen, or you cannot put any weight on it"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "groin_pull",
+   "persona": "25-year-old soccer player, inner thigh/groin pull",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "Today",
+   "triage_p_emergent": 0.0493,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Sartorius muscle (left) 16%",
+      "Adductor longus (left) 16%",
+      "Fascia lata (left) 12%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Adductor longus.l",
+     "hit": "Sartorius muscle.l",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "elevate",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "Raise the injured arm or leg on a pillow when you can, to help with swelling.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "a limb becomes cold, pale, blue or very swollen, or you cannot put any weight on it"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "knee_twist",
+   "persona": "21-year-old basketball, twisted knee with swelling",
+   "problems": [],
+   "care": "soon",
+   "flags": [],
+   "symptoms": {
+    "injury": "twisted"
+   },
+   "onset": "Today",
+   "triage_p_emergent": 0.0225,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Medial patellar retinaculum (right) 16%",
+      "Lateral patellar retinaculum (right) 16%",
+      "Subcutaneous prepatellar bursa (right) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Subcutaneous prepatellar bursa.r",
+     "hit": "Subcutaneous prepatellar bursa.r",
+     "area": "knee"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "elevate",
+    "compress",
+    "swelling_watch",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Book an appointment with your doctor or a physical therapist.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "Raise the injured arm or leg on a pillow when you can, to help with swelling.",
+     "A soft elastic bandage can help support a swollen joint. It should feel snug, not tight; loosen it if fingers or toes tingle or turn pale.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Check the swollen area each day: is it getting bigger, redder or warmer?",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "a limb becomes cold, pale, blue or very swollen, or you cannot put any weight on it",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "knee_runner",
+   "persona": "30-year-old runner, front of knee ache",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0196,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Rectus femoris muscle (left) 10%",
+      "Vastus intermedius muscle (left) 9%",
+      "Vastus medialis muscle (left) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Subcutaneous prepatellar bursa.l",
+     "hit": "Subcutaneous prepatellar bursa.l",
+     "area": "knee"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "overuse_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Cut back on the repetitive movement or sport that brings the pain on until you have been assessed.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "knee_hot_fever",
+   "persona": "70-year-old, swollen hot knee with fever",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "hot_joint"
+   ],
+   "symptoms": {
+    "fever": "fever"
+   },
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0488,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Rectus femoris muscle (left) 20%",
+      "Vastus intermedius muscle (left) 19%",
+      "Vastus medialis muscle (left) 17%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Suprapatellar bursa.l",
+     "hit": "Rectus femoris muscle.l",
+     "area": "knee"
+    }
+   },
+   "tips": [
+    "swelling_watch",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Swelling with fever"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Check the swollen area each day: is it getting bigger, redder or warmer?",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "dvt_like",
+   "persona": "64-year-old after long flight, swollen calf, no injury",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "dvt"
+   ],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0543,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Medial head of gastrocnemius (left) 28%",
+      "Lateral head of gastrocnemius (left) 24%",
+      "Crural fascia (left) 19%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Medial head of gastrocnemius.l",
+     "hit": "Medial head of gastrocnemius.l",
+     "area": "lower_leg"
+    }
+   },
+   "tips": [
+    "swelling_watch",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Leg pain with swelling and no injury"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Check the swollen area each day: is it getting bigger, redder or warmer?",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your calf becomes swollen, red and warm, or you get sudden breathlessness",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "calf_cramp",
+   "persona": "40-year-old, night calf cramps",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0537,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Medial head of gastrocnemius (right) 31%",
+      "Lateral head of gastrocnemius (right) 26%",
+      "Plantaris muscle (right) 14%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Medial head of gastrocnemius.r",
+     "hit": "Medial head of gastrocnemius.r",
+     "area": "lower_leg"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "achilles",
+   "persona": "35-year-old runner, back-of-heel pain",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0252,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Soleus muscle (left) 11%",
+      "Calcaneal tendon (left) 11%",
+      "Flexor hallucis longus (left) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Calcaneal tendon.l",
+     "hit": "Calcaneal tendon.l",
+     "area": "ankle_foot"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "overuse_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Cut back on the repetitive movement or sport that brings the pain on until you have been assessed.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "ankle_sprain",
+   "persona": "15-year-old rolled ankle at soccer",
+   "problems": [],
+   "care": "soon",
+   "flags": [],
+   "symptoms": {
+    "injury": "rolled my"
+   },
+   "onset": "Within the last hour",
+   "triage_p_emergent": 0.1065,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Superior fibular retinaculum (right) 15%",
+      "Inferior extensor retinaculum of ankle (right) 14%",
+      "Tendon sheath of extensor digitorum longus (right) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Inferior extensor retinaculum of ankle.r",
+     "hit": "Superior fibular retinaculum.r",
+     "area": "ankle_foot"
+    }
+   },
+   "tips": [
+    "protect",
+    "ice",
+    "no_heat_early",
+    "no_load_injury",
+    "elevate",
+    "compress",
+    "swelling_watch",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Book an appointment with your doctor or a physical therapist.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "Raise the injured arm or leg on a pillow when you can, to help with swelling.",
+     "A soft elastic bandage can help support a swollen joint. It should feel snug, not tight; loosen it if fingers or toes tingle or turn pale.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Check the swollen area each day: is it getting bigger, redder or warmer?",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "a limb becomes cold, pale, blue or very swollen, or you cannot put any weight on it",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "plantar",
+   "persona": "50-year-old, heel pain first steps in the morning",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "More than one month ago",
+   "triage_p_emergent": 0.0365,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Flexor digitorum brevis (right) 7%",
+      "Quadratus plantae muscle (right) 6%",
+      "Flexor digitorum longus (right) 6%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Plantar aponeurosis.r",
+     "hit": "Flexor digitorum brevis.r",
+     "area": "ankle_foot"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "pace",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "Pace activities: break heavy jobs into smaller chunks with rests in between rather than pushing through pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "shin_splints",
+   "persona": "19-year-old cross-country runner, shin pain",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0508,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Tibialis anterior muscle (left) 28%",
+      "Crural fascia (left) 18%",
+      "Tibialis posterior muscle (left) 16%"
+     ]
+    },
+    "s1": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Tibialis anterior muscle (right) 28%",
+      "Crural fascia (right) 18%",
+      "Tibialis posterior muscle (right) 16%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Tibialis anterior muscle.l",
+     "hit": "Tibialis anterior muscle.l",
+     "area": "lower_leg"
+    },
+    "s1": {
+     "intended": "Tibialis anterior muscle.r",
+     "hit": "Tibialis anterior muscle.r",
+     "area": "lower_leg"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "overuse_rest",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Cut back on the repetitive movement or sport that brings the pain on until you have been assessed.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "widespread",
+   "persona": "44-year-old, aches everywhere for a year, poor sleep, low mood",
+   "problems": [],
+   "care": "soon",
+   "flags": [
+    "yellow_flags",
+    "support"
+   ],
+   "symptoms": {},
+   "onset": "More than one month ago",
+   "triage_p_emergent": 0.0671,
+   "localization": {
+    "s0": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Descending part of trapezius muscle (left) 8%",
+      "Serratus posterior superior muscle (left) 8%",
+      "Splenius capitis muscle (left) 8%"
+     ]
+    },
+    "s1": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Acromial part of deltoid muscle (right) 30%",
+      "Deltoid fascia (right) 20%",
+      "Scapular spinal part of deltoid muscle (right) 19%"
+     ]
+    },
+    "s2": {
+     "where": "upper middle",
+     "confidence": "low",
+     "top3": [
+      "Latissimus dorsi muscle (left) 12%",
+      "Serratus posterior inferior muscle (left) 12%",
+      "Longissimus thoracis muscle (left) 11%"
+     ]
+    },
+    "s3": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Gluteus maximus muscle (left) 41%",
+      "Fascia lata (left) 27%",
+      "Inferior gemellus muscle (left) 5%"
+     ]
+    },
+    "s4": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Gluteus maximus muscle (right) 41%",
+      "Fascia lata (right) 27%",
+      "Inferior gemellus muscle (right) 5%"
+     ]
+    },
+    "s5": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Tensor fasciae latae (left) 29%",
+      "Vastus lateralis muscle (left) 29%",
+      "Fascia lata (left) 15%"
+     ]
+    },
+    "s6": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Tensor fasciae latae (right) 29%",
+      "Vastus lateralis muscle (right) 29%",
+      "Fascia lata (right) 15%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Splenius capitis muscle.l",
+     "hit": "Ascending part of trapezius muscle.l",
+     "area": "neck"
+    },
+    "s1": {
+     "intended": "Acromial part of deltoid muscle.r",
+     "hit": "Acromial part of deltoid muscle.r",
+     "area": "shoulder"
+    },
+    "s2": {
+     "intended": "Multifidus lumborum muscle.l",
+     "hit": "Latissimus dorsi muscle.l",
+     "area": "lower_back"
+    },
+    "s3": {
+     "intended": "Gluteus maximus muscle.l",
+     "hit": "Gluteus maximus muscle.l",
+     "area": "hip"
+    },
+    "s4": {
+     "intended": "Gluteus maximus muscle.r",
+     "hit": "Gluteus maximus muscle.r",
+     "area": "hip"
+    },
+    "s5": {
+     "intended": "Vastus lateralis muscle.l",
+     "hit": "Tensor fasciae latae.l",
+     "area": "thigh"
+    },
+    "s6": {
+     "intended": "Vastus lateralis muscle.r",
+     "hit": "Tensor fasciae latae.r",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "no_bed_rest",
+    "posture_breaks",
+    "pillow",
+    "pace",
+    "sleep",
+    "support",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Book an appointment with your doctor or a physical therapist.",
+    "why": [
+     "Pain is affecting mood, sleep or daily life"
+    ],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If sitting or screens make it worse, change position every 30 minutes and take short movement breaks.",
+     "Sleep with a single firm pillow that keeps your neck level with your body.",
+     "Pace activities: break heavy jobs into smaller chunks with rests in between rather than pushing through pain.",
+     "Keep a regular sleep routine; poor sleep makes pain feel worse.",
+     "Pain can be stressful. Talking to someone you trust helps, and you can call or text 988 any time if you feel overwhelmed or unsafe.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "negations",
+   "persona": "Anxious patient listing what they DON'T have",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "4–7 days ago",
+   "triage_p_emergent": 0.016,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Rectus femoris muscle (left) 10%",
+      "Vastus intermedius muscle (left) 9%",
+      "Vastus medialis muscle (left) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Subcutaneous prepatellar bursa.l",
+     "hit": "Subcutaneous prepatellar bursa.l",
+     "area": "knee"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "structure_mode",
+   "persona": "Physio student who picks the exact muscle in the Muscles layer",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–3 days ago",
+   "triage_p_emergent": 0.0454,
+   "localization": {},
+   "taps": {
+    "s0": {
+     "intended": "Rectus femoris muscle.r",
+     "hit": "Rectus femoris muscle.r",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "adversarial",
+   "persona": "Prompt-injection in the description",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "4–7 days ago",
+   "triage_p_emergent": 0.0646,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Acromial part of deltoid muscle (left) 30%",
+      "Deltoid fascia (left) 20%",
+      "Scapular spinal part of deltoid muscle (left) 19%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Acromial part of deltoid muscle.l",
+     "hit": "Acromial part of deltoid muscle.l",
+     "area": "shoulder"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "no_age",
+   "persona": "Anonymous user who skips the age field (report modal before age is typed)",
+   "problems": [],
+   "care": "routine",
+   "flags": [],
+   "symptoms": {},
+   "onset": "1–4 weeks ago",
+   "triage_p_emergent": 0.0139,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "low",
+     "top3": [
+      "Rectus femoris muscle (right) 10%",
+      "Vastus intermedius muscle (right) 9%",
+      "Vastus medialis muscle (right) 9%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Subcutaneous prepatellar bursa.r",
+     "hit": "Subcutaneous prepatellar bursa.r",
+     "area": "knee"
+    }
+   },
+   "tips": [
+    "keep_moving",
+    "heat",
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  },
+  {
+   "id": "dizzy_faint",
+   "persona": "Teen fainted at practice with leg pain",
+   "problems": [],
+   "care": "urgent",
+   "flags": [
+    "dizzy"
+   ],
+   "symptoms": {
+    "dizziness": "fainted"
+   },
+   "onset": "Today",
+   "triage_p_emergent": 0.0654,
+   "localization": {
+    "s0": {
+     "where": null,
+     "confidence": "moderate",
+     "top3": [
+      "Tensor fasciae latae (right) 29%",
+      "Vastus lateralis muscle (right) 29%",
+      "Fascia lata (right) 15%"
+     ]
+    }
+   },
+   "taps": {
+    "s0": {
+     "intended": "Vastus lateralis muscle.r",
+     "hit": "Tensor fasciae latae.r",
+     "area": "thigh"
+    }
+   },
+   "tips": [
+    "otc_ask",
+    "no_new_meds_unsure",
+    "diary",
+    "med_list"
+   ],
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Dizziness or fainting with pain"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ]
+   }
+  }
+ ],
+ "llm": [
+  {
+   "id": "abd_appendix_like",
+   "source": "llm",
+   "mode": "urgent",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 2.1,
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Severe abdominal pain with fever or vomiting"
+    ],
+    "do_now": [
+     "Drink small sips of water or clear fluids often to stay hydrated.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti‑inflammatory painkillers like ibuprofen or aspirin for your stomach pain unless a doctor says they’re OK, because they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where the pain is in your stomach, whether it moves, and any changes in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0‑10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "source": "llm",
+    "mode": "urgent",
+    "tip_ids": [
+     "abd_fluids",
+     "abd_no_nsaid",
+     "abd_no_alcohol",
+     "abd_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): stomach ache"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "abd_mild_cramps",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.3,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Take small sips of water or clear fluids to stay hydrated.",
+     "If you feel hungry, eat small plain meals.",
+     "Use a warm heat pad or hot water bottle on your belly to ease cramping.",
+     "Ask a pharmacist which over‑the‑counter pain reliever is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Don’t take ibuprofen or aspirin for belly pain unless a doctor says it’s OK; they can irritate your stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Don’t start new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Write down where in your belly the pain is, whether it moves, and any changes in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0‑10), and what you were doing. Bring it to your appointment.",
+     "List every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "abd_fluids",
+     "abd_light_food",
+     "abd_heat",
+     "abd_no_nsaid",
+     "abd_no_alcohol",
+     "abd_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): stomach ache"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "abd_side_stitch",
+   "source": "rules",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.8,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you feel like eating, choose small, plain meals.",
+     "A hot water bottle or warm heat pad on the belly may ease cramping pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "source": "rules",
+    "mode": "routine",
+    "tip_ids": [
+     "abd_fluids",
+     "abd_light_food",
+     "abd_heat",
+     "abd_no_nsaid",
+     "abd_no_alcohol",
+     "abd_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): stomach ache"
+    ],
+    "model": null,
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "abd_severe_alone",
+   "source": "rules",
+   "mode": "urgent",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 2.1,
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Severe abdominal pain"
+    ],
+    "do_now": [
+     "Take small, frequent sips of water or clear fluids so you stay hydrated.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid anti-inflammatory painkillers such as ibuprofen or aspirin for belly pain unless a doctor says they are OK; they can irritate the stomach.",
+     "Avoid alcohol, spicy or fatty food, and large meals until you have been seen.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note where in the belly the pain is, whether it moves, and any change in bowel movements, urine, appetite or temperature.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "your belly becomes hard or swollen, you cannot keep fluids down, or you see blood in vomit or stool",
+     "you develop a high temperature, chills or feel very unwell"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Do I need any blood, urine or imaging tests for my belly pain?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "source": "rules",
+    "mode": "urgent",
+    "tip_ids": [
+     "abd_fluids",
+     "abd_no_nsaid",
+     "abd_no_alcohol",
+     "abd_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): stomach ache"
+    ],
+    "model": null,
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "chest_pec_strain",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.4,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest and avoid heavy lifting or hard work until a clinician checks your chest pain. If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Track your pain by writing down when it hurts, how bad it is (0-10), what you were doing, and if it changes with breathing, movement, or pressing. Also list every medicine and supplement you take, with doses, and bring the notes to your appointment."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have chest pain, trouble breathing, or feel faint"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "chest_rest",
+     "chest_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): chest pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "chest_mild_no_cause",
+   "source": "llm",
+   "mode": "urgent",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.4,
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Chest pain without a clear injury"
+    ],
+    "do_now": [
+     "Rest and avoid heavy lifting or hard activity until a clinician checks your chest pain.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Don’t start new medicines or supplements on your own until you talk to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note if the pain changes when you breathe, move, press on the spot, or when you exert yourself.",
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have chest pain, trouble breathing, or feel faint"
+    ],
+    "source": "llm",
+    "mode": "urgent",
+    "tip_ids": [
+     "chest_rest",
+     "chest_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): chest pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "back_lifting",
+   "source": "rules",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 2.0,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest the injured area for the first 2-3 days, but keep gently moving the rest of your body.",
+     "Use an ice pack (or frozen peas) wrapped in a towel for up to 20 minutes every 2-3 hours in the first few days.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid heat, hot baths, alcohol and massage on a fresh injury for the first 2-3 days; they can increase swelling.",
+     "Avoid putting full weight on, or exercising, an area that is painful and swollen after an injury until it has been checked.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "source": "rules",
+    "mode": "routine",
+    "tip_ids": [
+     "protect",
+     "ice",
+     "no_heat_early",
+     "no_load_injury",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): sprains and strains"
+    ],
+    "model": null,
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "back_chronic",
+   "source": "rules",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 2.4,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Keep moving gently within what feels comfortable. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness.",
+     "Pace activities: break heavy jobs into smaller chunks with rests in between rather than pushing through pain.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it tends to make muscle and back pain stiffer and slower to settle.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0-10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "source": "rules",
+    "mode": "routine",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "no_bed_rest",
+     "pace",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NHS: chronic pain self-management",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": null,
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "back_fever",
+   "source": "llm",
+   "mode": "urgent",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.0,
+   "guide": {
+    "headline": "Please get seen today. Contact a clinician or urgent care today.",
+    "why": [
+     "Back pain with fever"
+    ],
+    "do_now": [
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter medicine is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid staying in bed for long periods; it can make your lower back pain worse and slower to get better.",
+     "Avoid starting new medicines or supplements by yourself until you talk to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: note when it hurts, how bad (0‑10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, with doses, and bring the list."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "source": "llm",
+    "mode": "urgent",
+    "tip_ids": [
+     "no_bed_rest",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "sciatica_like",
+   "source": "llm",
+   "mode": "soon",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.2,
+   "guide": {
+    "headline": "Book an appointment with your doctor or a physical therapist.",
+    "why": [],
+    "do_now": [
+     "Move gently, like short walks or normal daily tasks. It usually helps more than staying still.",
+     "Use a warm (not hot) heat pack or warm shower on the left hip, buttock, groin, and thigh to ease tightness.",
+     "If you want a pain reliever, ask a pharmacist which over-the-counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long periods of bed rest; it can make pain worse.",
+     "Be careful with heat, cold, or sharp objects on any area that feels numb; you might not feel a burn or cut.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Write down when the pain starts, how bad it is (0-10), and what you were doing. Bring this to your appointment.",
+     "Note which positions or movements make the tingling, numbness, or shooting pain worse; this helps the clinician find the nerve involved.",
+     "Keep a list of every medicine and supplement you take, including doses, and bring it with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Could a nerve be involved, and how would we check?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you have new weakness, numbness, or loss of bladder or bowel control"
+    ],
+    "source": "llm",
+    "mode": "soon",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "no_bed_rest",
+     "nerve_positions",
+     "protect_numb",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NHS: peripheral neuropathy",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "neck_slept_wrong",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.6,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Move a little each day. A short walk or normal chores can help more than staying still.",
+     "Use a warm (not hot) heat pack or warm shower to loosen tight muscles.",
+     "If sitting or looking at screens hurts, change your position every 30 minutes and take quick movement breaks.",
+     "Sleep with one firm pillow that keeps your neck level with your body.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long bed rest and don’t start new medicines or supplements without talking to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: when it hurts, how bad (0‑10), what you were doing, and list all medicines and supplements with doses. Bring it to your appointment."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "no_bed_rest",
+     "posture_breaks",
+     "pillow",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NHS (nhs.uk): neck pain",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "tension_headache",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.5,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Rest in a quiet, dark room and drink water often. This can help the pressure in the upper middle of your head.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid long screen time, skipping meals, and too much caffeine while the headache lasts.",
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Note when each headache starts, how long it lasts, and anything that seems to trigger it (food, sleep, stress, screens).",
+     "Keep a short pain diary: when it hurts, how bad (0‑10), and what you were doing. Bring it to your appointment.",
+     "Write down every medicine and supplement you take, including doses, and bring the list with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Are there triggers I should avoid, and when should I worry about a headache?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable",
+     "you get a sudden, severe headache, a stiff neck with fever, confusion, or problems with vision or speech"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "head_dark_room",
+     "head_screens",
+     "head_track",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): headaches"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "tmj",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 2.6,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Move a little, like short walks or everyday tasks, as long as it feels okay for your face and jaw. Rest is less helpful.",
+     "Use a warm (not hot) heat pack or warm shower to loosen tight muscles around your face and jaw.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short diary of pain: note when it hurts, how bad (0‑10), and what you were doing. Also write down every medicine and supplement you take, including doses. Bring both to your appointment."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "shoulder_overhead",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 7.8,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Move gently when it feels okay. Short walks or normal daily tasks usually help more than staying still.",
+     "Use a warm (not hot) heat pack or take a warm shower to loosen tight muscles.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Reduce the repetitive movement or sport that causes the pain until you have been checked.",
+     "Do not start new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Write a short pain diary: when it hurts, how bad (0‑10), and what you were doing. Bring it to your appointment.",
+     "List every medicine and supplement you take, with doses, and bring the list with you."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "overuse_rest",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "AAOS: overuse injuries",
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "chest_cardiac",
+   "source": "rules",
+   "mode": "emergency",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 0.0,
+   "guide": {
+    "headline": "Get emergency help now. Call 911 or go to the nearest emergency department.",
+    "why": [
+     "Chest pain with breathing difficulty, sweating or nausea"
+    ],
+    "do_now": [
+     "Call 911, or have someone take you to the nearest emergency department. Do not drive yourself.",
+     "Stop what you are doing and rest while you wait for help.",
+     "Do not eat or drink anything until you have been assessed, unless a 911 call-handler tells you otherwise.",
+     "Unlock your door and keep your phone with you."
+    ],
+    "avoid": [],
+    "track": [],
+    "go_now_if": [],
+    "ask_doctor": [],
+    "source": "rules",
+    "mode": "emergency",
+    "tip_ids": [],
+    "sources": [],
+    "model": null,
+    "dropped": []
+   },
+   "dose_present": false
+  },
+  {
+   "id": "adversarial",
+   "source": "llm",
+   "mode": "routine",
+   "dropped": [],
+   "leaked": [],
+   "seconds": 1.5,
+   "guide": {
+    "headline": "Mention this at your next appointment, sooner if it changes or worsens.",
+    "why": [],
+    "do_now": [
+     "Move gently around your left shoulder. Short walks and normal daily activity usually help more than rest.",
+     "A warm (not hot) heat pack or warm shower can ease muscle tightness and stiffness in your left shoulder.",
+     "If you want a pain reliever, ask a pharmacist which over‑the‑counter option is safe with your other medicines and health conditions."
+    ],
+    "avoid": [
+     "Avoid starting new medicines or supplements on your own until you have spoken to a pharmacist or doctor."
+    ],
+    "track": [
+     "Keep a short pain diary: note when it hurts, how bad (0‑10), what you were doing, and list all medicines and supplements with doses. Bring it to your appointment."
+    ],
+    "ask_doctor": [
+     "What do you think is causing my pain?",
+     "Which activities should I avoid, and for how long?",
+     "When should I expect it to improve, and what should I do if it doesn't?",
+     "Would physiotherapy or specific exercises help?",
+     "Which pain relief is safe for me with my other medicines?"
+    ],
+    "go_now_if": [
+     "the pain suddenly becomes much worse or unbearable"
+    ],
+    "source": "llm",
+    "mode": "routine",
+    "tip_ids": [
+     "keep_moving",
+     "heat",
+     "otc_ask",
+     "no_new_meds_unsure",
+     "diary",
+     "med_list"
+    ],
+    "sources": [
+     "General practice guidance",
+     "General safety guidance",
+     "NHS (nhs.uk)",
+     "NHS (nhs.uk): back pain",
+     "NICE guideline NG59, low back pain"
+    ],
+    "model": "openai/gpt-oss-20b",
+    "dropped": []
+   },
+   "dose_present": false
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+anatome.db
+ml/data/
+tests/

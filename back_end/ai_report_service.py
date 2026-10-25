@@ -175,6 +175,17 @@ Rules:
 13. Clinician review items must not give urgency levels or treatment advice.
 14. Do not use alarming or definitive language.
 15. If information was not supplied, say "Not reported" rather than guessing.
+    For list fields (aggravating_factors, relieving_factors), return an
+    empty list [] instead of a string.
+16. "decision_support_findings" are outputs of ANATOME's screening models
+    and safety rules, not patient statements. You may list them in
+    clinician_review_items, prefixed with "Screening tool flagged:", but
+    never turn them into a diagnosis or a statement of cause.
+17. Some pain regions are everyday body areas (e.g. "Stomach / belly") with
+    "screening_structures_under_spot": the muscles or connective tissues the
+    localizer found nearest the marked point. Mention them in that region's
+    clinical_summary as "structures under the marked spot (screening
+    estimate): ...", never as the source of the pain.
 
 The final documentation statement must clearly explain that the report:
 - summarizes patient-reported information;
@@ -188,6 +199,7 @@ def generate_ai_report(
     report_date: str,
     questionnaire: dict[str, Any],
     pain_regions: dict[str, Any],
+    decision_support: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """
     Generate a structured, non-diagnostic clinical report.
@@ -213,6 +225,8 @@ def generate_ai_report(
         "questionnaire": questionnaire,
         "pain_regions": pain_regions,
     }
+    if decision_support:
+        source_data["decision_support_findings"] = decision_support
 
     completion = client.chat.completions.create(
         model=GROQ_REPORT_MODEL,

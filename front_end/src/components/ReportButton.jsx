@@ -28,6 +28,7 @@ export default function ReportButton({
       }
 
       const aiReport = savedResult.ai_report;
+      const analysis = savedResult.analysis || {};
       const patientId = savedResult.patient_id;
 
       if (!aiReport) {
@@ -260,20 +261,30 @@ export default function ReportButton({
       if (!Array.isArray(regions) || regions.length === 0) {
         addWrappedText("No pain regions were recorded.");
       } else {
-        regions.forEach(([_spotId, data], index) => {
-          const regionName = data.regionName || `Pain Region ${index + 1}`;
+        regions.forEach(([spotId, data], index) => {
+          const regionName = (data.mode === "area" ? data.areaLabel : data.regionName) || `Pain Region ${index + 1}`;
+          const located = analysis.localization?.[spotId];
 
           addSubheading(`${index + 1}. ${regionName}`);
 
-          addLabelledText("Pain severity", `${data.severity ?? 5}/10`);
+          addLabelledText("Pain severity", `${data.severity}/10`);
 
           addLabelledText("Pain type", data.painType || "Not reported");
 
           addLabelledText("Frequency", data.frequency || "Not reported");
 
-          addLabelledText("Onset date", data.startDate || "Not reported");
+          addLabelledText("Started", data.onset || "Not reported");
 
           addLabelledText("Patient notes", data.notes || "Not reported");
+
+          if (located?.candidates?.length) {
+            addLabelledText(
+              `Structures under the marked spot (screening estimate, ${located.confidence || "unranked"} confidence)`,
+              (located.where ? `Location within area: ${located.where}. ` : "")
+                + located.candidates.slice(0, 3).map((c) => `${c.display} [${c.type}, ${Math.round(c.share * 100)}%]`).join("; "),
+            );
+            if (located.caveat) addWrappedText(located.caveat, 30, 155);
+          }
 
           addDivider();
         });

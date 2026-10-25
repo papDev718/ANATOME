@@ -1,0 +1,149 @@
+{
+ "localizer": {
+  "per_area": {
+   "ankle_foot": {
+    "n": 64,
+    "landed": 62,
+    "top1": 12,
+    "top3": 36,
+    "occluded": 52
+   },
+   "hip": {
+    "n": 60,
+    "landed": 52,
+    "top1": 4,
+    "top3": 14,
+    "occluded": 54
+   },
+   "forearm_hand": {
+    "n": 88,
+    "landed": 88,
+    "top1": 12,
+    "top3": 32,
+    "occluded": 76
+   },
+   "abdomen": {
+    "n": 11,
+    "landed": 11,
+    "top1": 2,
+    "top3": 9,
+    "occluded": 9
+   },
+   "lower_back": {
+    "n": 16,
+    "landed": 14,
+    "top1": 4,
+    "top3": 8,
+    "occluded": 16
+   },
+   "neck": {
+    "n": 83,
+    "landed": 69,
+    "top1": 4,
+    "top3": 20,
+    "occluded": 79
+   },
+   "face_jaw": {
+    "n": 56,
+    "landed": 36,
+    "top1": 4,
+    "top3": 26,
+    "occluded": 52
+   },
+   "head": {
+    "n": 34,
+    "landed": 34,
+    "top1": 10,
+    "top3": 20,
+    "occluded": 24
+   },
+   "upper_back": {
+    "n": 32,
+    "landed": 29,
+    "top1": 6,
+    "top3": 17,
+    "occluded": 26
+   },
+   "knee": {
+    "n": 24,
+    "landed": 24,
+    "top1": 8,
+    "top3": 14,
+    "occluded": 22
+   },
+   "thigh": {
+    "n": 32,
+    "landed": 20,
+    "top1": 8,
+    "top3": 14,
+    "occluded": 26
+   },
+   "lower_leg": {
+    "n": 34,
+    "landed": 16,
+    "top1": 6,
+    "top3": 12,
+    "occluded": 28
+   },
+   "shoulder": {
+    "n": 30,
+    "landed": 28,
+    "top1": 4,
+    "top3": 6,
+    "occluded": 26
+   },
+   "upper_arm": {
+    "n": 18,
+    "landed": 12,
+    "top1": 6,
+    "top3": 10,
+    "occluded": 12
+   },
+   "chest": {
+    "n": 19,
+    "landed": 10,
+    "top1": 4,
+    "top3": 6,
+    "occluded": 15
+   }
+  },
+  "total": {
+   "n": 601,
+   "landed": 505,
+   "top1": 94,
+   "top3": 244,
+   "occluded": 517
+  },
+  "misses": [
+   [
+    "Common tendon sheath of fibularis muscles.l",
+    "ankle_foot",
+    [
+     "Subcutaneous bursa of lateral malleolus.l",
+     "Calcaneal tendon.l",
+     "Inferior extensor retinaculum of ankle.l"
+    ]
+   ],
+   [
+    "Common tendon sheath of fibularis muscles.r",
+    "ankle_foot",
+    [
+     "Subcutaneous bursa of lateral malleolus.r",
+     "Calcaneal tendon.r",
+     "Inferior extensor retinaculum of ankle.r"
+    ]
+   ]
+  ]
+ },
+ "phrase_failures": [],
+ "random": {
+  "n": 600,
+  "levels": {
+   "soon": 165,
+   "emergency": 106,
+   "urgent": 241,
+   "routine": 88
+  },
+  "violations": []
+ }
+}
